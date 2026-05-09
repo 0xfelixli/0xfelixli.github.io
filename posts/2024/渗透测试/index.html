@@ -1,0 +1,972 @@
+<!DOCTYPE html><html dir="ltr" lang="en" class="scroll-smooth"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="canonical" href="https://0xfelixli.github.io/posts/2024/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"><meta name="generator" content="Astro v5.16.6"><!-- Load Font --><style>@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/ebe081c5cf2bc9bf.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:300;font-style:italic;}@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/ebe081c5cf2bc9bf.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:400;font-style:italic;}@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/ebe081c5cf2bc9bf.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:500;font-style:italic;}@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/ebe081c5cf2bc9bf.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:600;font-style:italic;}@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/ebe081c5cf2bc9bf.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:700;font-style:italic;}@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/dfc33a259d798962.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:300;font-style:normal;}@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/dfc33a259d798962.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:400;font-style:normal;}@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/dfc33a259d798962.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:500;font-style:normal;}@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/dfc33a259d798962.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:600;font-style:normal;}@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/dfc33a259d798962.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:700;font-style:normal;}@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/81a5937787ff8a0a.woff") format("woff");font-display:swap;font-weight:300;font-style:italic;}@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/13e056157b226e18.woff") format("woff");font-display:swap;font-weight:400;font-style:italic;}@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/bd02cfaa9ae16fb7.woff") format("woff");font-display:swap;font-weight:500;font-style:italic;}@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/fcaa83a753eb8a72.woff") format("woff");font-display:swap;font-weight:600;font-style:italic;}@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/28887fc4ef2e3de1.woff") format("woff");font-display:swap;font-weight:700;font-style:italic;}@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/a75e78cafb91aeae.woff") format("woff");font-display:swap;font-weight:300;font-style:normal;}@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/dcf1118e4db364a7.woff") format("woff");font-display:swap;font-weight:400;font-style:normal;}@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/7e09f3d8f911bde0.woff") format("woff");font-display:swap;font-weight:500;font-style:normal;}@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/ba411907dc1f87d9.woff") format("woff");font-display:swap;font-weight:600;font-style:normal;}@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/fcc9533aee1bcfad.woff") format("woff");font-display:swap;font-weight:700;font-style:normal;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:300;font-style:italic;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:400;font-style:italic;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:500;font-style:italic;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:600;font-style:italic;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:700;font-style:italic;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:300;font-style:normal;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:400;font-style:normal;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:500;font-style:normal;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:600;font-style:normal;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:700;font-style:normal;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:300;font-style:italic;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:400;font-style:italic;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:500;font-style:italic;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:600;font-style:italic;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:700;font-style:italic;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:300;font-style:normal;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:400;font-style:normal;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:500;font-style:normal;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:600;font-style:normal;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:700;font-style:normal;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}:root{--font-google-sans-code:"Google Sans Code-04a186ad63205992","Google Sans Code-04a186ad63205992 fallback: Courier New",monospace;}</style><!-- General Meta Tags --><title>渗透测试 | Stack Ashes</title><meta name="title" content="渗透测试 | Stack Ashes"><meta name="description" content="信息安全 （infosec） 是一个广阔的领域。该领域在过去几年中取得了长足的发展和发展。它提供许多专业，包括但不限于："><meta name="author" content="Felix"><link rel="sitemap" href="/sitemap-index.xml"><!-- Open Graph / Facebook --><meta property="og:title" content="渗透测试 | Stack Ashes"><meta property="og:description" content="信息安全 （infosec） 是一个广阔的领域。该领域在过去几年中取得了长足的发展和发展。它提供许多专业，包括但不限于："><meta property="og:url" content="https://0xfelixli.github.io/posts/2024/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"><meta property="og:image" content="https://0xfelixli.github.io/posts/2024/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/index.png"><!-- Article Published/Modified time --><meta property="article:published_time" content="2024-09-11T16:00:00.000Z"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://0xfelixli.github.io/posts/2024/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"><meta property="twitter:title" content="渗透测试 | Stack Ashes"><meta property="twitter:description" content="信息安全 （infosec） 是一个广阔的领域。该领域在过去几年中取得了长足的发展和发展。它提供许多专业，包括但不限于："><meta property="twitter:image" content="https://0xfelixli.github.io/posts/2024/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/index.png"><!-- Google JSON-LD Structured data --><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"渗透测试 | Stack Ashes","image":"https://0xfelixli.github.io/posts/2024/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/index.png","datePublished":"2024-09-11T16:00:00.000Z","author":[{"@type":"Person","name":"Felix","url":"https://github.com/0xfelixli"}]}</script><!-- Enable RSS feed auto-discovery  --><!-- https://docs.astro.build/en/recipes/rss/#enabling-rss-feed-auto-discovery --><link rel="alternate" type="application/rss+xml" title="Stack Ashes" href="https://0xfelixli.github.io/rss.xml"><meta name="theme-color" content=""><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.QW52Ox2j.js"></script><!-- Minimal inline script to prevent FOUC - sets theme immediately --><script>
+      (function () {
+        const initialColorScheme = ""; // "light" | "dark"
+        const currentTheme = localStorage.getItem("theme");
+
+        function getPreferTheme() {
+          if (currentTheme) return currentTheme;
+          if (initialColorScheme) return initialColorScheme;
+          return window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light";
+        }
+
+        const themeValue = getPreferTheme();
+
+        // Set theme immediately to prevent flash
+        document.firstElementChild?.setAttribute("data-theme", themeValue);
+
+        // Export minimal API for external script
+        window.theme = {
+          themeValue: themeValue,
+          getTheme: () => window.theme.themeValue,
+          setTheme: val => {
+            window.theme.themeValue = val;
+          },
+        };
+      })();
+    </script><style>:where([data-astro-image]){object-fit:var(--fit);object-position:var(--pos);height:auto}:where([data-astro-image=full-width]){width:100%}:where([data-astro-image=constrained]){max-width:100%}
+</style>
+<link rel="stylesheet" href="/_astro/about.Cu_I7Lmj.css">
+<style>@keyframes astroFadeInOut{0%{opacity:1}to{opacity:0}}@keyframes astroFadeIn{0%{opacity:0;mix-blend-mode:plus-lighter}to{opacity:1;mix-blend-mode:plus-lighter}}@keyframes astroFadeOut{0%{opacity:1;mix-blend-mode:plus-lighter}to{opacity:0;mix-blend-mode:plus-lighter}}@keyframes astroSlideFromRight{0%{transform:translate(100%)}}@keyframes astroSlideFromLeft{0%{transform:translate(-100%)}}@keyframes astroSlideToRight{to{transform:translate(100%)}}@keyframes astroSlideToLeft{to{transform:translate(-100%)}}@media (prefers-reduced-motion){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}[data-astro-transition-scope]{animation:none!important}}
+</style><style>[data-astro-transition-scope="astro-fam6wyqg-1"] { view-transition-name: \6E17\900F\6D4B\8BD5; }@layer astro { ::view-transition-old(\6E17\900F\6D4B\8BD5) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(\6E17\900F\6D4B\8BD5) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(\6E17\900F\6D4B\8BD5) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(\6E17\900F\6D4B\8BD5) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-fam6wyqg-1"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-fam6wyqg-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-fam6wyqg-1"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-fam6wyqg-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-fam6wyqg-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-fam6wyqg-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-fam6wyqg-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-fam6wyqg-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style><style>[data-astro-transition-scope="astro-36ssibgs-2"] { view-transition-name: \7F51\7EDC\5B89\5168; }@layer astro { ::view-transition-old(\7F51\7EDC\5B89\5168) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(\7F51\7EDC\5B89\5168) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(\7F51\7EDC\5B89\5168) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(\7F51\7EDC\5B89\5168) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-36ssibgs-2"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-36ssibgs-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-36ssibgs-2"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-36ssibgs-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-36ssibgs-2"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-36ssibgs-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-36ssibgs-2"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-36ssibgs-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style><style>[data-astro-transition-scope="astro-36ssibgs-3"] { view-transition-name: \6E17\900F\6D4B\8BD5; }@layer astro { ::view-transition-old(\6E17\900F\6D4B\8BD5) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(\6E17\900F\6D4B\8BD5) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(\6E17\900F\6D4B\8BD5) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(\6E17\900F\6D4B\8BD5) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-36ssibgs-3"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-36ssibgs-3"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-36ssibgs-3"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-36ssibgs-3"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-36ssibgs-3"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-36ssibgs-3"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-36ssibgs-3"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-36ssibgs-3"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style></head> <body>  <a id="skip-to-content" href="#main-content" class="absolute start-16 -top-full z-50 bg-background px-3 py-2 text-accent backdrop-blur-lg transition-all focus:top-4">
+Skip to content
+</a> <header class="app-layout flex flex-col items-center justify-between sm:flex-row"> <div id="top-nav-wrap" class="py-4 sm:py-6 border-b border-border relative w-full bg-background flex items-baseline justify-between sm:items-center"> <a href="/" class="absolute py-1 text-xl leading-8 font-semibold whitespace-nowrap sm:static sm:my-auto sm:text-2xl sm:leading-none"> Stack Ashes </a> <nav id="nav-menu" class="flex w-full flex-col items-center sm:ms-2 sm:flex-row sm:justify-end sm:space-x-4 sm:py-0"> <button id="menu-btn" class="focus-outline self-end p-2 sm:hidden" aria-label="Open Menu" aria-expanded="false" aria-controls="menu-items"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden" id="close-icon"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M18 6l-12 12" /><path d="M6 6l12 12" /></svg> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-menu-deep" id="menu-icon"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M4 6h16" /><path d="M7 12h13" /><path d="M10 18h10" /></svg> </button> <ul id="menu-items" class="mt-4 grid w-44 grid-cols-2 place-content-center gap-2 [&#38;>li>a]:block [&#38;>li>a]:px-4 [&#38;>li>a]:py-3 [&#38;>li>a]:text-center [&#38;>li>a]:font-medium [&#38;>li>a]:hover:text-accent sm:[&#38;>li>a]:px-2 sm:[&#38;>li>a]:py-1 hidden sm:mt-0 sm:flex sm:w-auto sm:gap-x-5 sm:gap-y-0"> <li class="col-span-2"> <a href="/posts" class="active-nav">
+Posts
+</a> </li> <li class="col-span-2"> <a href="/tags">
+Tags
+</a> </li> <li class="col-span-2"> <a href="/about">
+About
+</a> </li> <li class="col-span-2"> <a href="/archives" title="Archives" aria-label="archives" class="group inline-flex items-center gap-1 hover:text-accent focus-outline flex justify-center p-3 sm:p-1">  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden sm:inline-block"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 4m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z" /><path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" /><path d="M10 12l4 0" /></svg> <span class="sm:sr-only">Archives</span>  </a> </li> <li class="col-span-1 flex items-center justify-center"> <a href="/search" title="Search" aria-label="search" class="group inline-flex items-center gap-1 hover:text-accent focus-outline flex p-3 sm:p-1">  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-search"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" /><path d="M21 21l-6 -6" /></svg> <span class="sr-only">Search</span>  </a> </li> <li class="col-span-1 flex items-center justify-center"> <button id="theme-btn" class="focus-outline relative size-12 p-4 sm:size-8 hover:[&>svg]:stroke-accent" title="Toggles light & dark" aria-label="auto" aria-live="polite"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute top-[50%] left-[50%] -translate-[50%] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" /></svg> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute top-[50%] left-[50%] -translate-[50%] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M14.828 14.828a4 4 0 1 0 -5.656 -5.656a4 4 0 0 0 5.656 5.656z" /><path d="M6.343 17.657l-1.414 1.414" /><path d="M6.343 6.343l-1.414 -1.414" /><path d="M17.657 6.343l1.414 -1.414" /><path d="M17.657 17.657l1.414 1.414" /><path d="M4 12h-2" /><path d="M12 4v-2" /><path d="M20 12h2" /><path d="M12 20v2" /></svg> </button> </li> </ul> </nav> </div> </header> <script type="module">function s(){const e=document.querySelector("#menu-btn"),t=document.querySelector("#menu-items"),n=document.querySelector("#menu-icon"),o=document.querySelector("#close-icon");!e||!t||!n||!o||e.addEventListener("click",()=>{const c=e.getAttribute("aria-expanded")==="true";e.setAttribute("aria-expanded",c?"false":"true"),e.setAttribute("aria-label",c?"Open Menu":"Close Menu"),t.classList.toggle("hidden"),n.classList.toggle("hidden"),o.classList.toggle("hidden")})}s();document.addEventListener("astro:after-swap",s);</script> <div class="app-layout flex items-center justify-start"><a id="back-button" href="/" class="group inline-flex items-center gap-1 hover:text-accent focus-outline -ms-2 mt-8 mb-2 hover:text-foreground/75"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 rtl:rotate-180"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M15 6l-6 6l6 6" /></svg><span>Go back</span> </a></div><script type="module">function o(){const t=document.querySelector("#back-button"),e=sessionStorage.getItem("backUrl");e&&t&&(t.href=e)}document.addEventListener("astro:page-load",o);o();</script> <main id="main-content" class="app-layout pb-12" data-pagefind-body> <h1 class="inline-block text-2xl font-bold text-accent sm:text-3xl" data-astro-transition-scope="astro-fam6wyqg-1"> 渗透测试 </h1> <div class="my-2 flex items-center gap-2"> <div class="flex items-center gap-x-2 opacity-80"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 min-w-5.5"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z" /><path d="M16 3v4" /><path d="M8 3v4" /><path d="M4 11h16" /><path d="M7 14h.013" /><path d="M10.01 14h.005" /><path d="M13.01 14h.005" /><path d="M16.015 14h.005" /><path d="M13.015 17h.005" /><path d="M7.01 17h.005" /><path d="M10.01 17h.005" /></svg>  <time class="text-sm sm:text-base" datetime="2024-09-11T16:00:00.000Z">12 Sep, 2024</time> </div> <span aria-hidden="true" class="max-sm:hidden hidden">|</span>  </div> <article id="article" class="app-prose mt-8 w-full max-w-app prose-pre:bg-(--shiki-light-bg) dark:prose-pre:bg-(--shiki-dark-bg)"> <ul>
+<li>
+<h1 id="信息安全概述">信息安全概述</h1>
+</li>
+</ul>
+<hr>
+<p><a href="https://en.wikipedia.org/wiki/Information_security">信息安全</a> （infosec） 是一个广阔的领域。该领域在过去几年中取得了长足的发展和发展。它提供许多专业，包括但不限于：</p>
+<ul>
+<li>
+<p>网络和基础设施安全</p>
+</li>
+<li>
+<p>应用程序安全性</p>
+</li>
+<li>
+<p>安全测试</p>
+</li>
+<li>
+<p>系统审计</p>
+</li>
+<li>
+<p>业务连续性规划</p>
+</li>
+<li>
+<p>数字取证</p>
+</li>
+<li>
+<p>事件检测和响应</p>
+<p>简而言之，信息安全是保护数据免受未经授权的访问、更改、非法使用、中断等的做法。信息安全专业人员还会采取行动减少任何此类事件的整体影响。</p>
+<p>数据可以是电子的，也可以是有形的（例如，设计蓝图）或无形的（知识）。在我们的信息安全职业生涯中，一个经常出现的短语是保护“数据的机密性、完整性和可用性”，或 .<code>CIA triad</code></p>
+</li>
+</ul>
+<hr>
+<ul>
+<li>
+<h2 id="风险管理流程">风险管理流程</h2>
+<p>数据保护必须专注于高效而有效的策略实施，而不会对组织的业务运营和生产力产生负面影响。为此，组织必须遵循一个称为 .此过程包括以下 5 个步骤：<code>risk management process</code></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>步</th><th>解释</th></tr></thead><tbody><tr><td><code>Identifying the Risk</code></td><td>识别企业面临的风险，例如法律、环境、市场、监管和其他类型的风险。</td></tr><tr><td><code>Analyze the Risk</code></td><td>分析风险以确定其影响和概率。风险应映射到组织的各种策略、程序和业务流程。</td></tr><tr><td><code>Evaluate the Risk</code></td><td>评估、排序和确定风险的优先级。然后，组织必须决定接受 （不可避免）、避免 （更改计划）、控制 （缓解） 或转移风险 （保险）。</td></tr><tr><td><code>Dealing with Risk</code></td><td>尽可能消除或控制风险。这是通过直接与与风险相关的系统或流程的利益干系人沟通来处理的。</td></tr><tr><td><code>Monitoring Risk</code></td><td>必须持续监控所有风险。应持续监控风险，以发现任何可能改变其影响评分的情况变化。<code>i.e., from low to medium or high impact</code></td></tr></tbody></table>
+<p>如前所述，信息安全的核心原则是信息保障，或维护数据并确保数据在事件发生时不会以任何方式、形状或形式受到损害。事件可能是自然灾害、系统故障或安全事件。<code>CIA</code></p>
+</li>
+</ul>
+<hr>
+<ul>
+<li>
+<h2 id="红队-vs-蓝队">红队 vs. 蓝队</h2>
+<p>在信息安全中，我们通常会听到术语 和 。用最简单的话来说，The 扮演攻击者的角色，而 the 扮演防御者的角色。<code>red team``blue team``red team``blue team</code></p>
+<p>红队成员通常在闯入组织时扮演对手角色，以识别真正的攻击者可能利用的任何潜在弱点来打破组织的防御。红队方面最常见的任务是渗透测试、社会工程和其他类似的进攻技术。</p>
+<p>另一方面，蓝队构成了信息安全工作的大部分。它负责通过分析风险、提出策略、响应威胁和事件以及有效使用安全工具和其他类似任务来加强组织的防御。</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li>
+<h2 id="渗透测试人员的作用">渗透测试人员的作用</h2>
+<p>安全评估员（网络渗透测试员、Web 应用程序渗透测试员、红队成员等）帮助组织识别其外部和内部网络中的风险。这些风险可能包括网络或 Web 应用程序漏洞、敏感数据泄露、错误配置或可能导致声誉受损的问题。优秀的测试人员可以与客户合作，识别其组织面临的风险，提供有关如何重现这些风险的信息，以及有关缓解或修复测试期间发现的问题的指导。</p>
+<p>评估可以采取多种形式，从针对所有范围内系统和应用程序的白盒渗透测试以识别尽可能多的漏洞，到网络钓鱼评估以评估风险或员工的安全意识，再到围绕场景构建的有针对性的红队评估以模拟真实世界的威胁行为者。</p>
+</li>
+<li>
+<p>我们必须全面了解组织面临的风险及其环境，以便准确评估和评估测试过程中发现的漏洞。对于信息安全初学者来说，深入了解风险管理流程至关重要。</p>
+<p>本模块将重点介绍如何从动手实践的角度开始信息安全和渗透测试，特别是选择和导航渗透测试发行版，了解常见技术和基本工具，学习渗透测试的级别和基础知识，破解我们在 HTB 上的第一个盒子，如何最有效地查找和寻求帮助， 常见的潜在问题，以及如何浏览 Hack the Box 平台。</p>
+</li>
+<li>
+<p>虽然本模块使用 Hack The Box 平台和故意易受攻击的机器作为示例，但所展示的基本技能适用于任何环境。</p>
+</li>
+<li></li>
+<li></li>
+<li></li>
+</ul>
+<h2 id="文件夹结构">文件夹结构</h2>
+<p>在攻击单个机器、实验室或客户端环境时，我们应该在攻击机器上有一个清晰的文件夹结构来保存数据，例如：范围信息、枚举数据、利用尝试的证据、敏感数据（如凭证）以及在侦察、利用和利用后获得的其他数据。示例文件夹结构可能如下所示：</p>
+<p>保持井井有条</p>
+<pre class="astro-code astro-code-themes min-light night-owl" style="--shiki-light:#24292eff;--shiki-dark:#d6deeb;--shiki-light-bg:#ffffff;--shiki-dark-bg:#011627; overflow-x: auto;--file-name-offset: -0.75rem;" tabindex="0" data-language="plaintext"><code><span class="line"><span>DeviLeo@htb[/htb]**$** tree Projects/</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Projects/</span></span>
+<span class="line"><span>└── Acme Company</span></span>
+<span class="line"><span>  ├── EPT</span></span>
+<span class="line"><span>  │   ├── evidence</span></span>
+<span class="line"><span>  │   │   ├── credentials</span></span>
+<span class="line"><span>  │   │   ├── data</span></span>
+<span class="line"><span>  │   │   └── screenshots</span></span>
+<span class="line"><span>  │   ├── logs</span></span>
+<span class="line"><span>  │   ├── scans</span></span>
+<span class="line"><span>  │   ├── scope</span></span>
+<span class="line"><span>  │   └── tools</span></span>
+<span class="line"><span>  └── IPT</span></span>
+<span class="line"><span>      ├── evidence</span></span>
+<span class="line"><span>      │   ├── credentials</span></span>
+<span class="line"><span>      │   ├── data</span></span>
+<span class="line"><span>      │   └── screenshots</span></span>
+<span class="line"><span>      ├── logs</span></span>
+<span class="line"><span>      ├── scans</span></span>
+<span class="line"><span>      ├── scope</span></span>
+<span class="line"><span>      └── tools</span></span></code></pre>
+<p>在这里，我们为客户提供了一个文件夹，其中包含两个评估，即内部渗透测试 （IPT） 和外部渗透测试 （EPT）。在每个文件夹下，我们有用于保存扫描数据、任何相关工具、日志记录输出、范围信息（即要提供给我们的扫描工具的 IP/网络列表）的子文件夹，以及一个证据文件夹，该文件夹可能包含评估期间检索的任何凭据、检索的任何相关数据以及屏幕截图。<code>Acme Company</code></p>
+<p>这是个人喜好，但有些人为每个目标主机创建一个文件夹并在其中保存屏幕截图。其他人按主机或网络组织他们的笔记，并将屏幕截图直接保存到笔记工具中。尝试文件夹结构，看看什么最适合您保持井井有条并最高效地工作。</p>
+<hr>
+<ul>
+<li>
+<h1 id="使用-vpn-连接">使用 VPN 连接</h1>
+</li>
+</ul>
+<hr>
+<p><a href="https://en.wikipedia.org/wiki/Virtual_private_network">虚拟专用网络 （VPN）</a> 允许我们连接到专用（内部）网络并访问主机和资源，就像我们直接连接到目标专用网络一样。它是通过共享公共网络连接到专用网络（即员工从家中远程连接到公司网络）的安全通信通道。VPN 通过加密通道上的通信来防止窃听和访问通过通道的数据，从而提供一定程度的隐私和安全性。</p>
+<p><img src="https://academy.hackthebox.com/storage/modules/77/GettingStarted.png" alt="图像">{:height 556, :width 778}</p>
+<p>概括地说，VPN 的工作原理是通过目标 VPN 的私人服务器而不是我们的互联网服务提供商 （ISP） 来路由我们连接设备的互联网连接。当连接到 VPN 时，数据来自 VPN 服务器而不是我们的计算机，并且看起来似乎来自我们自己的公共 IP 地址。</p>
+<p>远程访问 VPN 有两种主要类型：基于客户端的 VPN 和 SSL VPN。SSL VPN 使用 Web 浏览器作为 VPN 客户端。在浏览器之间建立连接，SSL VPN 网关可以配置为仅允许访问基于 Web 的应用程序，例如电子邮件和内部网站，甚至内部网络，但不需要最终用户安装或使用任何专用软件。基于客户端的 VPN 需要使用客户端软件来建立 VPN 连接。连接后，用户的主机将像直接连接到公司网络一样工作，并且能够访问服务器配置允许的任何资源（应用程序、主机、子网等）。一些公司 VPN 将为员工提供对公司内部网络的完全访问权限，而另一些 VPN 会将用户放置在为远程工作人员保留的特定网段上。</p>
+<hr>
+<ul>
+<li>
+<h1 id="基本工具">基本工具</h1>
+</li>
+</ul>
+<hr>
+<p>工具是必不可少的，大多数信息安全专业人员每天都在使用。虽然这些工具不是为了成为渗透测试工具，但它们对渗透测试过程至关重要，因此我们必须掌握它们。</p>
+<ul>
+<li><code>SSH``Netcat``Tmux``Vim</code></li>
+</ul>
+<hr>
+<ul>
+<li>
+<h2 id="使用-ssh">使用 SSH</h2>
+<p><a href="https://en.wikipedia.org/wiki/SSH_(Secure_Shell)">Secure Shell （SSH）</a> 是一种默认在端口上运行的网络协议，为系统管理员等用户提供了一种远程访问计算机的安全方式。SSH 可以配置密码身份验证，也可以使用 SSH 公钥/私钥对的<a href="https://serverpilot.io/docs/how-to-use-ssh-public-key-authentication/">公钥身份验证</a>进行无密码配置。SSH 可用于通过 Internet 远程访问同一网络上的系统，使用端口转发/代理促进与其他网络中的资源的连接，以及向远程系统上传/下载文件。<code>22</code></p>
+<p>SSH 使用客户端-服务器模型，将运行 SSH 客户端应用程序（例如）的用户连接到 SSH 服务器。在攻击机器或进行实际评估时，我们通常会获得明文凭证或 SSH 私钥，这些凭证或 SSH 私钥可用于通过 SSH 直接连接到系统。SSH 连接通常比反向 shell 连接稳定得多，并且通常可以用作“跳转主机”来枚举和攻击网络中的其他主机、传输工具、设置持久性等。如果我们获取了一组凭证，我们可以使用 SSH 通过用户名远程服务器 IP 远程登录服务器，如下所示：<code>OpenSSH``@</code></p>
+<pre class="astro-code astro-code-themes min-light night-owl" style="--shiki-light:#24292eff;--shiki-dark:#d6deeb;--shiki-light-bg:#ffffff;--shiki-dark-bg:#011627; overflow-x: auto;--file-name-offset: -0.75rem;" tabindex="0" data-language="plaintext"><code><span class="line"><span>[!bash!]**$** ssh Bob@10.10.10.10</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Bob@remotehost's password: *********</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Bob@remotehost#</span></span></code></pre>
+<p>也可以在受感染的系统上读取本地私钥或添加我们的公钥以获得对特定用户的 SSH 访问权限，我们将在后面的部分中讨论。正如我们所看到的，SSH 是安全连接到远程机器的绝佳工具。它还提供了一种将远程计算机上的本地端口映射到我们的 localhost 的方法，这有时会变得很方便。</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li>
+<h2 id="使用-netcat">使用 Netcat</h2>
+<p><a href="https://linux.die.net/man/1/nc">Netcat</a> 或 是用于与 TCP/UDP 端互的出色网络实用程序。在渗透测试期间，它可以用于很多事情。它的主要用途是连接到 shell，我们将在本模块后面讨论。除此之外，还可用于连接到任何侦听端口并与该端口上运行的服务进行交互。例如，被编程为处理通过端口 22 的连接以发送所有数据和密钥。我们可以通过以下方式连接到 TCP 端口 22：<code>ncat``nc``netcat``SSH``netcat</code></p>
+<pre class="astro-code astro-code-themes min-light night-owl" style="--shiki-light:#24292eff;--shiki-dark:#d6deeb;--shiki-light-bg:#ffffff;--shiki-dark-bg:#011627; overflow-x: auto;--file-name-offset: -0.75rem;" tabindex="0" data-language="plaintext"><code><span class="line"><span>[!bash!]**$** netcat 10.10.10.10 22</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>SSH-2.0-OpenSSH_8.4p1 Debian-3</span></span></code></pre>
+<p>正如我们所看到的，端口 22 向我们发送了它的横幅，说明它正在运行。此技术称为 ，可帮助识别特定端口上运行的服务。 预装在大多数 Linux 发行版中。我们还<a href="https://nmap.org/download.html">可以从此链接</a>下载 Windows 计算机的副本。还有另一种 Windows 替代方案，称为 <a href="https://github.com/besimorhino/powercat">PowerCat</a>。 也可用于在机器之间传输文件，我们将在后面讨论。<code>SSH``Banner Grabbing``Netcat``netcat``Netcat</code></p>
+<p>另一个类似的网络实用程序是 <a href="https://linux.die.net/man/1/socat">socat</a>，它有一些不支持的功能，例如转发端口和连接到串行设备。 还可用于<a href="https://blog.ropnop.com/upgrading-simple-shells-to-fully-interactive-ttys/#method-2-using-socat">将 shell 升级为完全交互式 TTY</a>。我们将在后面的部分中看到一些示例。 是一个非常方便的实用程序，应该是每个渗透测试人员工具包的一部分。在获取远程代码执行后，可以将 的<a href="https://github.com/andrew-d/static-binaries">独立二进制文件</a>传输到系统中，以获得更稳定的反向 shell 连接。<code>netcat``Socat``Socat``Socat</code></p>
+</li>
+</ul>
+<hr>
+<ul>
+<li>
+<h2 id="使用-tmux">使用 Tmux</h2>
+<p>终端多路复用器（如 or）是扩展标准 Linux 终端功能的绝佳实用程序，例如在一个终端中拥有多个窗口并在它们之间跳转。让我们看看一些使用 的例子，这是两者中更常见的。如果我们的 Linux 系统上不存在，我们可以使用以下命令安装它：<code>tmux``Screen``tmux``tmux</code></p>
+<pre class="astro-code astro-code-themes min-light night-owl" style="--shiki-light:#24292eff;--shiki-dark:#d6deeb;--shiki-light-bg:#ffffff;--shiki-dark-bg:#011627; overflow-x: auto;--file-name-offset: -0.75rem;" tabindex="0" data-language="plaintext"><code><span class="line"><span>[!bash!]**$** sudo apt install tmux -y</span></span></code></pre>
+<p>一旦我们有了 ，我们就可以通过输入命令来启动它：<code>tmux``tmux</code><img src="https://academy.hackthebox.com/storage/modules/77/getting_started_tmux_1.jpg" alt="tmux_1"></p>
+<p>输入命令 prefix 的默认键是 。为了在 中打开一个新窗口，我们可以点击前缀 ‘i.e. ‘，然后点击 ：<code>tmux``[CTRL + B]``tmux``[CTRL + B]``C</code><img src="https://academy.hackthebox.com/storage/modules/77/getting_started_tmux_2.jpg" alt="tmux_2"></p>
+<p>我们在底部看到编号的窗口。我们可以通过点击前缀然后输入窗口编号来切换到每个窗口，例如 或 .我们还可以通过点击前缀将窗口垂直拆分为多个窗格，然后按 ：<code>0``1``[SHIFT + %]</code><img src="https://academy.hackthebox.com/storage/modules/77/getting_started_tmux_3.jpg" alt="tmux_3"></p>
+<p>我们还可以通过点击前缀，然后按 ：<code>[SHIFT + "]</code><img src="https://academy.hackthebox.com/storage/modules/77/getting_started_tmux_4.jpg" alt="tmux_4"></p>
+<p>我们可以通过点击前缀，然后点击 or 箭头进行水平切换或 or 箭头进行垂直切换，从而在窗格之间切换。上面的命令涵盖了一些基本用法。它是一个强大的工具，可以用于许多事情，包括日志记录，这在任何技术参与中都非常重要。这个<a href="https://tmuxcheatsheet.com/">作弊表</a>是一个非常方便的参考。此外，这个 <a href="https://www.youtube.com/watch?v=Lqehvpe_djs">tmux 简介</a>视频值得您花时间。<code>left``right``up``down``tmux``ippsec</code></p>
+</li>
+</ul>
+<hr>
+<ul>
+<li>
+<h2 id="使用-vim">使用 Vim</h2>
+<p><a href="https://linuxcommand.org/lc3_man_pages/vim1.html">Vim</a> 是一个很棒的文本编辑器，可用于在 Linux 系统上编写代码或编辑文本文件。使用鼠标的一大好处是它完全依赖于键盘，因此您不必使用鼠标，这（一旦我们掌握了它）将显着提高您编写/编辑代码的生产力和效率。我们通常会找到或安装在受感染的 Linux 系统上，因此学习如何使用它使我们能够即使在远程系统上编辑文件。 还有许多其他功能，例如扩展和插件，可以显着扩展其使用并使其成为出色的代码编辑器。让我们看看 的一些基础知识。要使用 打开文件，我们可以在文件后添加文件名：<code>Vim``Vim``Vi``Vim``Vim``Vim</code></p>
+<pre class="astro-code astro-code-themes min-light night-owl" style="--shiki-light:#24292eff;--shiki-dark:#d6deeb;--shiki-light-bg:#ffffff;--shiki-dark-bg:#011627; overflow-x: auto;--file-name-offset: -0.75rem;" tabindex="0" data-language="plaintext"><code><span class="line"><span>[!bash!]**$** vim /etc/hosts</span></span></code></pre>
+<p><img src="https://academy.hackthebox.com/storage/modules/77/getting_started_vim_1.jpg" alt="vim_1"></p>
+<p>如果我们要创建一个新文件，请输入新文件名，然后打开一个包含该文件的新窗口。打开文件后，我们处于 只读 ，这允许我们导航和读取文件。要编辑文件，我们按 输入 ，如 底部的 “” 所示。之后，我们可以移动文本光标并编辑文件：<code>Vim``normal mode``i``insert mode``-- INSERT --``Vim</code></p>
+<p><img src="https://academy.hackthebox.com/storage/modules/77/getting_started_vim_2.jpg" alt="vim_2"></p>
+<p>完成文件编辑后，我们可以按 Esc 键退出 ，返回 。当我们在 ，我们可以使用以下键来执行一些有用的快捷方式：<code>esc``insert mode``normal mode``normal mode</code></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>命令</th><th>描述</th></tr></thead><tbody><tr><td><code>x</code></td><td>剪切字符</td></tr><tr><td><code>dw</code></td><td>剪切字</td></tr><tr><td><code>dd</code></td><td>Cut full line （切割全线）</td></tr><tr><td><code>yw</code></td><td>复制单词</td></tr><tr><td><code>yy</code></td><td>复制整行</td></tr><tr><td><code>p</code></td><td>糊</td></tr></tbody></table>
+<p>提示： 我们可以通过在命令前添加一个数字来将任何命令乘以多次运行。例如，‘4yw’ 将复制 4 个单词而不是 1 个单词，依此类推。</p>
+<p>如果我们要 保存文件 或 退出 ，我们必须按 进入 .完成后，我们将在 vim 窗口底部看到我们键入的任何命令：<code>Vim``:``command mode</code><img src="https://academy.hackthebox.com/storage/modules/77/getting_started_vim_3.jpg" alt="vim_3"></p>
+<p>我们可以使用许多命令。以下是其中的一些：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>命令</th><th>描述</th></tr></thead><tbody><tr><td><code>:1</code></td><td>转到第 1 行。</td></tr><tr><td><code>:w</code></td><td>写入文件，保存</td></tr><tr><td><code>:q</code></td><td>退出</td></tr><tr><td><code>:q!</code></td><td>退出而不保存</td></tr><tr><td><code>:wq</code></td><td>写入并退出</td></tr></tbody></table>
+<p><code>Vim</code>是一个非常强大的工具，并且具有许多其他命令和功能。此<a href="https://vimsheet.com/">备忘单</a>是进一步释放 .<code>Vim</code></p>
+<h1 id="服务扫描">服务扫描</h1>
+</li>
+</ul>
+<hr>
+<p>我们已经准备好更进一步，开始探索机器！我们需要做的第一件事是确定操作系统和可能正在运行的任何可用服务。服务是在计算机上运行的应用程序，它为其他用户或计算机执行一些有用的功能。我们将这些托管这些有用服务的专用机器称为“服务器”而不是工作站，允许用户与这些不同的服务进行交互和使用。我们感兴趣的是配置错误或存在漏洞的服务。我们感兴趣的是，我们是否可以强制服务执行一些支持我们目标的意外操作，例如执行我们选择的命令，而不是执行作为服务一部分的预期操作。</p>
+<p>为计算机分配一个 IP 地址，该地址允许它们在网络上被唯一标识和访问。可以为这些计算机上运行的服务分配一个端口号，以使服务可访问。如前所述，端口号的范围从 1 到 65,535，众所周知的端口 1 到 1,023 的范围是为特权服务保留的。端口 0 是 TCP/IP 网络中的保留端口，不用于 TCP 或 UDP 消息。如果有任何内容尝试绑定到端口 0（例如服务），它将绑定到端口 1,024 上方的下一个可用端口，因为端口 0 被视为“通配符”端口。</p>
+<p>要远程访问服务，我们需要使用正确的 IP 地址和端口号进行连接，并使用服务可以理解的语言。手动检查所有 65,535 个端口以查找任何可用服务将非常费力，因此已经创建了工具来自动化此过程并为我们扫描端口范围。最常用的扫描工具之一是 Nmap（Network Mapper）。</p>
+<hr>
+<h2 id="nmap">Nmap</h2>
+<p>让我们从最基本的扫描开始。假设我们要对位于 10.129.42.253 的目标执行基本扫描。为此，我们应该键入并按 return。我们看到扫描很快就完成了。这是因为如果我们不指定任何额外的选项，Nmap 默认只扫描 1,000 个最常见的端口。扫描输出显示端口 21、22、80、139 和 445 可用。<code>nmap 10.129.42.253``Nmap</code></p>
+<pre class="astro-code astro-code-themes min-light night-owl" style="--shiki-light:#24292eff;--shiki-dark:#d6deeb;--shiki-light-bg:#ffffff;--shiki-dark-bg:#011627; overflow-x: auto;--file-name-offset: -0.75rem;" tabindex="0" data-language="plaintext"><code><span class="line"><span>  [!bash!]**$** nmap 10.129.42.253</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  Starting Nmap 7.80 ( https://nmap.org ) at 2021-02-25 16:07 EST</span></span>
+<span class="line"><span>  Nmap scan report for 10.129.42.253</span></span>
+<span class="line"><span>  Host is up (0.11s latency).</span></span>
+<span class="line"><span>  Not shown: 995 closed ports</span></span>
+<span class="line"><span>  PORT    STATE SERVICE</span></span>
+<span class="line"><span>  21/tcp  open  ftp</span></span>
+<span class="line"><span>  22/tcp  open  ssh</span></span>
+<span class="line"><span>  80/tcp  open  http</span></span>
+<span class="line"><span>  139/tcp open  netbios-ssn</span></span>
+<span class="line"><span>  445/tcp open  microsoft-ds</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  Nmap done: 1 IP address (1 host up) scanned in 2.19 seconds</span></span></code></pre>
+<p>在标题下，它还告诉我们这些是 TCP 端口。默认情况下，将执行 TCP 扫描，除非特别要求执行 UDP 扫描。<br>
+标题确认这些端口已打开。有时，我们会看到列出的其他端口具有不同的状态，例如 .如果防火墙仅允许从特定地址访问端口，则可能会发生这种情况。<br>
+标题告诉我们服务的名称通常映射到特定的端口号。但是，默认扫描不会告诉我们该端口上正在侦听什么。在我们指示与该服务交互并尝试梳理出识别信息之前，它可能完全是另一项服务。<code>PORT``Nmap``STATE``filtered``SERVICE``Nmap</code></p>
+<p>随着我们逐渐熟悉，我们会注意到几个端口通常与 Windows 或 Linux 相关联。例如，端口 3389 是远程桌面服务的默认端口，可以很好地指示目标是 Windows 计算机。在我们当前场景中，端口 22 （SSH） 可用表示目标正在运行 Linux/Unix，但也可以在 Windows 上配置此服务。让我们运行更高级的扫描并收集有关目标设备的更多信息。<code>Nmap</code></p>
+<p>我们可以使用该参数来指定应该使用脚本来尝试获取更详细的信息。该参数指示执行版本扫描。在这次扫描中，Nmap 将对目标系统上的服务进行指纹识别，并识别服务协议、应用程序名称和版本。版本扫描以包含 1000 多个服务签名的综合数据库为基础。最后，告诉 Nmap 我们要扫描所有 65,535 个 TCP 端口。<code>-sC``Nmap``-sV``Nmap``-p-</code></p>
+<pre class="astro-code astro-code-themes min-light night-owl" style="--shiki-light:#24292eff;--shiki-dark:#d6deeb;--shiki-light-bg:#ffffff;--shiki-dark-bg:#011627; overflow-x: auto;--file-name-offset: -0.75rem;" tabindex="0" data-language="plaintext"><code><span class="line"><span>  [!bash!]**$** nmap -sV -sC -p- 10.129.42.253</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  Starting Nmap 7.80 ( https://nmap.org ) at 2021-02-25 16:18 EST</span></span>
+<span class="line"><span>  Nmap scan report for 10.129.42.253</span></span>
+<span class="line"><span>  Host is up (0.11s latency).</span></span>
+<span class="line"><span>  Not shown: 65530 closed ports</span></span>
+<span class="line"><span>  PORT    STATE SERVICE     VERSION</span></span>
+<span class="line"><span>  21/tcp  open  ftp         vsftpd 3.0.3</span></span>
+<span class="line"><span>  | ftp-anon: Anonymous FTP login allowed (FTP code 230)</span></span>
+<span class="line"><span>  |_drwxr-xr-x    2 ftp      ftp          4096 Feb 25 19:25 pub</span></span>
+<span class="line"><span>  | ftp-syst: </span></span>
+<span class="line"><span>  |   STAT: </span></span>
+<span class="line"><span>  | FTP server status:</span></span>
+<span class="line"><span>  |      Connected to ::ffff:10.10.14.2</span></span>
+<span class="line"><span>  |      Logged in as ftp</span></span>
+<span class="line"><span>  |      TYPE: ASCII</span></span>
+<span class="line"><span>  |      No session bandwidth limit</span></span>
+<span class="line"><span>  |      Session timeout in seconds is 300</span></span>
+<span class="line"><span>  |      Control connection is plain text</span></span>
+<span class="line"><span>  |      Data connections will be plain text</span></span>
+<span class="line"><span>  |      At session startup, client count was 2</span></span>
+<span class="line"><span>  |      vsFTPd 3.0.3 - secure, fast, stable</span></span>
+<span class="line"><span>  |_End of status</span></span>
+<span class="line"><span>  22/tcp  open  ssh         OpenSSH 8.2p1 Ubuntu 4ubuntu0.1 (Ubuntu Linux; protocol 2.0)</span></span>
+<span class="line"><span>  80/tcp  open  http        Apache httpd 2.4.41 ((Ubuntu))</span></span>
+<span class="line"><span>  |_http-server-header: Apache/2.4.41 (Ubuntu)</span></span>
+<span class="line"><span>  |_http-title: PHP 7.4.3 - phpinfo()</span></span>
+<span class="line"><span>  139/tcp open  netbios-ssn Samba smbd 4.6.2</span></span>
+<span class="line"><span>  445/tcp open  netbios-ssn Samba smbd 4.6.2</span></span>
+<span class="line"><span>  Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  Host script results:</span></span>
+<span class="line"><span>  |_nbstat: NetBIOS name: GS-SVCSCAN, NetBIOS user: &#x3C;unknown>, NetBIOS MAC: &#x3C;unknown> (unknown)</span></span>
+<span class="line"><span>  | smb2-security-mode: </span></span>
+<span class="line"><span>  |   2.02: </span></span>
+<span class="line"><span>  |_    Message signing enabled but not required</span></span>
+<span class="line"><span>  | smb2-time: </span></span>
+<span class="line"><span>  |   date: 2021-02-25T21:21:51</span></span>
+<span class="line"><span>  |_  start_date: N/A</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .</span></span>
+<span class="line"><span>  Nmap done: 1 IP address (1 host up) scanned in 233.68 seconds</span></span></code></pre>
+<p>这将返回更多信息。我们看到，扫描 65,535 个端口所花费的时间比扫描 1,000 个端口的时间要长得多。这些区域 and 选项还会增加扫描的持续时间，因为它们不会执行简单的 TCP 握手，而是执行更多的检查。我们注意到这次有一个 VERSION 标题，如果可以识别，它会报告服务版本和操作系统。<code>-sC``-sV</code></p>
+<p>到目前为止，我们知道操作系统是 Ubuntu Linux。应用程序版本还可以帮助显示目标 OS 版本。以 OpenSSH 为例。我们看到报告的版本是 。从其他 Ubuntu SSH 包<a href="https://launchpad.net/ubuntu/yakkety/+source/openssh/+changelog">更改日志</a>的检查中，我们看到发布版本采用格式。更新我们的版本以适应这种格式，我们得到 .在线快速搜索此版本显示它包含在 Ubuntu Linux Focal Fossa 20.04 中。<code>OpenSSH 8.2p1 Ubuntu 4ubuntu0.1``1:7.3p1-1ubuntu0.1``1:8.2p1-4ubuntu0.1</code></p>
+<p><img src="https://academy.hackthebox.com/storage/modules/77/google1.png" alt="谷歌1"></p>
+<p>Another quick search reveals that the release date of this OS is April 23rd, 2020.</p>
+<p><img src="https://academy.hackthebox.com/storage/modules/77/google2.png" alt="google2"></p>
+<p>However, it is worth noting that this cross-referencing technique is not entirely reliable, as it is possible to install more recent application packages on an older OS version. The script scan flag causes to report the server headers page and the page title for any web page hosted on the webserver. The web page title indicates that this is a PHPInfo file, which is often manually created to confirm that PHP has been successfully installed. The title (and PHPInfo page) also reveals the PHP version, which is worth noting if it is vulnerable.<code>-sC``Nmap``http-server-header``http-title``PHP 7.4.3 - phpinfo()</code></p>
+<p> </p>
+<p><img src="https://academy.hackthebox.com/storage/modules/77/phpinfo.png" alt=""></p>
+<h4 id="nmap-脚本">Nmap 脚本</h4>
+<p>指定将针对目标运行许多有用的默认脚本，但在某些情况下需要运行特定脚本。例如，在评估范围内，系统可能会要求我们审核大型 Citrix 安装。我们可以使用<a href="https://raw.githubusercontent.com/cyberstruggle/DeltaGroup/master/CVE-2019-19781/CVE-2019-19781.nse">此</a>脚本来审核严重的 Citrix NetScaler 漏洞 （<a href="https://blog.rapid7.com/2020/01/17/active-exploitation-of-citrix-netscaler-cve-2019-19781-what-you-need-to-know/">CVE-2019–19781</a>），同时还可以使用其他脚本来审核 Citrix 安装。<code>-sC``Nmap``Nmap</code></p>
+<pre class="astro-code astro-code-themes min-light night-owl" style="--shiki-light:#24292eff;--shiki-dark:#d6deeb;--shiki-light-bg:#ffffff;--shiki-dark-bg:#011627; overflow-x: auto;--file-name-offset: -0.75rem;" tabindex="0" data-language="plaintext"><code><span class="line"><span>  [!bash!]**$** locate scripts/citrix</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  /usr/share/nmap/scripts/citrix-brute-xml.nse</span></span>
+<span class="line"><span>  /usr/share/nmap/scripts/citrix-enum-apps-xml.nse</span></span>
+<span class="line"><span>  /usr/share/nmap/scripts/citrix-enum-apps.nse</span></span>
+<span class="line"><span>  /usr/share/nmap/scripts/citrix-enum-servers-xml.nse</span></span>
+<span class="line"><span>  /usr/share/nmap/scripts/citrix-enum-servers.nse</span></span></code></pre>
+<p>运行 Nmap 脚本的语法是 。<code>nmap --script &#x3C;script name> -p&#x3C;port> &#x3C;host></code></p>
+<p><code>Nmap</code>脚本是增强扫描功能的好方法，检查可用选项将带来回报。查看<a href="https://academy.hackthebox.com/module/details/19">使用 Nmap 进行网络枚举</a>模块，了解该工具的更详细研究。<code>Nmap</code></p>
+<hr>
+<h2 id="攻击网络服务">攻击网络服务</h2>
+<h4 id="横幅抓取">横幅抓取</h4>
+<p>如前所述，横幅抓取是一种快速对服务进行指纹识别的有用技术。通常，一旦启动连接，服务就会通过显示横幅来标识自己。如果指定了语法，Nmap 将尝试获取横幅。我们也可以使用 .让我们再举一个例子，使用 的版本 ：<code>nmap -sV --script=banner &#x3C;target>``Netcat``nc``Netcat</code></p>
+<pre class="astro-code astro-code-themes min-light night-owl" style="--shiki-light:#24292eff;--shiki-dark:#d6deeb;--shiki-light-bg:#ffffff;--shiki-dark-bg:#011627; overflow-x: auto;--file-name-offset: -0.75rem;" tabindex="0" data-language="plaintext"><code><span class="line"><span>  [!bash!]**$** nc -nv 10.129.42.253 21</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  (UNKNOWN) [10.129.42.253] 21 (ftp) open</span></span>
+<span class="line"><span>  220 (vsFTPd 3.0.3)</span></span></code></pre>
+<p>这表明服务器上的 版本为 。我们还可以使用强大的脚本引擎来自动化此过程：.<code>vsFTPd``3.0.3``Nmap's``nmap -sV --script=banner -p21 10.10.10.0/24</code></p>
+<h4 id="ftp-自由贸易协定">FTP （自由贸易协定</h4>
+<p>熟悉 FTP 是值得的，因为它是一种标准协议，并且此服务通常可以包含有趣的数据。扫描 FTP 的默认端口（21）会显示我们之前确定的 vsftpd 3.0.3 安装。此外，它还报告已启用匿名身份验证，并且目录可用。<code>Nmap``pub</code></p>
+<pre class="astro-code astro-code-themes min-light night-owl" style="--shiki-light:#24292eff;--shiki-dark:#d6deeb;--shiki-light-bg:#ffffff;--shiki-dark-bg:#011627; overflow-x: auto;--file-name-offset: -0.75rem;" tabindex="0" data-language="plaintext"><code><span class="line"><span>  [!bash!]**$** nmap -sC -sV -p21 10.129.42.253</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  Starting Nmap 7.80 ( https://nmap.org ) at 2020-12-20 00:54 GMT</span></span>
+<span class="line"><span>  Nmap scan report for 10.129.42.253</span></span>
+<span class="line"><span>  Host is up (0.081s latency).</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  PORT   STATE SERVICE VERSION</span></span>
+<span class="line"><span>  21/tcp open  ftp     vsftpd 3.0.3</span></span>
+<span class="line"><span>  | ftp-anon: Anonymous FTP login allowed (FTP code 230)</span></span>
+<span class="line"><span>  |_drwxr-xr-x    2 ftp      ftp          4096 Dec 19 23:50 pub</span></span>
+<span class="line"><span>  | ftp-syst: </span></span>
+<span class="line"><span>  |   STAT: </span></span>
+<span class="line"><span>  | FTP server status:</span></span>
+<span class="line"><span>  |      Connected to ::ffff:10.10.14.2</span></span>
+<span class="line"><span>  |      Logged in as ftp</span></span>
+<span class="line"><span>  |      TYPE: ASCII</span></span>
+<span class="line"><span>  |      No session bandwidth limit</span></span>
+<span class="line"><span>  |      Session timeout in seconds is 300</span></span>
+<span class="line"><span>  |      Control connection is plain text</span></span>
+<span class="line"><span>  |      Data connections will be plain text</span></span>
+<span class="line"><span>  |      At session startup, client count was 3</span></span>
+<span class="line"><span>  |      vsFTPd 3.0.3 - secure, fast, stable</span></span>
+<span class="line"><span>  |_End of status</span></span>
+<span class="line"><span>  Service Info: OS: Unix</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .</span></span>
+<span class="line"><span>  Nmap done: 1 IP address (1 host up) scanned in 1.78 seconds</span></span></code></pre>
+<p>Let us connect to the service using the command-line utility.<code>ftp</code></p>
+<pre class="astro-code astro-code-themes min-light night-owl" style="--shiki-light:#24292eff;--shiki-dark:#d6deeb;--shiki-light-bg:#ffffff;--shiki-dark-bg:#011627; overflow-x: auto;--file-name-offset: -0.75rem;" tabindex="0" data-language="plaintext"><code><span class="line"><span>  [!bash!]**$** ftp -p 10.129.42.253</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  Connected to 10.129.42.253.</span></span>
+<span class="line"><span>  220 (vsFTPd 3.0.3)</span></span>
+<span class="line"><span>  Name (10.129.42.253:user): anonymous</span></span>
+<span class="line"><span>  230 Login successful.</span></span>
+<span class="line"><span>  Remote system type is UNIX.</span></span>
+<span class="line"><span>  Using binary mode to transfer files.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  ftp> ls</span></span>
+<span class="line"><span>  227 Entering Passive Mode (10,129,42,253,158,60).</span></span>
+<span class="line"><span>  150 Here comes the directory listing.</span></span>
+<span class="line"><span>  drwxr-xr-x    2 ftp      ftp          4096 Feb 25 19:25 pub</span></span>
+<span class="line"><span>  226 Directory send OK.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  ftp> cd pub</span></span>
+<span class="line"><span>  250 Directory successfully changed.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  ftp> ls</span></span>
+<span class="line"><span>  227 Entering Passive Mode (10,129,42,253,182,129).</span></span>
+<span class="line"><span>  150 Here comes the directory listing.</span></span>
+<span class="line"><span>  -rw-r--r--    1 ftp      ftp            18 Feb 25 19:25 login.txt</span></span>
+<span class="line"><span>  226 Directory send OK.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  ftp> get login.txt</span></span>
+<span class="line"><span>  local: login.txt remote: login.txt</span></span>
+<span class="line"><span>  227 Entering Passive Mode (10,129,42,253,181,53).</span></span>
+<span class="line"><span>  150 Opening BINARY mode data connection for login.txt (18 bytes).</span></span>
+<span class="line"><span>  226 Transfer complete.</span></span>
+<span class="line"><span>  18 bytes received in 0.00 secs (165.8314 kB/s)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  ftp> exit</span></span>
+<span class="line"><span>  221 Goodbye.</span></span></code></pre>
+<p>在上面的 shell 中，我们看到 FTP 支持常见的命令，例如 and，并允许我们使用该命令下载文件。检查下载的凭据会显示我们可以用来进一步访问系统的凭据。<code>cd``ls``get``login.txt</code></p>
+<pre class="astro-code astro-code-themes min-light night-owl" style="--shiki-light:#24292eff;--shiki-dark:#d6deeb;--shiki-light-bg:#ffffff;--shiki-dark-bg:#011627; overflow-x: auto;--file-name-offset: -0.75rem;" tabindex="0" data-language="plaintext"><code><span class="line"><span>  [!bash!]**$** cat login.txt </span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  admin:ftp@dmin123</span></span></code></pre>
+<hr>
+<h4 id="smb-中小型企业">SMB （中小型企业）</h4>
+<p>SMB（服务器消息块）是 Windows 计算机上流行的协议，它为垂直和横向移动提供了许多矢量。敏感数据（包括凭据）可能位于网络文件共享中，并且某些 SMB 版本可能容易受到 RCE 漏洞（如 <a href="https://www.avast.com/c-eternalblue">EternalBlue</a>）的攻击。仔细列举这个相当大的潜在攻击面至关重要。 有许多用于枚举 SMB 的脚本，例如 <a href="https://nmap.org/nsedoc/scripts/smb-os-discovery.html">smb-os-discovery.nse</a>，它将与 SMB 服务交互以提取报告的操作系统版本。<code>Nmap</code></p>
+<pre class="astro-code astro-code-themes min-light night-owl" style="--shiki-light:#24292eff;--shiki-dark:#d6deeb;--shiki-light-bg:#ffffff;--shiki-dark-bg:#011627; overflow-x: auto;--file-name-offset: -0.75rem;" tabindex="0" data-language="plaintext"><code><span class="line"><span>  [!bash!]**$** nmap --script smb-os-discovery.nse -p445 10.10.10.40</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  Starting Nmap 7.91 ( https://nmap.org ) at 2020-12-27 00:59 GMT</span></span>
+<span class="line"><span>  Nmap scan report for doctors.htb (10.10.10.40)</span></span>
+<span class="line"><span>  Host is up (0.022s latency).</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  PORT    STATE SERVICE</span></span>
+<span class="line"><span>  445/tcp open  microsoft-ds</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  Host script results:</span></span>
+<span class="line"><span>  | smb-os-discovery: </span></span>
+<span class="line"><span>  |   OS: Windows 7 Professional 7601 Service Pack 1 (Windows 7 Professional 6.1)</span></span>
+<span class="line"><span>  |   OS CPE: cpe:/o:microsoft:windows_7::sp1:professional</span></span>
+<span class="line"><span>  |   Computer name: CEO-PC</span></span>
+<span class="line"><span>  |   NetBIOS computer name: CEO-PC\x00</span></span>
+<span class="line"><span>  |   Workgroup: WORKGROUP\x00</span></span>
+<span class="line"><span>  |_  System time: 2020-12-27T00:59:46+00:00</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  Nmap done: 1 IP address (1 host up) scanned in 2.71 seconds</span></span></code></pre>
+<p>在这种情况下，主机运行的是旧版 Windows 7 操作系统，我们可以进行进一步的枚举以确认它是否容易受到 EternalBlue 的攻击。Metasploit 框架有几个用于 EternalBlue 的<a href="https://www.rapid7.com/db/modules/exploit/windows/smb/ms17_010_eternalblue/">模块</a>，可用于验证漏洞并利用它，我们将在下一节中看到。我们可以针对此模块的目标部分运行扫描，以从 SMB 服务收集信息。我们可以确定主机运行的是 Linux 内核，Samba 版本 4.6.2，主机名是 GS-SVCSCAN。</p>
+<pre class="astro-code astro-code-themes min-light night-owl" style="--shiki-light:#24292eff;--shiki-dark:#d6deeb;--shiki-light-bg:#ffffff;--shiki-dark-bg:#011627; overflow-x: auto;--file-name-offset: -0.75rem;" tabindex="0" data-language="plaintext"><code><span class="line"><span>  [!bash!]**$** nmap -A -p445 10.129.42.253</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  Starting Nmap 7.80 ( https://nmap.org ) at 2021-02-25 16:29 EST</span></span>
+<span class="line"><span>  Nmap scan report for 10.129.42.253</span></span>
+<span class="line"><span>  Host is up (0.11s latency).</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  PORT    STATE SERVICE     VERSION</span></span>
+<span class="line"><span>  445/tcp open  netbios-ssn Samba smbd 4.6.2</span></span>
+<span class="line"><span>  Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port</span></span>
+<span class="line"><span>  Aggressive OS guesses: Linux 2.6.32 (95%), Linux 3.1 (95%), Linux 3.2 (95%), AXIS 210A or 211 Network Camera (Linux 2.6.17) (94%), ASUS RT-N56U WAP (Linux 3.4) (93%), Linux 3.16 (93%), Adtran 424RG FTTH gateway (92%), Linux 2.6.39 - 3.2 (92%), Linux 3.1 - 3.2 (92%), Linux 3.2 - 4.9 (92%)</span></span>
+<span class="line"><span>  No exact OS matches for host (test conditions non-ideal).</span></span>
+<span class="line"><span>  Network Distance: 2 hops</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  Host script results:</span></span>
+<span class="line"><span>  |_nbstat: NetBIOS name: GS-SVCSCAN, NetBIOS user: &#x3C;unknown>, NetBIOS MAC: &#x3C;unknown> (unknown)</span></span>
+<span class="line"><span>  | smb2-security-mode: </span></span>
+<span class="line"><span>  |   2.02: </span></span>
+<span class="line"><span>  |_    Message signing enabled but not required</span></span>
+<span class="line"><span>  | smb2-time: </span></span>
+<span class="line"><span>  |   date: 2021-02-25T21:30:06</span></span>
+<span class="line"><span>  |_  start_date: N/A</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  TRACEROUTE (using port 445/tcp)</span></span>
+<span class="line"><span>  HOP RTT       ADDRESS</span></span>
+<span class="line"><span>  1   111.62 ms 10.10.14.1</span></span>
+<span class="line"><span>  2   111.89 ms 10.129.42.253</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .</span></span>
+<span class="line"><span>  Nmap done: 1 IP address (1 host up) scanned in 12.72 seconds</span></span></code></pre>
+<hr>
+<h4 id="股票">股票</h4>
+<p>SMB 允许用户和管理员共享文件夹，并允许其他用户远程访问这些文件夹。这些共享通常包含包含敏感信息（如密码）的文件。<a href="https://www.samba.org/samba/docs/current/man-html/smbclient.1.html">smbclient</a> 是一种可以枚举 SMB 共享并与之交互的工具。该标志指定我们要检索远程主机上的可用共享列表，同时禁止显示密码提示。<code>-L``-N</code></p>
+<pre class="astro-code astro-code-themes min-light night-owl" style="--shiki-light:#24292eff;--shiki-dark:#d6deeb;--shiki-light-bg:#ffffff;--shiki-dark-bg:#011627; overflow-x: auto;--file-name-offset: -0.75rem;" tabindex="0" data-language="plaintext"><code><span class="line"><span>  [!bash!]**$** smbclient -N -L \\\\10.129.42.253</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  Sharename       Type      Comment</span></span>
+<span class="line"><span>  ---------       ----      -------</span></span>
+<span class="line"><span>  print**$**          Disk      Printer Drivers</span></span>
+<span class="line"><span>  users           Disk      </span></span>
+<span class="line"><span>  IPC**$**            IPC       IPC Service (gs-svcscan server (Samba, Ubuntu))</span></span>
+<span class="line"><span>  SMB1 disabled -- no workgroup available</span></span></code></pre>
+<p>这将显示非默认共享 。让我们尝试以 guest 用户身份进行连接。<code>users</code></p>
+<pre class="astro-code astro-code-themes min-light night-owl" style="--shiki-light:#24292eff;--shiki-dark:#d6deeb;--shiki-light-bg:#ffffff;--shiki-dark-bg:#011627; overflow-x: auto;--file-name-offset: -0.75rem;" tabindex="0" data-language="plaintext"><code><span class="line"><span>  [!bash!]**$** smbclient \\\\10.129.42.253\\users</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  Enter WORKGROUP\users's password: </span></span>
+<span class="line"><span>  Try "help" to get a list of possible commands.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  smb: \> ls</span></span>
+<span class="line"><span>  NT_STATUS_ACCESS_DENIED listing \*</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  smb: \> exit</span></span></code></pre>
+<p>该命令导致 access denied 消息，指示不允许 guest 访问。让我们使用用户 bob （） 的凭证重试。<code>ls``bob:Welcome1</code></p>
+<pre class="astro-code astro-code-themes min-light night-owl" style="--shiki-light:#24292eff;--shiki-dark:#d6deeb;--shiki-light-bg:#ffffff;--shiki-dark-bg:#011627; overflow-x: auto;--file-name-offset: -0.75rem;" tabindex="0" data-language="plaintext"><code><span class="line"><span>  [!bash!]**$** smbclient -U bob \\\\10.129.42.253\\users</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  Enter WORKGROUP\bob's password: </span></span>
+<span class="line"><span>  Try "help" to get a list of possible commands.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  smb: \> ls</span></span>
+<span class="line"><span>  .                                   D        0  Thu Feb 25 16:42:23 2021</span></span>
+<span class="line"><span>  ..                                  D        0  Thu Feb 25 15:05:31 2021</span></span>
+<span class="line"><span>  bob                                 D        0  Thu Feb 25 16:42:23 2021</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  4062912 blocks of size 1024. 1332480 blocks available</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  smb: \> cd bob</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  smb: \bob\> ls</span></span>
+<span class="line"><span>  .                                   D        0  Thu Feb 25 16:42:23 2021</span></span>
+<span class="line"><span>  ..                                  D        0  Thu Feb 25 16:42:23 2021</span></span>
+<span class="line"><span>  passwords.txt                       N      156  Thu Feb 25 16:42:23 2021</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  4062912 blocks of size 1024. 1332480 blocks available</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  smb: \bob\> get passwords.txt </span></span>
+<span class="line"><span>  getting file \bob\passwords.txt of size 156 as passwords.txt (0.3 KiloBytes/sec) (average 0.3 KiloBytes/sec)</span></span></code></pre>
+<p>我们成功地使用凭据访问了共享，并获得了对 感兴趣文件的访问权限 ，可以使用命令下载该文件。<code>users``passwords.txt``get</code></p>
+<hr>
+<h4 id="snmp-snmp-协议">SNMP （SNMP 协议）</h4>
+<p>SNMP 社区字符串提供有关路由器或设备的信息和统计信息，帮助我们访问它。制造商默认的社区字符串 和 通常保持不变。在 SNMP 版本 1 和 2c 中，使用纯文本社区字符串控制访问，如果我们知道名称，就可以访问它。加密和身份验证仅在 SNMP 版本 3 中添加。可以从 SNMP 获得很多信息。检查进程参数可能会发现在命令行上传递的凭证，鉴于企业环境中密码重用的普遍性，这些凭证可能可以重新用于其他外部可访问的服务。路由信息、绑定到其他接口的服务以及已安装软件的版本也会被揭示。<code>public``private</code></p>
+<pre class="astro-code astro-code-themes min-light night-owl" style="--shiki-light:#24292eff;--shiki-dark:#d6deeb;--shiki-light-bg:#ffffff;--shiki-dark-bg:#011627; overflow-x: auto;--file-name-offset: -0.75rem;" tabindex="0" data-language="plaintext"><code><span class="line"><span>  [!bash!]**$** snmpwalk -v 2c -c public 10.129.42.253 1.3.6.1.2.1.1.5.0</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  iso.3.6.1.2.1.1.5.0 = STRING: "gs-svcscan"</span></span></code></pre>
+<pre class="astro-code astro-code-themes min-light night-owl" style="--shiki-light:#24292eff;--shiki-dark:#d6deeb;--shiki-light-bg:#ffffff;--shiki-dark-bg:#011627; overflow-x: auto;--file-name-offset: -0.75rem;" tabindex="0" data-language="plaintext"><code><span class="line"><span>  [!bash!]**$** snmpwalk -v 2c -c private  10.129.42.253 </span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  Timeout: No Response from 10.129.42.253</span></span></code></pre>
+<p>可以使用 <a href="https://github.com/trailofbits/onesixtyone">onesixtyone</a> 等工具使用常见社区字符串的字典文件（例如该工具的 GitHub 存储库中包含的文件）暴力破解社区字符串名称。<code>dict.txt</code></p>
+<pre class="astro-code astro-code-themes min-light night-owl" style="--shiki-light:#24292eff;--shiki-dark:#d6deeb;--shiki-light-bg:#ffffff;--shiki-dark-bg:#011627; overflow-x: auto;--file-name-offset: -0.75rem;" tabindex="0" data-language="plaintext"><code><span class="line"><span>  [!bash!]**$** onesixtyone -c dict.txt 10.129.42.254</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  Scanning 1 hosts, 51 communities</span></span>
+<span class="line"><span>  10.129.42.254 [public] Linux gs-svcscan 5.4.0-66-generic **#**74-Ubuntu SMP Wed Jan 27 22:54:38 UTC 2021 x86_64</span></span></code></pre>
+<hr>
+<h2 id="结论">结论</h2>
+<p>服务扫描和枚举是一个广阔的主题，我们将随着我们的学习而更多地了解它。我们在这里介绍的方面适用于许多网络，包括 HTB 机器。</p>
+<h1 id="基本工具-1">基本工具</h1>
+<hr>
+<p>工具是必不可少的，大多数信息安全专业人员每天都在使用。虽然这些工具不是为了成为渗透测试工具，但它们对渗透测试过程至关重要，因此我们必须掌握它们。<br>
+<code>SSH``Netcat``Tmux``Vim</code></p>
+<hr>
+<h2 id="使用-ssh-1">使用 SSH</h2>
+<p><a href="https://en.wikipedia.org/wiki/SSH_(Secure_Shell)">Secure Shell （SSH）</a> 是一种默认在端口上运行的网络协议，为系统管理员等用户提供了一种远程访问计算机的安全方式。SSH 可以配置密码身份验证，也可以使用 SSH 公钥/私钥对的<a href="https://serverpilot.io/docs/how-to-use-ssh-public-key-authentication/">公钥身份验证</a>进行无密码配置。SSH 可用于通过 Internet 远程访问同一网络上的系统，使用端口转发/代理促进与其他网络中的资源的连接，以及向远程系统上传/下载文件。<code>22</code></p>
+<p>SSH 使用客户端-服务器模型，将运行 SSH 客户端应用程序（例如）的用户连接到 SSH 服务器。在攻击机器或进行实际评估时，我们通常会获得明文凭证或 SSH 私钥，这些凭证或 SSH 私钥可用于通过 SSH 直接连接到系统。SSH 连接通常比反向 shell 连接稳定得多，并且通常可以用作“跳转主机”来枚举和攻击网络中的其他主机、传输工具、设置持久性等。如果我们获取了一组凭证，我们可以使用 SSH 通过用户名远程服务器 IP 远程登录服务器，如下所示：<code>OpenSSH``@</code></p>
+<pre class="astro-code astro-code-themes min-light night-owl" style="--shiki-light:#24292eff;--shiki-dark:#d6deeb;--shiki-light-bg:#ffffff;--shiki-dark-bg:#011627; overflow-x: auto;--file-name-offset: -0.75rem;" tabindex="0" data-language="plaintext"><code><span class="line"><span>  [!bash!]**$** ssh Bob@10.10.10.10</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  Bob@remotehost's password: *********</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  Bob@remotehost#</span></span></code></pre>
+<p>也可以在受感染的系统上读取本地私钥或添加我们的公钥以获得对特定用户的 SSH 访问权限，我们将在后面的部分中讨论。正如我们所看到的，SSH 是安全连接到远程机器的绝佳工具。它还提供了一种将远程计算机上的本地端口映射到我们的 localhost 的方法，这有时会变得很方便。</p>
+<hr>
+<h2 id="使用-netcat-1">使用 Netcat</h2>
+<p><a href="https://linux.die.net/man/1/nc">Netcat</a> 或 是用于与 TCP/UDP 端互的出色网络实用程序。在渗透测试期间，它可以用于很多事情。它的主要用途是连接到 shell，我们将在本模块后面讨论。除此之外，还可用于连接到任何侦听端口并与该端口上运行的服务进行交互。例如，被编程为处理通过端口 22 的连接以发送所有数据和密钥。我们可以通过以下方式连接到 TCP 端口 22：<code>ncat``nc``netcat``SSH``netcat</code></p>
+<pre class="astro-code astro-code-themes min-light night-owl" style="--shiki-light:#24292eff;--shiki-dark:#d6deeb;--shiki-light-bg:#ffffff;--shiki-dark-bg:#011627; overflow-x: auto;--file-name-offset: -0.75rem;" tabindex="0" data-language="plaintext"><code><span class="line"><span>  [!bash!]**$** netcat 10.10.10.10 22</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  SSH-2.0-OpenSSH_8.4p1 Debian-3</span></span></code></pre>
+<p>正如我们所看到的，端口 22 向我们发送了它的横幅，说明它正在运行。此技术称为 ，可帮助识别特定端口上运行的服务。 预装在大多数 Linux 发行版中。我们还<a href="https://nmap.org/download.html">可以从此链接</a>下载 Windows 计算机的副本。还有另一种 Windows 替代方案，称为 <a href="https://github.com/besimorhino/powercat">PowerCat</a>。 也可用于在机器之间传输文件，我们将在后面讨论。<code>SSH``Banner Grabbing``Netcat``netcat``Netcat</code></p>
+<p>另一个类似的网络实用程序是 <a href="https://linux.die.net/man/1/socat">socat</a>，它有一些不支持的功能，例如转发端口和连接到串行设备。 还可用于<a href="https://blog.ropnop.com/upgrading-simple-shells-to-fully-interactive-ttys/#method-2-using-socat">将 shell 升级为完全交互式 TTY</a>。我们将在后面的部分中看到一些示例。 是一个非常方便的实用程序，应该是每个渗透测试人员工具包的一部分。在获取远程代码执行后，可以将 的<a href="https://github.com/andrew-d/static-binaries">独立二进制文件</a>传输到系统中，以获得更稳定的反向 shell 连接。<code>netcat``Socat``Socat``Socat</code></p>
+<hr>
+<h2 id="使用-tmux-1">使用 Tmux</h2>
+<p>终端多路复用器（如 or）是扩展标准 Linux 终端功能的绝佳实用程序，例如在一个终端中拥有多个窗口并在它们之间跳转。让我们看看一些使用 的例子，这是两者中更常见的。如果我们的 Linux 系统上不存在，我们可以使用以下命令安装它：<code>tmux``Screen``tmux``tmux</code></p>
+<pre class="astro-code astro-code-themes min-light night-owl" style="--shiki-light:#24292eff;--shiki-dark:#d6deeb;--shiki-light-bg:#ffffff;--shiki-dark-bg:#011627; overflow-x: auto;--file-name-offset: -0.75rem;" tabindex="0" data-language="plaintext"><code><span class="line"><span>  [!bash!]**$** sudo apt install tmux -y</span></span></code></pre>
+<p>一旦我们有了 ，我们就可以通过输入命令来启动它：<code>tmux``tmux</code><img src="https://academy.hackthebox.com/storage/modules/77/getting_started_tmux_1.jpg" alt="tmux_1"></p>
+<p>输入命令 prefix 的默认键是 。为了在 中打开一个新窗口，我们可以点击前缀 ‘i.e. ‘，然后点击 ：<code>tmux``[CTRL + B]``tmux``[CTRL + B]``C</code><img src="https://academy.hackthebox.com/storage/modules/77/getting_started_tmux_2.jpg" alt="tmux_2"></p>
+<p>我们在底部看到编号的窗口。我们可以通过点击前缀然后输入窗口编号来切换到每个窗口，例如 或 .我们还可以通过点击前缀将窗口垂直拆分为多个窗格，然后按 ：<code>0``1``[SHIFT + %]</code><img src="https://academy.hackthebox.com/storage/modules/77/getting_started_tmux_3.jpg" alt="tmux_3"></p>
+<p>我们还可以通过点击前缀，然后按 ：<code>[SHIFT + "]</code><img src="https://academy.hackthebox.com/storage/modules/77/getting_started_tmux_4.jpg" alt="tmux_4"></p>
+<p>我们可以通过点击前缀，然后点击 or 箭头进行水平切换或 or 箭头进行垂直切换，从而在窗格之间切换。上面的命令涵盖了一些基本用法。它是一个强大的工具，可以用于许多事情，包括日志记录，这在任何技术参与中都非常重要。这个<a href="https://tmuxcheatsheet.com/">作弊表</a>是一个非常方便的参考。此外，这个 <a href="https://www.youtube.com/watch?v=Lqehvpe_djs">tmux 简介</a>视频值得您花时间。<code>left``right``up``down``tmux``ippsec</code></p>
+<hr>
+<h2 id="使用-vim-1">使用 Vim</h2>
+<p><a href="https://linuxcommand.org/lc3_man_pages/vim1.html">Vim</a> 是一个很棒的文本编辑器，可用于在 Linux 系统上编写代码或编辑文本文件。使用鼠标的一大好处是它完全依赖于键盘，因此您不必使用鼠标，这（一旦我们掌握了它）将显着提高您编写/编辑代码的生产力和效率。我们通常会找到或安装在受感染的 Linux 系统上，因此学习如何使用它使我们能够即使在远程系统上编辑文件。 还有许多其他功能，例如扩展和插件，可以显着扩展其使用并使其成为出色的代码编辑器。让我们看看 的一些基础知识。要使用 打开文件，我们可以在文件后添加文件名：<code>Vim``Vim``Vi``Vim``Vim``Vim</code></p>
+<pre class="astro-code astro-code-themes min-light night-owl" style="--shiki-light:#24292eff;--shiki-dark:#d6deeb;--shiki-light-bg:#ffffff;--shiki-dark-bg:#011627; overflow-x: auto;--file-name-offset: -0.75rem;" tabindex="0" data-language="plaintext"><code><span class="line"><span>  [!bash!]**$** vim /etc/hosts</span></span></code></pre>
+<p><img src="https://academy.hackthebox.com/storage/modules/77/getting_started_vim_1.jpg" alt="vim_1"></p>
+<p>如果我们要创建一个新文件，请输入新文件名，然后打开一个包含该文件的新窗口。打开文件后，我们处于 只读 ，这允许我们导航和读取文件。要编辑文件，我们按 输入 ，如 底部的 “” 所示。之后，我们可以移动文本光标并编辑文件：<code>Vim``normal mode``i``insert mode``-- INSERT --``Vim</code></p>
+<p><img src="https://academy.hackthebox.com/storage/modules/77/getting_started_vim_2.jpg" alt="vim_2"></p>
+<p>完成文件编辑后，我们可以按 Esc 键退出 ，返回 。当我们在 ，我们可以使用以下键来执行一些有用的快捷方式：<code>esc``insert mode``normal mode``normal mode</code></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>命令</th><th>描述</th></tr></thead><tbody><tr><td><code>x</code></td><td>剪切字符</td></tr><tr><td><code>dw</code></td><td>剪切字</td></tr><tr><td><code>dd</code></td><td>Cut full line （切割全线）</td></tr><tr><td><code>yw</code></td><td>复制单词</td></tr><tr><td><code>yy</code></td><td>复制整行</td></tr><tr><td><code>p</code></td><td>糊</td></tr></tbody></table>
+<p>提示： 我们可以通过在命令前添加一个数字来将任何命令乘以多次运行。例如，‘4yw’ 将复制 4 个单词而不是 1 个单词，依此类推。</p>
+<p>如果我们要 保存文件 或 退出 ，我们必须按 进入 .完成后，我们将在 vim 窗口底部看到我们键入的任何命令：<code>Vim``:``command mode</code><img src="https://academy.hackthebox.com/storage/modules/77/getting_started_vim_3.jpg" alt="vim_3"></p>
+<p>我们可以使用许多命令。以下是其中的一些：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>命令</th><th>描述</th></tr></thead><tbody><tr><td><code>:1</code></td><td>转到第 1 行。</td></tr><tr><td><code>:w</code></td><td>写入文件，保存</td></tr><tr><td><code>:q</code></td><td>退出</td></tr><tr><td><code>:q!</code></td><td>退出而不保存</td></tr><tr><td><code>:wq</code></td><td>写入并退出</td></tr></tbody></table>
+<p><code>Vim</code>是一个非常强大的工具，并且具有许多其他命令和功能。此<a href="https://vimsheet.com/">备忘单</a>是进一步释放 .<code>Vim</code></p> </article> <hr class="my-8 border-dashed">  <ul class="mt-4 mb-8 flex flex-wrap gap-4 sm:my-8"> <li> <a href="/tags/网络安全/" class="flex items-center gap-0.5 border-b-2 border-dashed border-foreground hover:-mt-0.5 hover:border-accent hover:text-accent focus-visible:border-none focus-visible:text-accent text-sm" data-astro-transition-scope="astro-36ssibgs-2"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-80 size-4"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M5 9l14 0" /><path d="M5 15l14 0" /><path d="M11 4l-4 16" /><path d="M17 4l-4 16" /></svg> 网络安全 </a> </li><li> <a href="/tags/渗透测试/" class="flex items-center gap-0.5 border-b-2 border-dashed border-foreground hover:-mt-0.5 hover:border-accent hover:text-accent focus-visible:border-none focus-visible:text-accent text-sm" data-astro-transition-scope="astro-36ssibgs-3"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-80 size-4"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M5 9l14 0" /><path d="M5 15l14 0" /><path d="M11 4l-4 16" /><path d="M17 4l-4 16" /></svg> 渗透测试 </a> </li> </ul> <div id="btt-btn-container" class="fixed end-4 bottom-8 z-50 md:sticky md:end-auto md:float-end md:me-1 translate-y-14 opacity-0 transition duration-500"> <button data-button="back-to-top" class="group relative bg-background px-2 py-1 size-14 rounded-full shadow-xl md:h-8 md:w-fit md:rounded-md md:shadow-none md:focus-visible:rounded-none md:bg-background/35 md:bg-clip-padding md:backdrop-blur-lg"> <span id="progress-indicator" class="absolute inset-0 -z-10 block size-14 scale-110 rounded-full bg-transparent md:hidden md:h-8 md:rounded-md"></span> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block rotate-90 md:hidden"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M15 6l-6 6l6 6" /></svg> <span class="sr-only text-sm group-hover:text-accent md:not-sr-only"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-4"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M12 5l0 14" /><path d="M16 9l-4 -4" /><path d="M8 9l4 -4" /></svg>
+Back To Top
+</span> </button> </div> <script data-astro-rerun>
+  /** Scrolls the document to the top when
+   * the "Back to Top" button is clicked. */
+  function backToTop() {
+    const rootElement = document.documentElement;
+    const btnContainer = document.querySelector("#btt-btn-container");
+    const backToTopBtn = document.querySelector("[data-button='back-to-top']");
+    const progressIndicator = document.querySelector("#progress-indicator");
+
+    if (!rootElement || !btnContainer || !backToTopBtn || !progressIndicator)
+      return;
+
+    // Attach click event handler for back-to-top button
+    backToTopBtn.addEventListener("click", () => {
+      document.body.scrollTop = 0; // For Safari
+      document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    });
+
+    // Handle button visibility according to scroll position
+    let lastVisible = null;
+    function handleScroll() {
+      const scrollTotal = rootElement.scrollHeight - rootElement.clientHeight;
+      const scrollTop = rootElement.scrollTop;
+      const scrollPercent = Math.floor((scrollTop / scrollTotal) * 100);
+
+      progressIndicator.style.setProperty(
+        "background-image",
+        `conic-gradient(var(--accent), var(--accent) ${scrollPercent}%, transparent ${scrollPercent}%)`
+      );
+
+      const isVisible = scrollTop / scrollTotal > 0.3;
+
+      if (isVisible !== lastVisible) {
+        btnContainer.classList.toggle("opacity-100", isVisible);
+        btnContainer.classList.toggle("translate-y-0", isVisible);
+        btnContainer.classList.toggle("opacity-0", !isVisible);
+        btnContainer.classList.toggle("translate-y-14", !isVisible);
+        lastVisible = isVisible;
+      }
+    }
+
+    let ticking = false;
+    document.addEventListener("scroll", () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+  }
+  backToTop();
+</script> <div class="flex flex-none flex-col items-center justify-center gap-1 md:items-start"><span class="italic">Share this post on:</span><div class="text-center"><a href="https://wa.me/?text=https://0xfelixli.github.io/posts/2024/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" title="Share this post via WhatsApp" class="group inline-flex items-center gap-1 hover:text-accent scale-90 p-2 hover:rotate-6 sm:p-1"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" /><path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" /></svg><span class="sr-only">Share this post via WhatsApp</span> </a><a href="https://www.facebook.com/sharer.php?u=https://0xfelixli.github.io/posts/2024/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" title="Share this post on Facebook" class="group inline-flex items-center gap-1 hover:text-accent scale-90 p-2 hover:rotate-6 sm:p-1"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" /></svg><span class="sr-only">Share this post on Facebook</span> </a><a href="https://x.com/intent/post?url=https://0xfelixli.github.io/posts/2024/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" title="Share this post on X" class="group inline-flex items-center gap-1 hover:text-accent scale-90 p-2 hover:rotate-6 sm:p-1"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M4 4l11.733 16h4.267l-11.733 -16z" /><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" /></svg><span class="sr-only">Share this post on X</span> </a><a href="https://t.me/share/url?url=https://0xfelixli.github.io/posts/2024/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" title="Share this post via Telegram" class="group inline-flex items-center gap-1 hover:text-accent scale-90 p-2 hover:rotate-6 sm:p-1"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M15 10l-4 4l6 6l4 -16l-18 7l4 2l2 6l3 -4" /></svg><span class="sr-only">Share this post via Telegram</span> </a><a href="https://pinterest.com/pin/create/button/?url=https://0xfelixli.github.io/posts/2024/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" title="Share this post on Pinterest" class="group inline-flex items-center gap-1 hover:text-accent scale-90 p-2 hover:rotate-6 sm:p-1"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M8 20l4 -9" /><path d="M10.7 14c.437 1.263 1.43 2 2.55 2c2.071 0 3.75 -1.554 3.75 -4a5 5 0 1 0 -9.7 1.7" /><path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" /></svg><span class="sr-only">Share this post on Pinterest</span> </a><a href="mailto:?subject=See%20this%20post&#38;body=https://0xfelixli.github.io/posts/2024/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" title="Share this post via email" class="group inline-flex items-center gap-1 hover:text-accent scale-90 p-2 hover:rotate-6 sm:p-1"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" /><path d="M3 7l9 6l9 -6" /></svg><span class="sr-only">Share this post via email</span> </a></div></div> <hr class="my-6 border-dashed"> <!-- Previous/Next Post Buttons --> <div data-pagefind-ignore class="grid grid-cols-1 gap-6 sm:grid-cols-2"> <a href="/posts/2024/端口转发" class="flex w-full gap-1 hover:opacity-75"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block flex-none rtl:rotate-180"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M15 6l-6 6l6 6" /></svg> <div> <span>Previous Post</span> <div class="text-sm text-accent/85">学会SSH端口转发</div> </div> </a> <a href="/posts/2024/安全运营" class="flex w-full justify-end gap-1 text-end hover:opacity-75 sm:col-start-2"> <div> <span>Next Post</span> <div class="text-sm text-accent/85">安全运营思维导图</div> </div> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block flex-none rtl:rotate-180"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M9 6l6 6l-6 6" /></svg> </a> </div> </main> <footer class="app-layout mt-auto"> <div class="py-6 sm:py-4 border-t border-border flex flex-col items-center justify-between sm:flex-row-reverse"> <div class="flex flex-wrap items-center gap-1"> <a href="https://x.com/0xfelixli" title="Follow 0xfelixli on X" class="group inline-flex items-center gap-1 hover:text-accent p-2 hover:rotate-6 sm:p-1">  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M4 4l11.733 16h4.267l-11.733 -16z" /><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" /></svg> <span class="sr-only">Follow 0xfelixli on X</span>  </a><a href="https://github.com/0xfelixli" title="Visit 0xfelixli on GitHub" class="group inline-flex items-center gap-1 hover:text-accent p-2 hover:rotate-6 sm:p-1">  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" /></svg> <span class="sr-only">Visit 0xfelixli on GitHub</span>  </a><a href="mailto:0xfelixli@gmail.com" title="Email 0xfelixli" class="group inline-flex items-center gap-1 hover:text-accent p-2 hover:rotate-6 sm:p-1">  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" /><path d="M3 7l9 6l9 -6" /></svg> <span class="sr-only">Email 0xfelixli</span>  </a> </div> <div class="my-2 flex flex-col items-center whitespace-nowrap sm:flex-row"> <span>Copyright &#169; 2026</span> <span class="hidden sm:inline">&nbsp;|&nbsp;</span> <span>All rights reserved.</span> </div> </div> </footer>  <!-- Load full theme logic --> <script type="module">const d="theme",r="light",m="dark";function i(){const e=localStorage.getItem(d);return e||(window.matchMedia("(prefers-color-scheme: dark)").matches?m:r)}let t=window.theme?.themeValue??i();function c(){localStorage.setItem(d,t),o()}function o(){document.firstElementChild?.setAttribute("data-theme",t),document.querySelector("#theme-btn")?.setAttribute("aria-label",t);const e=document.body;if(e){const n=window.getComputedStyle(e).backgroundColor;document.querySelector("meta[name='theme-color']")?.setAttribute("content",n)}}window.theme?(window.theme.setPreference=c,window.theme.reflectPreference=o):window.theme={themeValue:t,setPreference:c,reflectPreference:o,getTheme:()=>t,setTheme:e=>{t=e}};o();function s(){o(),document.querySelector("#theme-btn")?.addEventListener("click",()=>{t=t===r?m:r,window.theme?.setTheme(t),c()})}s();document.addEventListener("astro:after-swap",s);document.addEventListener("astro:before-swap",e=>{const a=e,n=document.querySelector("meta[name='theme-color']")?.getAttribute("content");n&&a.newDocument.querySelector("meta[name='theme-color']")?.setAttribute("content",n)});window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",({matches:e})=>{t=e?m:r,window.theme?.setTheme(t),c()});</script> </body> </html> <script data-astro-rerun>
+  /** Create a progress indicator
+   *  at the top */
+  function createProgressBar() {
+    // Create the main container div
+    const progressContainer = document.createElement("div");
+    progressContainer.className =
+      "progress-container fixed top-0 z-10 h-1 w-full bg-background";
+
+    // Create the progress bar div
+    const progressBar = document.createElement("div");
+    progressBar.className = "progress-bar h-1 w-0 bg-accent";
+    progressBar.id = "myBar";
+
+    // Append the progress bar to the progress container
+    progressContainer.appendChild(progressBar);
+
+    // Append the progress container to the document body or any other desired parent element
+    document.body.appendChild(progressContainer);
+  }
+  createProgressBar();
+
+  /** Update the progress bar
+   *  when user scrolls */
+  function updateScrollProgress() {
+    document.addEventListener("scroll", () => {
+      const winScroll =
+        document.body.scrollTop || document.documentElement.scrollTop;
+      const height =
+        document.documentElement.scrollHeight -
+        document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      if (document) {
+        const myBar = document.getElementById("myBar");
+        if (myBar) {
+          myBar.style.width = scrolled + "%";
+        }
+      }
+    });
+  }
+  updateScrollProgress();
+
+  /** Attaches links to headings in the document,
+   *  allowing sharing of sections easily */
+  function addHeadingLinks() {
+    const headings = Array.from(
+      document.querySelectorAll("h2, h3, h4, h5, h6")
+    );
+    for (const heading of headings) {
+      heading.classList.add("group");
+      const link = document.createElement("a");
+      link.className =
+        "heading-link ms-2 no-underline opacity-75 md:opacity-0 md:group-hover:opacity-100 md:focus:opacity-100";
+      link.href = "#" + heading.id;
+
+      const span = document.createElement("span");
+      span.ariaHidden = "true";
+      span.innerText = "#";
+      link.appendChild(span);
+      heading.appendChild(link);
+    }
+  }
+  addHeadingLinks();
+
+  /** Attaches copy buttons to code blocks in the document,
+   * allowing users to copy code easily. */
+  function attachCopyButtons() {
+    const copyButtonLabel = "Copy";
+    const codeBlocks = Array.from(document.querySelectorAll("pre"));
+
+    for (const codeBlock of codeBlocks) {
+      const wrapper = document.createElement("div");
+      wrapper.style.position = "relative";
+
+      // Check if --file-name-offset custom property exists
+      const computedStyle = getComputedStyle(codeBlock);
+      const hasFileNameOffset =
+        computedStyle.getPropertyValue("--file-name-offset").trim() !== "";
+
+      // Determine the top positioning class
+      const topClass = hasFileNameOffset
+        ? "top-(--file-name-offset)"
+        : "-top-3";
+
+      const copyButton = document.createElement("button");
+      copyButton.className = `copy-code absolute end-3 ${topClass} rounded bg-muted border border-muted px-2 py-1 text-xs leading-4 text-foreground font-medium`;
+      copyButton.innerHTML = copyButtonLabel;
+      codeBlock.setAttribute("tabindex", "0");
+      codeBlock.appendChild(copyButton);
+
+      // wrap codebock with relative parent element
+      codeBlock?.parentNode?.insertBefore(wrapper, codeBlock);
+      wrapper.appendChild(codeBlock);
+
+      copyButton.addEventListener("click", async () => {
+        await copyCode(codeBlock, copyButton);
+      });
+    }
+
+    async function copyCode(block, button) {
+      const code = block.querySelector("code");
+      const text = code?.innerText;
+
+      await navigator.clipboard.writeText(text ?? "");
+
+      // visual feedback that task is completed
+      button.innerText = "Copied";
+
+      setTimeout(() => {
+        button.innerText = copyButtonLabel;
+      }, 700);
+    }
+  }
+  attachCopyButtons();
+
+  /* Go to page start after page swap */
+  document.addEventListener("astro:after-swap", () =>
+    window.scrollTo({ left: 0, top: 0, behavior: "instant" })
+  );
+</script>
