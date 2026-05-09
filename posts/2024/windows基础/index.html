@@ -1,0 +1,471 @@
+<!DOCTYPE html><html dir="ltr" lang="en" class="scroll-smooth"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="canonical" href="https://0xfelixli.github.io/posts/2024/windows%E5%9F%BA%E7%A1%80/"><meta name="generator" content="Astro v5.16.6"><!-- Load Font --><style>@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/ebe081c5cf2bc9bf.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:300;font-style:italic;}@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/ebe081c5cf2bc9bf.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:400;font-style:italic;}@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/ebe081c5cf2bc9bf.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:500;font-style:italic;}@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/ebe081c5cf2bc9bf.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:600;font-style:italic;}@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/ebe081c5cf2bc9bf.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:700;font-style:italic;}@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/dfc33a259d798962.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:300;font-style:normal;}@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/dfc33a259d798962.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:400;font-style:normal;}@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/dfc33a259d798962.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:500;font-style:normal;}@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/dfc33a259d798962.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:600;font-style:normal;}@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/dfc33a259d798962.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:700;font-style:normal;}@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/81a5937787ff8a0a.woff") format("woff");font-display:swap;font-weight:300;font-style:italic;}@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/13e056157b226e18.woff") format("woff");font-display:swap;font-weight:400;font-style:italic;}@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/bd02cfaa9ae16fb7.woff") format("woff");font-display:swap;font-weight:500;font-style:italic;}@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/fcaa83a753eb8a72.woff") format("woff");font-display:swap;font-weight:600;font-style:italic;}@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/28887fc4ef2e3de1.woff") format("woff");font-display:swap;font-weight:700;font-style:italic;}@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/a75e78cafb91aeae.woff") format("woff");font-display:swap;font-weight:300;font-style:normal;}@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/dcf1118e4db364a7.woff") format("woff");font-display:swap;font-weight:400;font-style:normal;}@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/7e09f3d8f911bde0.woff") format("woff");font-display:swap;font-weight:500;font-style:normal;}@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/ba411907dc1f87d9.woff") format("woff");font-display:swap;font-weight:600;font-style:normal;}@font-face{font-family:"Google Sans Code-04a186ad63205992";src:url("/_astro/fonts/fcc9533aee1bcfad.woff") format("woff");font-display:swap;font-weight:700;font-style:normal;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:300;font-style:italic;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:400;font-style:italic;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:500;font-style:italic;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:600;font-style:italic;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:700;font-style:italic;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:300;font-style:normal;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:400;font-style:normal;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:500;font-style:normal;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:600;font-style:normal;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:700;font-style:normal;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:300;font-style:italic;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:400;font-style:italic;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:500;font-style:italic;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:600;font-style:italic;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:700;font-style:italic;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:300;font-style:normal;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:400;font-style:normal;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:500;font-style:normal;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:600;font-style:normal;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}@font-face{font-family:"Google Sans Code-04a186ad63205992 fallback: Courier New";src:local("Courier New");font-display:swap;font-weight:700;font-style:normal;size-adjust:99.9837%;ascent-override:96.6157%;descent-override:28.6047%;}:root{--font-google-sans-code:"Google Sans Code-04a186ad63205992","Google Sans Code-04a186ad63205992 fallback: Courier New",monospace;}</style><!-- General Meta Tags --><title>windows基础-NTFS 与共享权限 | Blog</title><meta name="title" content="windows基础-NTFS 与共享权限 | Blog"><meta name="description" content="Microsoft 在使用 Windows 的桌面操作系统上拥有超过 70% 的全球市场份额。这解释了为什么大多数恶意软件作者选择为 Windows 编写恶意软件，以及为什么许多人认为 Windows 不如其他操作系统安全。从商业角度来看，恶意软件作者花费资源编写 Windows"><meta name="author" content="Felix"><link rel="sitemap" href="/sitemap-index.xml"><!-- Open Graph / Facebook --><meta property="og:title" content="windows基础-NTFS 与共享权限 | Blog"><meta property="og:description" content="Microsoft 在使用 Windows 的桌面操作系统上拥有超过 70% 的全球市场份额。这解释了为什么大多数恶意软件作者选择为 Windows 编写恶意软件，以及为什么许多人认为 Windows 不如其他操作系统安全。从商业角度来看，恶意软件作者花费资源编写 Windows"><meta property="og:url" content="https://0xfelixli.github.io/posts/2024/windows%E5%9F%BA%E7%A1%80/"><meta property="og:image" content="https://0xfelixli.github.io/posts/2024/windows%E5%9F%BA%E7%A1%80/index.png"><!-- Article Published/Modified time --><meta property="article:published_time" content="2024-09-17T16:00:00.000Z"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://0xfelixli.github.io/posts/2024/windows%E5%9F%BA%E7%A1%80/"><meta property="twitter:title" content="windows基础-NTFS 与共享权限 | Blog"><meta property="twitter:description" content="Microsoft 在使用 Windows 的桌面操作系统上拥有超过 70% 的全球市场份额。这解释了为什么大多数恶意软件作者选择为 Windows 编写恶意软件，以及为什么许多人认为 Windows 不如其他操作系统安全。从商业角度来看，恶意软件作者花费资源编写 Windows"><meta property="twitter:image" content="https://0xfelixli.github.io/posts/2024/windows%E5%9F%BA%E7%A1%80/index.png"><!-- Google JSON-LD Structured data --><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"windows基础-NTFS 与共享权限 | Blog","image":"https://0xfelixli.github.io/posts/2024/windows%E5%9F%BA%E7%A1%80/index.png","datePublished":"2024-09-17T16:00:00.000Z","author":[{"@type":"Person","name":"Felix","url":"https://github.com/0xfelixli"}]}</script><!-- Enable RSS feed auto-discovery  --><!-- https://docs.astro.build/en/recipes/rss/#enabling-rss-feed-auto-discovery --><link rel="alternate" type="application/rss+xml" title="Blog" href="https://0xfelixli.github.io/rss.xml"><meta name="theme-color" content=""><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.QW52Ox2j.js"></script><!-- Minimal inline script to prevent FOUC - sets theme immediately --><script>
+      (function () {
+        const initialColorScheme = ""; // "light" | "dark"
+        const currentTheme = localStorage.getItem("theme");
+
+        function getPreferTheme() {
+          if (currentTheme) return currentTheme;
+          if (initialColorScheme) return initialColorScheme;
+          return window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light";
+        }
+
+        const themeValue = getPreferTheme();
+
+        // Set theme immediately to prevent flash
+        document.firstElementChild?.setAttribute("data-theme", themeValue);
+
+        // Export minimal API for external script
+        window.theme = {
+          themeValue: themeValue,
+          getTheme: () => window.theme.themeValue,
+          setTheme: val => {
+            window.theme.themeValue = val;
+          },
+        };
+      })();
+    </script><style>:where([data-astro-image]){object-fit:var(--fit);object-position:var(--pos);height:auto}:where([data-astro-image=full-width]){width:100%}:where([data-astro-image=constrained]){max-width:100%}
+</style>
+<link rel="stylesheet" href="/_astro/about.7MtRr3FY.css">
+<style>@keyframes astroFadeInOut{0%{opacity:1}to{opacity:0}}@keyframes astroFadeIn{0%{opacity:0;mix-blend-mode:plus-lighter}to{opacity:1;mix-blend-mode:plus-lighter}}@keyframes astroFadeOut{0%{opacity:1;mix-blend-mode:plus-lighter}to{opacity:0;mix-blend-mode:plus-lighter}}@keyframes astroSlideFromRight{0%{transform:translate(100%)}}@keyframes astroSlideFromLeft{0%{transform:translate(-100%)}}@keyframes astroSlideToRight{to{transform:translate(100%)}}@keyframes astroSlideToLeft{to{transform:translate(-100%)}}@media (prefers-reduced-motion){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}[data-astro-transition-scope]{animation:none!important}}
+</style><style>[data-astro-transition-scope="astro-fam6wyqg-1"] { view-transition-name: windows\57FA\7840-ntfs-\4E0E\5171\4EAB\6743\9650; }@layer astro { ::view-transition-old(windows\57FA\7840-ntfs-\4E0E\5171\4EAB\6743\9650) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(windows\57FA\7840-ntfs-\4E0E\5171\4EAB\6743\9650) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(windows\57FA\7840-ntfs-\4E0E\5171\4EAB\6743\9650) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(windows\57FA\7840-ntfs-\4E0E\5171\4EAB\6743\9650) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-fam6wyqg-1"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-fam6wyqg-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-fam6wyqg-1"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-fam6wyqg-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-fam6wyqg-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-fam6wyqg-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-fam6wyqg-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-fam6wyqg-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style></head> <body>  <a id="skip-to-content" href="#main-content" class="absolute start-16 -top-full z-50 bg-background px-3 py-2 text-accent backdrop-blur-lg transition-all focus:top-4">
+Skip to content
+</a> <header class="app-layout flex flex-col items-center justify-between sm:flex-row"> <div id="top-nav-wrap" class="py-4 sm:py-6 border-b border-border relative w-full bg-background flex items-baseline justify-between sm:items-center"> <a href="/" class="absolute py-1 text-xl leading-8 font-semibold whitespace-nowrap sm:static sm:my-auto sm:text-2xl sm:leading-none"> Blog </a> <nav id="nav-menu" class="flex w-full flex-col items-center sm:ms-2 sm:flex-row sm:justify-end sm:space-x-4 sm:py-0"> <button id="menu-btn" class="focus-outline self-end p-2 sm:hidden" aria-label="Open Menu" aria-expanded="false" aria-controls="menu-items"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden" id="close-icon"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M18 6l-12 12" /><path d="M6 6l12 12" /></svg> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-menu-deep" id="menu-icon"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M4 6h16" /><path d="M7 12h13" /><path d="M10 18h10" /></svg> </button> <ul id="menu-items" class="mt-4 grid w-44 grid-cols-2 place-content-center gap-2 [&#38;>li>a]:block [&#38;>li>a]:px-4 [&#38;>li>a]:py-3 [&#38;>li>a]:text-center [&#38;>li>a]:font-medium [&#38;>li>a]:hover:text-accent sm:[&#38;>li>a]:px-2 sm:[&#38;>li>a]:py-1 hidden sm:mt-0 sm:flex sm:w-auto sm:gap-x-5 sm:gap-y-0"> <li class="col-span-2"> <a href="/posts" class="active-nav">
+Posts
+</a> </li> <li class="col-span-2"> <a href="/tags">
+Tags
+</a> </li> <li class="col-span-2"> <a href="/about">
+About
+</a> </li> <li class="col-span-2"> <a href="/archives" title="Archives" aria-label="archives" class="group inline-flex items-center gap-1 hover:text-accent focus-outline flex justify-center p-3 sm:p-1">  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden sm:inline-block"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 4m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z" /><path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" /><path d="M10 12l4 0" /></svg> <span class="sm:sr-only">Archives</span>  </a> </li> <li class="col-span-1 flex items-center justify-center"> <a href="/search" title="Search" aria-label="search" class="group inline-flex items-center gap-1 hover:text-accent focus-outline flex p-3 sm:p-1">  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-search"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" /><path d="M21 21l-6 -6" /></svg> <span class="sr-only">Search</span>  </a> </li> <li class="col-span-1 flex items-center justify-center"> <button id="theme-btn" class="focus-outline relative size-12 p-4 sm:size-8 hover:[&>svg]:stroke-accent" title="Toggles light & dark" aria-label="auto" aria-live="polite"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute top-[50%] left-[50%] -translate-[50%] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" /></svg> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute top-[50%] left-[50%] -translate-[50%] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M14.828 14.828a4 4 0 1 0 -5.656 -5.656a4 4 0 0 0 5.656 5.656z" /><path d="M6.343 17.657l-1.414 1.414" /><path d="M6.343 6.343l-1.414 -1.414" /><path d="M17.657 6.343l1.414 -1.414" /><path d="M17.657 17.657l1.414 1.414" /><path d="M4 12h-2" /><path d="M12 4v-2" /><path d="M20 12h2" /><path d="M12 20v2" /></svg> </button> </li> </ul> </nav> </div> </header> <script type="module">function s(){const e=document.querySelector("#menu-btn"),t=document.querySelector("#menu-items"),n=document.querySelector("#menu-icon"),o=document.querySelector("#close-icon");!e||!t||!n||!o||e.addEventListener("click",()=>{const c=e.getAttribute("aria-expanded")==="true";e.setAttribute("aria-expanded",c?"false":"true"),e.setAttribute("aria-label",c?"Open Menu":"Close Menu"),t.classList.toggle("hidden"),n.classList.toggle("hidden"),o.classList.toggle("hidden")})}s();document.addEventListener("astro:after-swap",s);</script> <div class="app-layout flex items-center justify-start"><a id="back-button" href="/" class="group inline-flex items-center gap-1 hover:text-accent focus-outline -ms-2 mt-8 mb-2 hover:text-foreground/75"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 rtl:rotate-180"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M15 6l-6 6l6 6" /></svg><span>Go back</span> </a></div><script type="module">function o(){const t=document.querySelector("#back-button"),e=sessionStorage.getItem("backUrl");e&&t&&(t.href=e)}document.addEventListener("astro:page-load",o);o();</script> <main id="main-content" class="app-layout pb-12" data-pagefind-body> <h1 class="inline-block text-2xl font-bold text-accent sm:text-3xl" data-astro-transition-scope="astro-fam6wyqg-1"> windows基础-NTFS 与共享权限 </h1> <div class="my-2 flex items-center gap-2"> <div class="flex items-center gap-x-2 opacity-80"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 min-w-5.5"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z" /><path d="M16 3v4" /><path d="M8 3v4" /><path d="M4 11h16" /><path d="M7 14h.013" /><path d="M10.01 14h.005" /><path d="M13.01 14h.005" /><path d="M16.015 14h.005" /><path d="M13.015 17h.005" /><path d="M7.01 17h.005" /><path d="M10.01 17h.005" /></svg>  <time class="text-sm sm:text-base" datetime="2024-09-17T16:00:00.000Z">18 Sep, 2024</time> </div> <span aria-hidden="true" class="max-sm:hidden hidden">|</span>  </div> <article id="article" class="app-prose mt-8 w-full max-w-app prose-pre:bg-(--shiki-light-bg) dark:prose-pre:bg-(--shiki-dark-bg)"> <h1 id="ntfs-与共享权限"><strong>NTFS 与共享权限</strong></h1>
+<hr>
+<p>Microsoft 在使用 Windows 的桌面操作系统上拥有超过 <a href="https://gs.statcounter.com/os-market-share/desktop/worldwide/#monthly-201804-202104">70%</a> 的全球市场份额。这解释了为什么大多数恶意软件作者选择为 Windows 编写恶意软件，以及为什么许多人认为 Windows 不如其他操作系统安全。从商业角度来看，恶意软件作者花费资源编写 Windows 恶意软件是有意义的。这是一个高价值的目标。任何操作系统都不受恶意软件影响的想法是一种技术谬误。如果可以为操作系统编写软件，那么可以为操作系统编写病毒。请记住，根据定义，病毒是出于恶意编写的软件，可以为任何操作系统编写。为 Windows 编写的许多恶意软件变体可以通过应用了宽松权限的网络共享在网络上传播。还值得注意的是，直到今天，这个臭名昭著的漏洞仍然困扰着正在运行的未打补丁的 Windows 系统，并且经常为勒索软件关闭组织铺平道路。<code>EternalBlueSMBv1</code></p>
+<p>（） 在 Windows 中用于连接共享资源，如文件和打印机。它用于大型、中型和小型企业环境。请参阅下图以直观地了解此概念：<code>Server Message Block protocolSMB</code></p>
+<p>!<a href="https://academy.hackthebox.com/storage/modules/49/smb_diagram.png">https://academy.hackthebox.com/storage/modules/49/smb_diagram.png</a></p>
+<p>注意：每当您看到某个概念的可视化/图表时，请花时间彻底理解它。一张图片可能胜过千言万语，但在阅读时非常诱人地跳过。</p>
+<p>NTFS 权限和共享权限通常被理解为相同。请注意，它们并不相同，但通常适用于相同的共享资源。让我们看一下可以设置的各个权限，以保护/授予对象对运行 NTFS 文件系统的 Windows 操作系统上托管的网络共享的访问权限。</p>
+<h3 id="共享权限"><strong>共享权限</strong></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th><strong>许可</strong></th><th><strong>描述</strong></th></tr></thead><tbody><tr><td><code>Full Control</code></td><td>允许用户执行更改和读取权限提供的所有操作，以及更改 NTFS 文件和子文件夹的权限</td></tr><tr><td><code>Change</code></td><td>允许用户读取、编辑、删除和添加文件和子文件夹</td></tr><tr><td><code>Read</code></td><td>用户可以查看文件和子文件夹内容</td></tr></tbody></table>
+<h3 id="ntfs-基本权限"><strong>NTFS 基本权限</strong></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th><strong>许可</strong></th><th><strong>描述</strong></th></tr></thead><tbody><tr><td><code>Full Control</code></td><td>用户可以添加、编辑、移动、删除文件和文件夹，以及更改适用于所有允许文件夹的NTFS权限。</td></tr><tr><td><code>Modify</code></td><td>允许用户查看和修改文件和文件夹的权限。这包括添加或删除文件</td></tr><tr><td><code>Read &#x26; Execute</code></td><td>允许用户或拒绝读取文件内容和执行程序的权限</td></tr><tr><td><code>List folder contents</code></td><td>允许用户或拒绝用户查看文件和子文件夹列表的权限</td></tr><tr><td><code>Read</code></td><td>允许或拒绝用户读取文件内容的权限</td></tr><tr><td><code>Write</code></td><td>允许或拒绝用户对文件写入更改以及将新文件添加到文件夹的权限</td></tr><tr><td><code>Special Permissions</code></td><td>各种高级权限选项</td></tr></tbody></table>
+<h3 id="ntfs-特殊权限"><strong>NTFS 特殊权限</strong></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th><strong>许可</strong></th><th><strong>描述</strong></th></tr></thead><tbody><tr><td><code>Full control</code></td><td>用户有权添加、编辑、移动、删除文件和文件夹，以及更改适用于所有允许文件夹的NTFS权限。</td></tr><tr><td><code>Traverse folder / execute file</code></td><td>允许或拒绝用户访问目录结构中的子文件夹的权限，即使拒绝用户访问父文件夹级别的内容也是如此。用户也可能被允许或拒绝执行程序的权限</td></tr><tr><td><code>List folder/read data</code></td><td>允许用户或拒绝用户查看父文件夹中包含的文件和文件夹的权限。还可以允许用户打开和查看文件</td></tr><tr><td><code>Read attributes</code></td><td>允许用户或拒绝查看文件或文件夹的基本属性的权限。基本属性示例：system、archive、read-only 和 hidden</td></tr><tr><td><code>Read extended attributes</code></td><td>允许用户或拒绝查看文件或文件夹的扩展属性的权限。属性因程序而异</td></tr><tr><td><code>Create files/write data</code></td><td>允许用户或拒绝用户在文件夹中创建文件和更改文件的权限</td></tr><tr><td><code>Create folders/append data</code></td><td>允许用户或拒绝在文件夹中创建子文件夹的权限。可以将数据添加到文件中，但不能覆盖预先存在的内容</td></tr><tr><td><code>Write attributes</code></td><td>允许或拒绝用户更改文件属性。此权限不授予创建文件或文件夹的权限</td></tr><tr><td><code>Write extended attributes</code></td><td>允许用户或拒绝用户更改文件或文件夹的扩展属性的权限。属性因程序而异</td></tr><tr><td><code>Delete subfolders and files</code></td><td>允许用户删除子文件夹和文件的权限。不会删除父文件夹</td></tr><tr><td><code>Delete</code></td><td>允许用户或拒绝用户删除父文件夹、子文件夹和文件的权限。</td></tr><tr><td><code>Read permissions</code></td><td>允许或拒绝用户读取文件夹的权限</td></tr><tr><td><code>Change permissions</code></td><td>允许用户或拒绝用户更改文件或文件夹的权限</td></tr><tr><td><code>Take ownership</code></td><td>允许用户或拒绝用户获得文件或文件夹的所有权。文件所有者具有更改任何权限的完全权限</td></tr></tbody></table>
+<p>请记住，NTFS 权限适用于托管文件夹和文件的系统。默认情况下，在 NTFS 中创建的文件夹会从父文件夹继承权限。可以禁用继承以设置对父文件夹和子文件夹的自定义权限，就像我们稍后将在本模块中所做的那样。当通过 SMB 访问文件夹时（通常从网络中的其他系统访问），共享权限适用。这意味着在本地或通过 RDP 登录到计算机的人只需导航到文件系统上的位置即可访问共享文件夹和文件，并且只需要考虑 NTFS 权限。NTFS 级别的权限使管理员能够更精细地控制用户可以在文件夹或文件中执行的操作。</p>
+<hr>
+<h1 id="创建网络共享"><strong>创建网络共享</strong></h1>
+<p>为了对 SMB 及其与 NTFS 的关系有一个扎实的基本理解，我们将在 上创建一个网络共享。<code>Windows 10 target box</code></p>
+<p>注意：让 Pwnbox 在单独的显示器上全屏打开是一种理想的学习体验，这样我们至少可以有一个显示器专门用于显示书面内容，还有一个显示器用于我们正在交互的盒子。或者，如果我们只能访问一个显示器，我们可以将该显示器用于与盒子和智能手机或平板电脑交互以引用写入的内容。</p>
+<p>在这种情况下，我们将首先在 Windows 10 桌面上创建一个新文件夹来创建共享文件夹。请记住，在大多数大型企业环境中，共享是在存储区域网络 （SAN）、网络连接存储设备 （NAS） 或通过服务器操作系统（如 Windows Server）访问的驱动器上的单独分区上创建的。如果我们在桌面操作系统上遇到共享，它可能是一家小型企业，也可能是渗透测试人员或恶意攻击者用来收集和泄露数据的滩头系统。</p>
+<p>我们将使用 Windows 中的 GUI 完成此过程。</p>
+<h3 id="创建文件夹"><strong>创建文件夹</strong></h3>
+<p>!<a href="https://academy.hackthebox.com/storage/modules/49/creating_directory.png">https://academy.hackthebox.com/storage/modules/49/creating_directory.png</a></p>
+<p>我们将使用该选项来配置我们的共享。<code>Advanced Sharing</code></p>
+<h3 id="将文件夹设为共享文件夹"><strong>将文件夹设为共享文件夹</strong></h3>
+<p>!<a href="https://academy.hackthebox.com/storage/modules/49/configuring_share.png">https://academy.hackthebox.com/storage/modules/49/configuring_share.png</a></p>
+<p>请注意共享名称如何自动默认为文件夹的名称。此外，我们可以看到可以限制可以同时连接到此共享的用户数。在实际环境中，管理员最好根据经常需要访问正在共享的资源的用户数来设置此数字。</p>
+<p>与 NTFS 权限类似，有一个 （） 用于共享资源。我们可以将此视为 SMB 权限列表。请记住，对于共享资源，SMB 和 NTFS 权限列表都适用于在 Windows 中共享的每个资源。ACL 包含 （）。通常这些ACEs由&#x26;（也称为安全主体）组成，因为它们是管理和跟踪对共享资源的访问的合适机制。<code>access control listACLaccess control entriesACEsusersgroups</code></p>
+<p>请注意默认的 access control entry 和 permissions 设置。</p>
+<h3 id="共享权限-acl共享选项卡"><strong>共享权限 ACL（“共享”选项卡）</strong></h3>
+<p>!<a href="https://academy.hackthebox.com/storage/modules/49/share_permissions.png">https://academy.hackthebox.com/storage/modules/49/share_permissions.png</a></p>
+<p>现在，我们将应用这些设置来测试此 ACL 的效果以及按原样应用的权限。我们将通过打开终端并使用 来测试 Pwnbox 的连接。<code>smbclient</code></p>
+<p>注意：从技术上讲，服务器是一种用于为客户端请求提供服务的软件功能。在这种情况下，Pwnbox 是我们的客户端，而 Windows 10 目标框是我们的服务器。</p>
+<h3 id="使用-smbclient-列出可用的共享"><strong>使用 smbclient 列出可用的共享</strong></h3>
+<p>NTFS 与共享权限</p>
+<pre class="astro-code astro-code-themes min-light night-owl" style="--shiki-light:#24292eff;--shiki-dark:#d6deeb;--shiki-light-bg:#ffffff;--shiki-dark-bg:#011627; overflow-x: auto;--file-name-offset: -0.75rem;" tabindex="0" data-language="plaintext"><code><span class="line"><span>DeviLeo@htb[/htb]$ smbclient -L SERVER_IP -U htb-studentEnter WORKGROUP\htb-student's password:</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>	Sharename       Type      Comment</span></span>
+<span class="line"><span>	---------       ----      -------</span></span>
+<span class="line"><span>	ADMIN$          Disk      Remote Admin	C$              Disk      Default share	Company Data    Disk</span></span>
+<span class="line"><span>	IPC$            IPC       Remote IPC</span></span></code></pre>
+<h3 id="连接到公司数据共享"><strong>连接到公司数据共享</strong></h3>
+<p>NTFS 与共享权限</p>
+<pre class="astro-code astro-code-themes min-light night-owl" style="--shiki-light:#24292eff;--shiki-dark:#d6deeb;--shiki-light-bg:#ffffff;--shiki-dark-bg:#011627; overflow-x: auto;--file-name-offset: -0.75rem;" tabindex="0" data-language="plaintext"><code><span class="line"><span>DeviLeo@htb[/htb]$ smbclient '\\SERVER_IP\Company Data' -U htb-studentPassword for [WORKGROUP\htb-student]:</span></span>
+<span class="line"><span>Try "help" to get a list of possible commands.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>smb: \></span></span>
+<span class="line"><span></span></span></code></pre>
+<p>如果我们的所有条目都正确无误，并且我们的权限列表中存在至少具有读取权限的 Everyone 组，那么什么可能会阻止我们访问此共享？</p>
+<hr>
+<h1 id="windows-defender-防火墙注意事项"><strong>Windows Defender 防火墙注意事项</strong></h1>
+<p>Windows Defender 防火墙可能会阻止对 SMB 共享的访问。由于我们从基于 Linux 的系统进行连接，因此防火墙已阻止来自任何未加入同一设备的访问 .同样重要的是要注意，当 Windows 系统是工作组的一部分时，所有请求都会根据该特定 Windows 系统的数据库进行身份验证。当 Windows 系统加入 Windows 域环境时，所有 netlogon 请求都将根据 进行身份验证。工作组和 Windows 域在身份验证方面的主要区别在于，工作组使用本地 SAM 数据库，而在 Windows 域中使用基于网络的集中式数据库 （Active Directory）。我们在尝试登录和验证Windows系统时必须知道这些信息。考虑 htb-student 账户的托管位置以正确连接到目标。<code>workgroupnetlogonSAMActive Directory</code></p>
+<p>在防火墙阻止连接方面，可以通过在 Windows 中完全停用每个防火墙配置文件或在 中启用特定的预定义入站防火墙规则来测试。像大多数防火墙一样，Windows Defender防火墙允许或拒绝流量（在这种情况下是访问和连接请求）流动和/或<code>Windows Defender Firewall advanced security settingsinboundoutbound</code></p>
+<p>不同的入站和出站规则与 Defender 中的不同防火墙配置文件相关联。</p>
+<p>Windows Defender 防火墙配置文件：</p>
+<ul>
+<li><code>Public</code></li>
+<li><code>Private</code></li>
+<li><code>Domain</code></li>
+</ul>
+<p>最佳实践是启用预定义规则或添加自定义例外，而不是完全停用防火墙。不幸的是，为了方便或缺乏理解而完全停用防火墙是很常见的。通过使用组策略加入 Windows 域环境时，可以集中管理桌面系统上的防火墙规则。组策略概念和配置超出了本模块的范围。</p>
+<p>启用适当的防火墙规则后，我们将成功连接到共享。请记住，我们只能连接到共享，因为我们使用的用户帐户 （） 位于 .回想一下，我们将 Everyone 组的特定共享权限设置为 Read，这实际上意味着我们将只能读取此共享上的文件。一旦与共享建立连接，我们就可以创建一个从 Pwnbox 到 Windows 10 目标框的文件系统。在这里，我们还必须考虑 NTFS 权限与共享权限一起应用。回想一下，NTFS 是 Windows 中的默认文件系统。让我们跳回到 Windows 10 目标框的 xfreerdp 会话，看看 Company Data 文件夹的 NTFS 权限。<code>inboundhtb-studentEveryone groupmount point</code></p>
+<h3 id="ntfs-权限-acl安全选项卡"><strong>NTFS 权限 ACL（“安全”选项卡）</strong></h3>
+<p>!<a href="https://academy.hackthebox.com/storage/modules/49/ntfs.png">https://academy.hackthebox.com/storage/modules/49/ntfs.png</a></p>
+<p>NTFS 权限可以应用于用户和组，从而进行更精细的控制。每当我们在权限旁边看到灰色复选标记时，它都是从父目录继承的。默认情况下，所有 NTFS 权限都是从父目录继承的。在 Windows 世界中，它是统治所有目录的父目录，除非系统管理员在新创建的文件夹的高级安全设置中禁用继承。<code>C:\ drive</code></p>
+<p>在许多情况下，组织的系统管理员将负责决定用户或用户组对网络资源获得哪些权限。这就是为什么许多鱼叉式网络钓鱼攻击都是针对系统管理员和其他 IT 领导者的原因。他们对他们所监督的环境中允许的内容有很大的影响力，在许多情况下甚至比组织的非技术 C 级领导者还要大。例如，在医院工作的医生或管理人员将不具有对网络的管理权限，但系统管理员可以。</p>
+<p>现在让我们在共享级别为 Everyone 组提供，并通过尝试从 Pwnbox 的桌面创建到共享的挂载点来测试更改的影响<code>Full control</code></p>
+<h3 id="挂载到共享"><strong>挂载到共享</strong></h3>
+<p>NTFS 与共享权限</p>
+<pre class="astro-code astro-code-themes min-light night-owl" style="--shiki-light:#24292eff;--shiki-dark:#d6deeb;--shiki-light-bg:#ffffff;--shiki-dark-bg:#011627; overflow-x: auto;--file-name-offset: -0.75rem;" tabindex="0" data-language="plaintext"><code><span class="line"><span>DeviLeo@htb[/htb]$ sudo mount -t cifs -o username=htb-student,password=Academy_WinFun! //ipaddoftarget/"Company Data" /home/user/Desktop/</span></span></code></pre>
+<p>如果此命令不起作用，请检查语法。如果语法正确但命令仍然不起作用，则可能需要安装。这可以通过以下命令完成：<code>cifs-utils</code></p>
+<h3 id="安装-cifs-实用程序"><strong>安装 CIFS 实用程序</strong></h3>
+<p>NTFS 与共享权限</p>
+<pre class="astro-code astro-code-themes min-light night-owl" style="--shiki-light:#24292eff;--shiki-dark:#d6deeb;--shiki-light-bg:#ffffff;--shiki-dark-bg:#011627; overflow-x: auto;--file-name-offset: -0.75rem;" tabindex="0" data-language="plaintext"><code><span class="line"><span>DeviLeo@htb[/htb]$ sudo apt-get install cifs-utils</span></span></code></pre>
+<p>一旦我们在 Pwnbox 的桌面上成功创建了挂载点，我们应该看看 Windows 内置的几个工具，它们将允许我们跟踪和监控我们所做的工作。</p>
+<p>该命令允许我们查看系统上的所有共享文件夹。请注意我们创建的共享以及 C：\ 驱动器。<code>net share</code></p>
+<p><code>Do you remember us sharing the C:\ drive?</code></p>
+<p>我们没有手动共享 C：。Windows 系统上包含最重要文件的最重要的驱动器在安装时通过 SMB 共享。这意味着任何具有适当访问权限的人都可以远程访问网络上每个 Windows 系统的整个 C：\。</p>
+<p>我们还可以看到我们创建的共享。</p>
+<h3 id="使用-net-share-显示共享"><strong>使用 Net Share 显示共享</strong></h3>
+<p>NTFS 与共享权限</p>
+<pre class="astro-code astro-code-themes min-light night-owl" style="--shiki-light:#24292eff;--shiki-dark:#d6deeb;--shiki-light-bg:#ffffff;--shiki-dark-bg:#011627; overflow-x: auto;--file-name-offset: -0.75rem;" tabindex="0" data-language="plaintext"><code><span class="line"><span>C:\Users\htb-student> net share</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Share name   Resource                        Remark</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>-------------------------------------------------------------------------------</span></span>
+<span class="line"><span>C$           C:\                             Default share</span></span>
+<span class="line"><span>IPC$                                         Remote IPC</span></span>
+<span class="line"><span>ADMIN$       C:\WINDOWS                      Remote Admin</span></span>
+<span class="line"><span>Company Data C:\Users\htb-student\Desktop\Company Data</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>The command completed successfully.</span></span>
+<span class="line"><span></span></span></code></pre>
+<p><code>Computer Management</code>是我们可以用来识别和监控 Windows 系统上共享资源的另一种工具。</p>
+<h3 id="从计算机管理中监控共享"><strong>从计算机管理中监控共享</strong></h3>
+<p>!<a href="https://academy.hackthebox.com/storage/modules/49/computer_management.png">https://academy.hackthebox.com/storage/modules/49/computer_management.png</a></p>
+<p>我们可以在 ， 中四处探索，并了解它为我们提供了什么信息。如果我们协助个人或组织应对与 SMB 相关的违规行为，这些都是检查并开始了解违规行为可能如何发生以及可能留下什么的好地方。<code>SharesSessionsOpen Files</code></p>
+<h3 id="在-event-viewer-中查看共享访问日志"><strong>在 Event Viewer 中查看共享访问日志</strong></h3>
+<p><code>Event Viewer</code>是调查在 Windows 上完成的操作的另一个好位置。几乎每个操作系统都有一个日志记录机制和一个实用程序来查看捕获的日志。要知道，日志就像计算机的日志条目，计算机在其中记下执行的所有操作以及与该操作相关的许多详细信息。我们可以查看为我们在访问 Windows 10 目标框以及创建、编辑和访问共享文件夹时执行的每项操作创建的日志。</p>
+<p><img src="https://academy.hackthebox.com/storage/modules/49/event_viewer.png" alt="alt text"></p> </article> <hr class="my-8 border-dashed">  <ul class="mt-4 mb-8 flex flex-wrap gap-4 sm:my-8">  </ul> <div id="btt-btn-container" class="fixed end-4 bottom-8 z-50 md:sticky md:end-auto md:float-end md:me-1 translate-y-14 opacity-0 transition duration-500"> <button data-button="back-to-top" class="group relative bg-background px-2 py-1 size-14 rounded-full shadow-xl md:h-8 md:w-fit md:rounded-md md:shadow-none md:focus-visible:rounded-none md:bg-background/35 md:bg-clip-padding md:backdrop-blur-lg"> <span id="progress-indicator" class="absolute inset-0 -z-10 block size-14 scale-110 rounded-full bg-transparent md:hidden md:h-8 md:rounded-md"></span> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block rotate-90 md:hidden"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M15 6l-6 6l6 6" /></svg> <span class="sr-only text-sm group-hover:text-accent md:not-sr-only"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-4"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M12 5l0 14" /><path d="M16 9l-4 -4" /><path d="M8 9l4 -4" /></svg>
+Back To Top
+</span> </button> </div> <script data-astro-rerun>
+  /** Scrolls the document to the top when
+   * the "Back to Top" button is clicked. */
+  function backToTop() {
+    const rootElement = document.documentElement;
+    const btnContainer = document.querySelector("#btt-btn-container");
+    const backToTopBtn = document.querySelector("[data-button='back-to-top']");
+    const progressIndicator = document.querySelector("#progress-indicator");
+
+    if (!rootElement || !btnContainer || !backToTopBtn || !progressIndicator)
+      return;
+
+    // Attach click event handler for back-to-top button
+    backToTopBtn.addEventListener("click", () => {
+      document.body.scrollTop = 0; // For Safari
+      document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    });
+
+    // Handle button visibility according to scroll position
+    let lastVisible = null;
+    function handleScroll() {
+      const scrollTotal = rootElement.scrollHeight - rootElement.clientHeight;
+      const scrollTop = rootElement.scrollTop;
+      const scrollPercent = Math.floor((scrollTop / scrollTotal) * 100);
+
+      progressIndicator.style.setProperty(
+        "background-image",
+        `conic-gradient(var(--accent), var(--accent) ${scrollPercent}%, transparent ${scrollPercent}%)`
+      );
+
+      const isVisible = scrollTop / scrollTotal > 0.3;
+
+      if (isVisible !== lastVisible) {
+        btnContainer.classList.toggle("opacity-100", isVisible);
+        btnContainer.classList.toggle("translate-y-0", isVisible);
+        btnContainer.classList.toggle("opacity-0", !isVisible);
+        btnContainer.classList.toggle("translate-y-14", !isVisible);
+        lastVisible = isVisible;
+      }
+    }
+
+    let ticking = false;
+    document.addEventListener("scroll", () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+  }
+  backToTop();
+</script> <div class="flex flex-none flex-col items-center justify-center gap-1 md:items-start"><span class="italic">Share this post on:</span><div class="text-center"><a href="https://wa.me/?text=https://0xfelixli.github.io/posts/2024/windows%E5%9F%BA%E7%A1%80/" title="Share this post via WhatsApp" class="group inline-flex items-center gap-1 hover:text-accent scale-90 p-2 hover:rotate-6 sm:p-1"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" /><path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" /></svg><span class="sr-only">Share this post via WhatsApp</span> </a><a href="https://www.facebook.com/sharer.php?u=https://0xfelixli.github.io/posts/2024/windows%E5%9F%BA%E7%A1%80/" title="Share this post on Facebook" class="group inline-flex items-center gap-1 hover:text-accent scale-90 p-2 hover:rotate-6 sm:p-1"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" /></svg><span class="sr-only">Share this post on Facebook</span> </a><a href="https://x.com/intent/post?url=https://0xfelixli.github.io/posts/2024/windows%E5%9F%BA%E7%A1%80/" title="Share this post on X" class="group inline-flex items-center gap-1 hover:text-accent scale-90 p-2 hover:rotate-6 sm:p-1"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M4 4l11.733 16h4.267l-11.733 -16z" /><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" /></svg><span class="sr-only">Share this post on X</span> </a><a href="https://t.me/share/url?url=https://0xfelixli.github.io/posts/2024/windows%E5%9F%BA%E7%A1%80/" title="Share this post via Telegram" class="group inline-flex items-center gap-1 hover:text-accent scale-90 p-2 hover:rotate-6 sm:p-1"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M15 10l-4 4l6 6l4 -16l-18 7l4 2l2 6l3 -4" /></svg><span class="sr-only">Share this post via Telegram</span> </a><a href="https://pinterest.com/pin/create/button/?url=https://0xfelixli.github.io/posts/2024/windows%E5%9F%BA%E7%A1%80/" title="Share this post on Pinterest" class="group inline-flex items-center gap-1 hover:text-accent scale-90 p-2 hover:rotate-6 sm:p-1"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M8 20l4 -9" /><path d="M10.7 14c.437 1.263 1.43 2 2.55 2c2.071 0 3.75 -1.554 3.75 -4a5 5 0 1 0 -9.7 1.7" /><path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" /></svg><span class="sr-only">Share this post on Pinterest</span> </a><a href="mailto:?subject=See%20this%20post&#38;body=https://0xfelixli.github.io/posts/2024/windows%E5%9F%BA%E7%A1%80/" title="Share this post via email" class="group inline-flex items-center gap-1 hover:text-accent scale-90 p-2 hover:rotate-6 sm:p-1"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" /><path d="M3 7l9 6l9 -6" /></svg><span class="sr-only">Share this post via email</span> </a></div></div> <hr class="my-6 border-dashed"> <!-- Previous/Next Post Buttons --> <div data-pagefind-ignore class="grid grid-cols-1 gap-6 sm:grid-cols-2"> <a href="/posts/2024/应急响应" class="flex w-full gap-1 hover:opacity-75"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block flex-none rtl:rotate-180"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M15 6l-6 6l6 6" /></svg> <div> <span>Previous Post</span> <div class="text-sm text-accent/85">应急响应</div> </div> </a> <a href="/posts/2024/http基础" class="flex w-full justify-end gap-1 text-end hover:opacity-75 sm:col-start-2"> <div> <span>Next Post</span> <div class="text-sm text-accent/85">HTTP基础</div> </div> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block flex-none rtl:rotate-180"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M9 6l6 6l-6 6" /></svg> </a> </div> </main> <footer class="app-layout mt-auto"> <div class="py-6 sm:py-4 border-t border-border flex flex-col items-center justify-between sm:flex-row-reverse"> <div class="flex flex-wrap items-center gap-1">  </div> <div class="my-2 flex flex-col items-center whitespace-nowrap sm:flex-row"> <span>Copyright &#169; 2026</span> <span class="hidden sm:inline">&nbsp;|&nbsp;</span> <span>All rights reserved.</span> </div> </div> </footer>  <!-- Load full theme logic --> <script type="module">const d="theme",r="light",m="dark";function i(){const e=localStorage.getItem(d);return e||(window.matchMedia("(prefers-color-scheme: dark)").matches?m:r)}let t=window.theme?.themeValue??i();function c(){localStorage.setItem(d,t),o()}function o(){document.firstElementChild?.setAttribute("data-theme",t),document.querySelector("#theme-btn")?.setAttribute("aria-label",t);const e=document.body;if(e){const n=window.getComputedStyle(e).backgroundColor;document.querySelector("meta[name='theme-color']")?.setAttribute("content",n)}}window.theme?(window.theme.setPreference=c,window.theme.reflectPreference=o):window.theme={themeValue:t,setPreference:c,reflectPreference:o,getTheme:()=>t,setTheme:e=>{t=e}};o();function s(){o(),document.querySelector("#theme-btn")?.addEventListener("click",()=>{t=t===r?m:r,window.theme?.setTheme(t),c()})}s();document.addEventListener("astro:after-swap",s);document.addEventListener("astro:before-swap",e=>{const a=e,n=document.querySelector("meta[name='theme-color']")?.getAttribute("content");n&&a.newDocument.querySelector("meta[name='theme-color']")?.setAttribute("content",n)});window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",({matches:e})=>{t=e?m:r,window.theme?.setTheme(t),c()});</script> </body> </html> <script data-astro-rerun>
+  /** Create a progress indicator
+   *  at the top */
+  function createProgressBar() {
+    // Create the main container div
+    const progressContainer = document.createElement("div");
+    progressContainer.className =
+      "progress-container fixed top-0 z-10 h-1 w-full bg-background";
+
+    // Create the progress bar div
+    const progressBar = document.createElement("div");
+    progressBar.className = "progress-bar h-1 w-0 bg-accent";
+    progressBar.id = "myBar";
+
+    // Append the progress bar to the progress container
+    progressContainer.appendChild(progressBar);
+
+    // Append the progress container to the document body or any other desired parent element
+    document.body.appendChild(progressContainer);
+  }
+  createProgressBar();
+
+  /** Update the progress bar
+   *  when user scrolls */
+  function updateScrollProgress() {
+    document.addEventListener("scroll", () => {
+      const winScroll =
+        document.body.scrollTop || document.documentElement.scrollTop;
+      const height =
+        document.documentElement.scrollHeight -
+        document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      if (document) {
+        const myBar = document.getElementById("myBar");
+        if (myBar) {
+          myBar.style.width = scrolled + "%";
+        }
+      }
+    });
+  }
+  updateScrollProgress();
+
+  /** Attaches links to headings in the document,
+   *  allowing sharing of sections easily */
+  function addHeadingLinks() {
+    const headings = Array.from(
+      document.querySelectorAll("h2, h3, h4, h5, h6")
+    );
+    for (const heading of headings) {
+      heading.classList.add("group");
+      const link = document.createElement("a");
+      link.className =
+        "heading-link ms-2 no-underline opacity-75 md:opacity-0 md:group-hover:opacity-100 md:focus:opacity-100";
+      link.href = "#" + heading.id;
+
+      const span = document.createElement("span");
+      span.ariaHidden = "true";
+      span.innerText = "#";
+      link.appendChild(span);
+      heading.appendChild(link);
+    }
+  }
+  addHeadingLinks();
+
+  /** Attaches copy buttons to code blocks in the document,
+   * allowing users to copy code easily. */
+  function attachCopyButtons() {
+    const copyButtonLabel = "Copy";
+    const codeBlocks = Array.from(document.querySelectorAll("pre"));
+
+    for (const codeBlock of codeBlocks) {
+      const wrapper = document.createElement("div");
+      wrapper.style.position = "relative";
+
+      // Check if --file-name-offset custom property exists
+      const computedStyle = getComputedStyle(codeBlock);
+      const hasFileNameOffset =
+        computedStyle.getPropertyValue("--file-name-offset").trim() !== "";
+
+      // Determine the top positioning class
+      const topClass = hasFileNameOffset
+        ? "top-(--file-name-offset)"
+        : "-top-3";
+
+      const copyButton = document.createElement("button");
+      copyButton.className = `copy-code absolute end-3 ${topClass} rounded bg-muted border border-muted px-2 py-1 text-xs leading-4 text-foreground font-medium`;
+      copyButton.innerHTML = copyButtonLabel;
+      codeBlock.setAttribute("tabindex", "0");
+      codeBlock.appendChild(copyButton);
+
+      // wrap codebock with relative parent element
+      codeBlock?.parentNode?.insertBefore(wrapper, codeBlock);
+      wrapper.appendChild(codeBlock);
+
+      copyButton.addEventListener("click", async () => {
+        await copyCode(codeBlock, copyButton);
+      });
+    }
+
+    async function copyCode(block, button) {
+      const code = block.querySelector("code");
+      const text = code?.innerText;
+
+      await navigator.clipboard.writeText(text ?? "");
+
+      // visual feedback that task is completed
+      button.innerText = "Copied";
+
+      setTimeout(() => {
+        button.innerText = copyButtonLabel;
+      }, 700);
+    }
+  }
+  attachCopyButtons();
+
+  /* Go to page start after page swap */
+  document.addEventListener("astro:after-swap", () =>
+    window.scrollTo({ left: 0, top: 0, behavior: "instant" })
+  );
+</script>
