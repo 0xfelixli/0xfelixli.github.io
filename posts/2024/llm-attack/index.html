@@ -25,7 +25,7 @@
           },
         };
       })();
-    </script><link rel="stylesheet" href="/_astro/about.DDSBy5qu.css">
+    </script><link rel="stylesheet" href="/_astro/about.DNwjGxHh.css">
 <style>@keyframes astroFadeInOut{0%{opacity:1}to{opacity:0}}@keyframes astroFadeIn{0%{opacity:0;mix-blend-mode:plus-lighter}to{opacity:1;mix-blend-mode:plus-lighter}}@keyframes astroFadeOut{0%{opacity:1;mix-blend-mode:plus-lighter}to{opacity:0;mix-blend-mode:plus-lighter}}@keyframes astroSlideFromRight{0%{transform:translate(100%)}}@keyframes astroSlideFromLeft{0%{transform:translate(-100%)}}@keyframes astroSlideToRight{to{transform:translate(100%)}}@keyframes astroSlideToLeft{to{transform:translate(-100%)}}@media (prefers-reduced-motion){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}[data-astro-transition-scope]{animation:none!important}}
 #image-lightbox{position:fixed;inset:0;z-index:60;display:none}#image-lightbox.is-open{display:block}.image-lightbox__backdrop{display:flex;width:100%;height:100%;flex-direction:column;align-items:center;justify-content:center;gap:1rem;border:0;background:#000000d1;padding:1rem;cursor:zoom-out}.image-lightbox__image{max-width:min(96vw,1440px);max-height:86vh;border:1px solid rgb(255 255 255 / .18);background:#fff;object-fit:contain}.image-lightbox__caption{max-width:min(90vw,960px);color:#fff;font-size:.875rem;line-height:1.5;text-align:center}
 :where([data-astro-image]){object-fit:var(--fit);object-position:var(--pos);height:auto}:where([data-astro-image=full-width]){width:100%}:where([data-astro-image=constrained]){max-width:100%}
@@ -155,17 +155,17 @@ LLM 在现代网站中可以有广泛的用例：
 译本。
 SEO 改进。
 分析用户生成的内容，例如跟踪页面评论的语气。</p>
-<h1 id="llm-攻击和提示注入">LLM 攻击和提示注入</h1>
+<h2 id="llm-攻击和提示注入">LLM 攻击和提示注入</h2>
 <p>许多 Web LLM 攻击依赖于一种称为提示注入的技术。这是攻击者使用构建的提示来纵 LLM 输出的地方。提示注入可能会导致 AI 采取超出其预期目的的作，例如对敏感 API 进行错误调用或返回不符合其准则的内容。</p>
-<h1 id="检测-llm-漏洞">检测 LLM 漏洞</h1>
+<h2 id="检测-llm-漏洞">检测 LLM 漏洞</h2>
 <p>我们推荐的检测 LLM 漏洞的方法是：
 确定 LLM 的输入，包括直接 （如提示） 和间接 （如训练数据） 输入。
 确定 LLM 可以访问哪些数据和 API。
 探测这个新的攻击面是否存在漏洞。】</p>
-<h1 id="利用-llm-api函数和插件">利用 LLM API、函数和插件</h1>
+<h2 id="利用-llm-api函数和插件">利用 LLM API、函数和插件</h2>
 <p>LLM 通常由专门的第三方提供商托管。网站可以通过描述供 LLM 使用的本地 API 来为第三方 LLM 提供对其特定功能的访问权限。
 例如，客户支持 LLM 可能有权访问管理用户、订单和库存的 API。</p>
-<h1 id="llm-api-的工作原理">LLM API 的工作原理</h1>
+<h2 id="llm-api-的工作原理">LLM API 的工作原理</h2>
 <p>将 LLM 与 API 集成的工作流程取决于 API 本身的结构。调用外部 API 时，某些 LLM 可能要求客户端调用单独的函数终端节点（实际上是私有 API），以便生成可发送到这些 API 的有效请求。此作的工作流可能如下所示：
 客户端使用用户的提示符调用 LLM。
 LLM 检测到需要调用函数并返回一个 JSON 对象，其中包含符合外部 API 架构的参数。
@@ -175,7 +175,7 @@ LLM 检测到需要调用函数并返回一个 JSON 对象，其中包含符合�
 LLM 使用函数 response 调用外部 API。
 LLM 总结了此 API 调用的结果，并将其返回给用户。
 此工作流程可能会产生安全隐患，因为 LLM 实际上是代表用户调用外部 API，但用户可能不知道这些 API 正在被调用。理想情况下，在 LLM 调用外部 API 之前，应向用户显示确认步骤。</p>
-<h1 id="映射-llm-api-攻击面">映射 LLM API 攻击面</h1>
+<h2 id="映射-llm-api-攻击面">映射 LLM API 攻击面</h2>
 <p>术语“过度代理”是指 LLM 可以访问可以访问敏感信息的 API，并可能被说服以不安全的方式使用这些 API。这使攻击者能够将 LLM 推到其预期范围之外，并通过其 API 发起攻击。
 使用 LLM 攻击 API 和插件的第一阶段是找出 LLM 可以访问哪些 API 和插件。一种方法是简单地询问 LLM 它可以访问哪些 API。然后，您可以询问有关任何感兴趣的 API 的更多详细信息。
 如果 LLM 不合作，请尝试提供误导性的上下文并重新提出问题。例如，您可以声称您是 LLM 的开发人员，因此应该具有更高级别的权限。</p> </article> <hr class="my-8 border-dashed">  <ul class="mt-4 mb-8 flex flex-wrap gap-4 sm:my-8"> <li> <a href="/tags/网络安全/" class="flex items-center gap-0.5 border-b-2 border-dashed border-foreground hover:-mt-0.5 hover:border-accent hover:text-accent focus-visible:border-none focus-visible:text-accent text-sm" data-astro-transition-scope="astro-36ssibgs-2"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-80 size-4"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M5 9l14 0" /><path d="M5 15l14 0" /><path d="M11 4l-4 16" /><path d="M17 4l-4 16" /></svg> 网络安全 </a> </li><li> <a href="/tags/ai/" class="flex items-center gap-0.5 border-b-2 border-dashed border-foreground hover:-mt-0.5 hover:border-accent hover:text-accent focus-visible:border-none focus-visible:text-accent text-sm" data-astro-transition-scope="astro-36ssibgs-3"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-80 size-4"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M5 9l14 0" /><path d="M5 15l14 0" /><path d="M11 4l-4 16" /><path d="M17 4l-4 16" /></svg> AI </a> </li> </ul> <div id="btt-btn-container" class="fixed end-4 bottom-8 z-50 md:sticky md:end-auto md:float-end md:me-1 translate-y-14 opacity-0 transition duration-500"> <button data-button="back-to-top" class="group relative bg-background px-2 py-1 size-14 rounded-full shadow-xl md:h-8 md:w-fit md:rounded-md md:shadow-none md:focus-visible:rounded-none md:bg-background/35 md:bg-clip-padding md:backdrop-blur-lg"> <span id="progress-indicator" class="absolute inset-0 -z-10 block size-14 scale-110 rounded-full bg-transparent md:hidden md:h-8 md:rounded-md"></span> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block rotate-90 md:hidden"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M15 6l-6 6l6 6" /></svg> <span class="sr-only text-sm group-hover:text-accent md:not-sr-only"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-4"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M12 5l0 14" /><path d="M16 9l-4 -4" /><path d="M8 9l4 -4" /></svg>
