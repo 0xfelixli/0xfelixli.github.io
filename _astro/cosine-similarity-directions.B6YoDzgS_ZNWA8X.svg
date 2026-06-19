@@ -1,0 +1,43 @@
+<svg width="1200" height="720" viewBox="0 0 1200 720" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">余弦相似度看方向</title>
+  <desc id="desc">手写风格示意图：三个箭头从同一点出发，夹角越小越相似。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="14" markerHeight="14" refX="11" refY="7" orient="auto">
+      <path d="M2,2 L12,7 L2,12" fill="none" stroke="#222" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <style>
+      .bg{fill:#fffdf7}
+      .paper{stroke:#eee3c8;stroke-width:2}
+      .title{font:700 36px "Kaiti SC","STKaiti","KaiTi",serif;fill:#222}
+      .txt{font:500 24px "Kaiti SC","STKaiti","KaiTi",serif;fill:#333}
+      .small{font:500 20px "Kaiti SC","STKaiti","KaiTi",serif;fill:#555}
+      .line{fill:none;stroke:#222;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#arrow)}
+      .dash{fill:none;stroke:#777;stroke-width:2.5;stroke-dasharray:7 8;stroke-linecap:round}
+    </style>
+  </defs>
+  <rect width="1200" height="720" class="bg"/>
+  <path d="M35 35 C240 18 390 48 570 32 C770 15 930 40 1162 28" class="paper" fill="none"/>
+  <path d="M40 685 C250 700 440 672 640 690 C830 710 990 675 1160 695" class="paper" fill="none"/>
+
+  <text x="75" y="90" class="title">余弦相似度：主要看“方向像不像”</text>
+  <text x="75" y="130" class="small">不是谁更长就更像，而是谁和谁朝得更近。</text>
+
+  <g transform="translate(170,150)">
+    <path d="M80 430 C210 355 365 255 575 165" class="line"/>
+    <path d="M80 430 C235 365 365 285 530 215" class="line" stroke="#2563eb"/>
+    <path d="M80 430 C120 320 190 185 285 85" class="line" stroke="#dc2626"/>
+
+    <circle cx="80" cy="430" r="7" fill="#222"/>
+    <path d="M210 370 C230 332 250 305 283 277" class="dash"/>
+    <text x="305" y="305" class="txt">夹角小 → 更像</text>
+
+    <text x="600" y="168" class="txt">问题</text>
+    <text x="548" y="234" class="txt">相关资料</text>
+    <text x="300" y="86" class="txt">不太相关</text>
+
+    <path d="M735 130 C885 95 980 135 1000 245 C1020 355 920 420 760 395 C675 380 645 310 660 230 C670 180 695 150 735 130 Z" fill="none" stroke="#222" stroke-width="3" stroke-linecap="round"/>
+    <text x="705" y="200" class="txt">记住一句：</text>
+    <text x="705" y="245" class="txt">方向越接近，</text>
+    <text x="705" y="290" class="txt">相似度越高。</text>
+  </g>
+</svg>

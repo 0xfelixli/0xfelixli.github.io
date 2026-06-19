@@ -1,0 +1,68 @@
+<svg width="1200" height="720" viewBox="0 0 1200 720" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">RAG 里的余弦相似度</title>
+  <desc id="desc">手写风格流程图：文档和问题都变成向量，用余弦相似度找资料，再交给大模型。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="13" markerHeight="13" refX="10" refY="6.5" orient="auto">
+      <path d="M2,2 L11,6.5 L2,11" fill="none" stroke="#222" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <style>
+      .bg{fill:#fffdf7}
+      .title{font:700 36px "Kaiti SC","STKaiti","KaiTi",serif;fill:#222}
+      .txt{font:600 24px "Kaiti SC","STKaiti","KaiTi",serif;fill:#222}
+      .small{font:500 19px "Kaiti SC","STKaiti","KaiTi",serif;fill:#555}
+      .box{fill:none;stroke:#222;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+      .arrow{fill:none;stroke:#222;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#arrow)}
+      .note{fill:#fff7d6;stroke:#222;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+    </style>
+  </defs>
+  <rect width="1200" height="720" class="bg"/>
+  <text x="70" y="88" class="title">RAG 里它在哪里用？</text>
+  <text x="70" y="128" class="small">一句话：先找资料，再让模型回答。余弦相似度负责“找”。</text>
+
+  <g transform="translate(80,170)">
+    <path class="box" d="M0 20 C45 5 160 8 210 18 C225 58 225 92 210 125 C150 138 45 133 0 122 C-12 82 -8 52 0 20 Z"/>
+    <text x="45" y="65" class="txt">文档</text>
+    <text x="35" y="98" class="small">md / pdf / 网页</text>
+
+    <path d="M225 72 C270 70 300 70 345 70" class="arrow"/>
+
+    <path class="box" d="M365 20 C420 5 510 8 570 20 C585 55 584 92 570 125 C510 138 420 135 365 122 C352 85 350 54 365 20 Z"/>
+    <text x="423" y="65" class="txt">切块</text>
+    <text x="405" y="98" class="small">一段一段存</text>
+
+    <path d="M590 72 C635 70 665 70 710 70" class="arrow"/>
+
+    <path class="box" d="M730 20 C790 7 875 8 940 20 C955 55 955 92 940 125 C875 138 790 135 730 122 C718 85 718 54 730 20 Z"/>
+    <text x="775" y="65" class="txt">变向量</text>
+    <text x="765" y="98" class="small">embedding</text>
+
+    <path d="M835 145 C835 180 835 205 835 240" class="arrow"/>
+
+    <path class="box" d="M710 260 C775 245 900 248 965 262 C980 305 978 342 962 382 C895 397 775 395 710 380 C695 335 698 300 710 260 Z"/>
+    <text x="757" y="315" class="txt">向量库</text>
+    <text x="742" y="350" class="small">存向量 + 原文</text>
+
+    <path class="box" d="M0 365 C52 350 160 352 215 365 C228 405 225 440 210 475 C150 490 45 485 0 472 C-12 435 -10 400 0 365 Z"/>
+    <text x="42" y="412" class="txt">用户问题</text>
+    <text x="35" y="445" class="small">也先变向量</text>
+
+    <path d="M230 420 C300 418 360 418 425 420" class="arrow"/>
+
+    <path class="note" d="M445 365 C520 348 615 354 690 365 C705 405 705 442 690 475 C610 490 520 487 445 474 C430 430 430 398 445 365 Z"/>
+    <text x="478" y="410" class="txt">算方向像不像</text>
+    <text x="482" y="443" class="small">cosine similarity</text>
+
+    <path d="M805 395 C735 405 705 414 705 420" class="arrow"/>
+    <path d="M710 420 C765 418 800 418 850 420" class="arrow"/>
+
+    <path class="box" d="M870 365 C930 350 1010 352 1070 365 C1085 405 1082 440 1068 475 C1000 490 930 487 870 474 C855 435 856 398 870 365 Z"/>
+    <text x="918" y="412" class="txt">取前几段</text>
+    <text x="920" y="445" class="small">Top-K chunks</text>
+
+    <path d="M970 355 C980 315 978 285 960 250" class="arrow"/>
+
+    <path class="box" d="M920 135 C980 120 1035 125 1085 142 C1100 185 1095 218 1080 250 C1020 265 965 260 920 248 C905 205 905 170 920 135 Z"/>
+    <text x="955" y="185" class="txt">LLM</text>
+    <text x="938" y="218" class="small">拿资料回答</text>
+  </g>
+</svg>

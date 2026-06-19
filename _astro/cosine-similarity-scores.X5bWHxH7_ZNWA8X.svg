@@ -1,0 +1,43 @@
+<svg width="1200" height="720" viewBox="0 0 1200 720" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">相似度分数草图</title>
+  <desc id="desc">手写风格示意：三个文档片段的相似度分数不同，分数最高的会被优先拿出来。</desc>
+  <style>
+    .bg{fill:#fffdf7}
+    .title{font:700 36px "Kaiti SC","STKaiti","KaiTi",serif;fill:#222}
+    .txt{font:600 24px "Kaiti SC","STKaiti","KaiTi",serif;fill:#222}
+    .small{font:500 20px "Kaiti SC","STKaiti","KaiTi",serif;fill:#555}
+    .score{font:700 34px "Kaiti SC","STKaiti","KaiTi",serif;fill:#222}
+    .card{fill:none;stroke:#222;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+    .barbg{fill:none;stroke:#ccc0a5;stroke-width:14;stroke-linecap:round}
+    .bar{fill:none;stroke:#222;stroke-width:14;stroke-linecap:round}
+  </style>
+  <rect width="1200" height="720" class="bg"/>
+  <text x="70" y="88" class="title">算完以后，谁分高就先拿谁</text>
+  <text x="70" y="128" class="small">问题：RAG 的三个阶段是什么？</text>
+
+  <g transform="translate(85,175)">
+    <path class="card" d="M0 15 C120 -5 870 0 1015 18 C1035 55 1032 95 1018 128 C870 150 135 145 0 128 C-15 90 -12 50 0 15 Z"/>
+    <text x="35" y="58" class="txt">chunk 1：RAG 包括 ingestion、retrieval 和 synthesis。</text>
+    <path d="M40 96 L650 96" class="barbg"/>
+    <path d="M40 96 C210 90 410 102 596 96" class="bar"/>
+    <text x="725" y="106" class="score">0.91</text>
+    <text x="835" y="105" class="small">这个最像，先拿它</text>
+
+    <path class="card" d="M0 180 C120 160 870 165 1015 182 C1032 220 1030 257 1018 292 C860 312 135 308 0 292 C-15 250 -12 215 0 180 Z"/>
+    <text x="35" y="223" class="txt">chunk 2：Prompt engineering 是设计提示词的方法。</text>
+    <path d="M40 261 L650 261" class="barbg"/>
+    <path d="M40 261 C120 255 190 268 260 261" class="bar"/>
+    <text x="725" y="271" class="score">0.35</text>
+    <text x="835" y="270" class="small">有点关系，但不够准</text>
+
+    <path class="card" d="M0 345 C120 325 870 330 1015 348 C1032 385 1030 424 1018 457 C860 478 135 473 0 457 C-15 418 -12 380 0 345 Z"/>
+    <text x="35" y="388" class="txt">chunk 3：模型微调可以让模型适应特定任务。</text>
+    <path d="M40 426 L650 426" class="barbg"/>
+    <path d="M40 426 C110 420 170 432 220 426" class="bar"/>
+    <text x="725" y="436" class="score">0.28</text>
+    <text x="835" y="435" class="small">更不像这个问题</text>
+  </g>
+
+  <path d="M230 650 C380 630 800 635 965 650 C980 680 955 700 890 695 C690 710 445 700 260 692 C215 684 195 664 230 650 Z" fill="#fff7d6" stroke="#222" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="270" y="682" class="small">余弦相似度不是在写答案，只是在帮系统挑材料。</text>
+</svg>
