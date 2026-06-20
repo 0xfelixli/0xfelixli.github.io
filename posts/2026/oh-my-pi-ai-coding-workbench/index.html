@@ -1,0 +1,880 @@
+<!DOCTYPE html><html dir="ltr" lang="zh-CN" class="scroll-smooth"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="canonical" href="https://0xfelix.li/posts/2026/oh-my-pi-ai-coding-workbench/"><meta name="generator" content="Astro v5.18.2"><!-- General Meta Tags --><title>AI 编程工具不该只是聊天框：这个开源项目把 IDE、调试器和浏览器都接进来了 | Stack Ashes</title><meta name="title" content="AI 编程工具不该只是聊天框：这个开源项目把 IDE、调试器和浏览器都接进来了 | Stack Ashes"><meta name="description" content="你输入一句需求，它生成一段代码。 你贴一个报错，它给出修复建议。 你让它写测试，它能补出几个 case。"><meta name="author" content="felix"><link rel="sitemap" href="/sitemap-index.xml"><!-- Open Graph / Facebook --><meta property="og:title" content="AI 编程工具不该只是聊天框：这个开源项目把 IDE、调试器和浏览器都接进来了 | Stack Ashes"><meta property="og:description" content="你输入一句需求，它生成一段代码。 你贴一个报错，它给出修复建议。 你让它写测试，它能补出几个 case。"><meta property="og:url" content="https://0xfelix.li/posts/2026/oh-my-pi-ai-coding-workbench/"><meta property="og:image" content="https://0xfelix.li/astropaper-og.jpg"><!-- Article Published/Modified time --><meta property="article:published_time" content="2026-05-23T16:00:00.000Z"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://0xfelix.li/posts/2026/oh-my-pi-ai-coding-workbench/"><meta property="twitter:title" content="AI 编程工具不该只是聊天框：这个开源项目把 IDE、调试器和浏览器都接进来了 | Stack Ashes"><meta property="twitter:description" content="你输入一句需求，它生成一段代码。 你贴一个报错，它给出修复建议。 你让它写测试，它能补出几个 case。"><meta property="twitter:image" content="https://0xfelix.li/astropaper-og.jpg"><!-- Google JSON-LD Structured data --><script type="application/ld+json">[{"@context":"https://schema.org","@type":"BlogPosting","headline":"AI 编程工具不该只是聊天框：这个开源项目把 IDE、调试器和浏览器都接进来了","description":"你输入一句需求，它生成一段代码。 你贴一个报错，它给出修复建议。 你让它写测试，它能补出几个 case。","image":"https://0xfelix.li/astropaper-og.jpg","url":"https://0xfelix.li/posts/2026/oh-my-pi-ai-coding-workbench/","mainEntityOfPage":{"@type":"WebPage","@id":"https://0xfelix.li/posts/2026/oh-my-pi-ai-coding-workbench/"},"datePublished":"2026-05-23T16:00:00.000Z","inLanguage":"zh-CN","keywords":"AI, LLM, 开源工具","author":{"@type":"Person","name":"felix","url":"https://github.com/0xfelixli"}},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://0xfelix.li/"},{"@type":"ListItem","position":2,"name":"Posts","item":"https://0xfelix.li/posts/"},{"@type":"ListItem","position":3,"name":"AI 编程工具不该只是聊天框：这个开源项目把 IDE、调试器和浏览器都接进来了","item":"https://0xfelix.li/posts/2026/oh-my-pi-ai-coding-workbench/"}]}]</script><!-- Enable RSS feed auto-discovery  --><!-- https://docs.astro.build/en/recipes/rss/#enabling-rss-feed-auto-discovery --><link rel="alternate" type="application/rss+xml" title="Stack Ashes" href="https://0xfelix.li/rss.xml"><meta name="theme-color" content=""><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><!-- Minimal inline script to prevent FOUC - sets theme immediately --><script>
+      (function () {
+        const initialColorScheme = ""; // "light" | "dark"
+        const currentTheme = localStorage.getItem("theme");
+
+        function getPreferTheme() {
+          if (currentTheme) return currentTheme;
+          if (initialColorScheme) return initialColorScheme;
+          return window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light";
+        }
+
+        const themeValue = getPreferTheme();
+
+        // Set theme immediately to prevent flash
+        document.firstElementChild?.setAttribute("data-theme", themeValue);
+
+        // Export minimal API for external script
+        window.theme = {
+          themeValue: themeValue,
+          getTheme: () => window.theme.themeValue,
+          setTheme: val => {
+            window.theme.themeValue = val;
+          },
+        };
+      })();
+    </script><link rel="stylesheet" href="/_astro/about.kw09u4Im.css">
+<style>#image-lightbox{position:fixed;inset:0;z-index:60;display:none}#image-lightbox.is-open{display:block}.image-lightbox__backdrop{display:flex;width:100%;height:100%;flex-direction:column;align-items:center;justify-content:center;gap:1rem;border:0;background:#000000d1;padding:1rem;cursor:zoom-out}.image-lightbox__image{max-width:min(96vw,1440px);max-height:86vh;border:1px solid rgb(255 255 255 / .18);background:#fff;object-fit:contain}.image-lightbox__caption{max-width:min(90vw,960px);color:#fff;font-size:.875rem;line-height:1.5;text-align:center}
+@keyframes astroFadeInOut{0%{opacity:1}to{opacity:0}}@keyframes astroFadeIn{0%{opacity:0;mix-blend-mode:plus-lighter}to{opacity:1;mix-blend-mode:plus-lighter}}@keyframes astroFadeOut{0%{opacity:1;mix-blend-mode:plus-lighter}to{opacity:0;mix-blend-mode:plus-lighter}}@keyframes astroSlideFromRight{0%{transform:translate(100%)}}@keyframes astroSlideFromLeft{0%{transform:translate(-100%)}}@keyframes astroSlideToRight{to{transform:translate(100%)}}@keyframes astroSlideToLeft{to{transform:translate(-100%)}}@media (prefers-reduced-motion){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}[data-astro-transition-scope]{animation:none!important}}
+:where([data-astro-image]){object-fit:var(--fit);object-position:var(--pos);height:auto}:where([data-astro-image=full-width]){width:100%}:where([data-astro-image=constrained]){max-width:100%}
+</style><style>[data-astro-transition-scope="astro-undyc7o6-1"] { view-transition-name: ai-\7F16\7A0B\5DE5\5177\4E0D\8BE5\53EA\662F\804A\5929\6846\FF1A\8FD9\4E2A\5F00\6E90\9879\76EE\628A-ide\3001\8C03\8BD5\5668\548C\6D4F\89C8\5668\90FD\63A5\8FDB\6765\4E86; }@layer astro { ::view-transition-old(ai-\7F16\7A0B\5DE5\5177\4E0D\8BE5\53EA\662F\804A\5929\6846\FF1A\8FD9\4E2A\5F00\6E90\9879\76EE\628A-ide\3001\8C03\8BD5\5668\548C\6D4F\89C8\5668\90FD\63A5\8FDB\6765\4E86) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(ai-\7F16\7A0B\5DE5\5177\4E0D\8BE5\53EA\662F\804A\5929\6846\FF1A\8FD9\4E2A\5F00\6E90\9879\76EE\628A-ide\3001\8C03\8BD5\5668\548C\6D4F\89C8\5668\90FD\63A5\8FDB\6765\4E86) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(ai-\7F16\7A0B\5DE5\5177\4E0D\8BE5\53EA\662F\804A\5929\6846\FF1A\8FD9\4E2A\5F00\6E90\9879\76EE\628A-ide\3001\8C03\8BD5\5668\548C\6D4F\89C8\5668\90FD\63A5\8FDB\6765\4E86) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(ai-\7F16\7A0B\5DE5\5177\4E0D\8BE5\53EA\662F\804A\5929\6846\FF1A\8FD9\4E2A\5F00\6E90\9879\76EE\628A-ide\3001\8C03\8BD5\5668\548C\6D4F\89C8\5668\90FD\63A5\8FDB\6765\4E86) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-undyc7o6-1"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-undyc7o6-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-undyc7o6-1"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-undyc7o6-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-undyc7o6-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-undyc7o6-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-undyc7o6-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-undyc7o6-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style><style>[data-astro-transition-scope="astro-36ssibgs-2"] { view-transition-name: ai; }@layer astro { ::view-transition-old(ai) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(ai) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(ai) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(ai) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-36ssibgs-2"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-36ssibgs-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-36ssibgs-2"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-36ssibgs-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-36ssibgs-2"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-36ssibgs-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-36ssibgs-2"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-36ssibgs-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style><style>[data-astro-transition-scope="astro-36ssibgs-3"] { view-transition-name: llm; }@layer astro { ::view-transition-old(llm) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(llm) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(llm) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(llm) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-36ssibgs-3"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-36ssibgs-3"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-36ssibgs-3"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-36ssibgs-3"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-36ssibgs-3"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-36ssibgs-3"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-36ssibgs-3"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-36ssibgs-3"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style><style>[data-astro-transition-scope="astro-36ssibgs-4"] { view-transition-name: \5F00\6E90\5DE5\5177; }@layer astro { ::view-transition-old(\5F00\6E90\5DE5\5177) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(\5F00\6E90\5DE5\5177) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(\5F00\6E90\5DE5\5177) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(\5F00\6E90\5DE5\5177) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-36ssibgs-4"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-36ssibgs-4"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-36ssibgs-4"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-36ssibgs-4"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-36ssibgs-4"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-36ssibgs-4"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-36ssibgs-4"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-36ssibgs-4"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style></head> <body>  <a id="skip-to-content" href="#main-content" class="absolute start-16 -top-full z-50 bg-background px-3 py-2 text-accent backdrop-blur-lg transition-all focus:top-4">
+Skip to content
+</a> <header class="app-layout flex flex-col items-center justify-between sm:flex-row"> <div id="top-nav-wrap" class="py-4 sm:py-6 border-b border-border relative w-full bg-background flex items-baseline justify-between sm:items-center"> <a href="/" class="absolute py-1 text-xl leading-8 font-semibold whitespace-nowrap sm:static sm:my-auto sm:text-2xl sm:leading-none"> Stack Ashes </a> <nav id="nav-menu" class="flex w-full flex-col items-center sm:ms-2 sm:flex-row sm:justify-end sm:space-x-4 sm:py-0"> <button id="menu-btn" class="focus-outline self-end p-2 sm:hidden" aria-label="Open Menu" aria-expanded="false" aria-controls="menu-items"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden" id="close-icon"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M18 6l-12 12" /><path d="M6 6l12 12" /></svg> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-menu-deep" id="menu-icon"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M4 6h16" /><path d="M7 12h13" /><path d="M10 18h10" /></svg> </button> <ul id="menu-items" class="mt-4 grid w-44 grid-cols-2 place-content-center gap-2 [&#38;>li>a]:block [&#38;>li>a]:px-4 [&#38;>li>a]:py-3 [&#38;>li>a]:text-center [&#38;>li>a]:font-medium [&#38;>li>a]:hover:text-accent sm:[&#38;>li>a]:px-2 sm:[&#38;>li>a]:py-1 hidden sm:mt-0 sm:flex sm:w-auto sm:gap-x-5 sm:gap-y-0"> <li class="col-span-2"> <a href="/posts" class="active-nav">
+Posts
+</a> </li> <li class="col-span-2"> <a href="/tags">
+Tags
+</a> </li> <li class="col-span-2"> <a href="/gallery">
+Gallery
+</a> </li> <li class="col-span-2"> <a href="/about">
+About
+</a> </li> <li class="col-span-2"> <a href="/archives" title="Archives" aria-label="archives" class="group inline-flex items-center gap-1 hover:text-accent focus-outline flex justify-center p-3 sm:p-1">  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden sm:inline-block"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 4m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z" /><path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" /><path d="M10 12l4 0" /></svg> <span class="sm:sr-only">Archives</span>  </a> </li> <li class="col-span-1 flex items-center justify-center"> <a href="/search" title="Search" aria-label="search" class="group inline-flex items-center gap-1 hover:text-accent focus-outline flex p-3 sm:p-1">  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-search"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" /><path d="M21 21l-6 -6" /></svg> <span class="sr-only">Search</span>  </a> </li> <li class="col-span-1 flex items-center justify-center"> <button id="theme-btn" class="focus-outline relative size-12 p-4 sm:size-8 hover:[&>svg]:stroke-accent" title="Toggles light & dark" aria-label="auto" aria-live="polite"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute top-[50%] left-[50%] -translate-[50%] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" /></svg> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute top-[50%] left-[50%] -translate-[50%] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M14.828 14.828a4 4 0 1 0 -5.656 -5.656a4 4 0 0 0 5.656 5.656z" /><path d="M6.343 17.657l-1.414 1.414" /><path d="M6.343 6.343l-1.414 -1.414" /><path d="M17.657 6.343l1.414 -1.414" /><path d="M17.657 17.657l1.414 1.414" /><path d="M4 12h-2" /><path d="M12 4v-2" /><path d="M20 12h2" /><path d="M12 20v2" /></svg> </button> </li> </ul> </nav> </div> </header> <script type="module">function s(){const e=document.querySelector("#menu-btn"),t=document.querySelector("#menu-items"),n=document.querySelector("#menu-icon"),o=document.querySelector("#close-icon");!e||!t||!n||!o||e.addEventListener("click",()=>{const c=e.getAttribute("aria-expanded")==="true";e.setAttribute("aria-expanded",c?"false":"true"),e.setAttribute("aria-label",c?"Open Menu":"Close Menu"),t.classList.toggle("hidden"),n.classList.toggle("hidden"),o.classList.toggle("hidden")})}s();document.addEventListener("astro:after-swap",s);</script> <div class="app-layout flex items-center justify-start"><a id="back-button" href="/" class="group inline-flex items-center gap-1 hover:text-accent focus-outline -ms-2 mt-8 mb-2 hover:text-foreground/75"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 rtl:rotate-180"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M15 6l-6 6l6 6" /></svg><span>Go back</span> </a></div><script type="module">function o(){const t=document.querySelector("#back-button"),e=sessionStorage.getItem("backUrl");e&&t&&(t.href=e)}document.addEventListener("astro:page-load",o);o();</script> <main id="main-content" class="app-layout pb-12" data-pagefind-body> <header> <h1 class="inline-block text-2xl font-bold text-accent sm:text-3xl" data-astro-transition-scope="astro-undyc7o6-1"> AI 编程工具不该只是聊天框：这个开源项目把 IDE、调试器和浏览器都接进来了 </h1> <div class="my-2 flex items-center gap-2"> <div class="flex items-center gap-x-2 opacity-80"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 min-w-5.5"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z" /><path d="M16 3v4" /><path d="M8 3v4" /><path d="M4 11h16" /><path d="M7 14h.013" /><path d="M10.01 14h.005" /><path d="M13.01 14h.005" /><path d="M16.015 14h.005" /><path d="M13.015 17h.005" /><path d="M7.01 17h.005" /><path d="M10.01 17h.005" /></svg>  <time class="text-sm sm:text-base" datetime="2026-05-23T16:00:00.000Z">24 May, 2026</time> </div> <span aria-hidden="true" class="max-sm:hidden hidden">|</span>  </div>  </header> <article id="article" class="app-prose mt-8 w-full max-w-app prose-pre:bg-(--shiki-light-bg) dark:prose-pre:bg-(--shiki-dark-bg)"> <h1 id="ai-编程工具不该只是聊天框这个开源项目把-ide调试器和浏览器都接进来了">AI 编程工具不该只是聊天框：这个开源项目把 IDE、调试器和浏览器都接进来了</h1>
+<p>很多 AI 编程工具，第一次用会觉得惊艳。</p>
+<p>你输入一句需求，它生成一段代码。<br>
+你贴一个报错，它给出修复建议。<br>
+你让它写测试，它能补出几个 case。</p>
+<p>但真正把它放进一个项目里用久了，问题也会很快暴露出来：</p>
+<p>它会写代码，但不一定知道这个函数被哪些地方引用。<br>
+它会改文件，但可能因为上下文变化把补丁打错。<br>
+它会建议你加日志，但不一定能真的接上调试器看运行时状态。<br>
+它能读代码，但遇到大仓库、多模块、长文件，很容易丢上下文。<br>
+它能解释 PR，但有时只是把 diff 用自然语言复述一遍。</p>
+<p>这背后其实是一个更大的问题：</p>
+<p><strong>AI 编程工具不能只会“聊天”，它还得会“工作”。</strong></p>
+<p>一个真正的开发者解决问题，不只是靠脑子想。他会打开 IDE 查引用、用语言服务重命名、用 debugger 看栈帧、用 shell 跑测试、用浏览器验证页面、用 Git 看 diff、用 issue 和 PR 查背景。</p>
+<p>如果 AI 只能读文本、生成文本，它就很难稳定处理真实工程。</p>
+<p>最近看到一个很有意思的开源项目：<strong>oh-my-pi</strong>，简称 <strong>omp</strong>。</p>
+<p>GitHub 地址：<br>
+<a href="https://github.com/can1357/oh-my-pi">https://github.com/can1357/oh-my-pi</a></p>
+<p>官网：<br>
+<a href="https://omp.sh">https://omp.sh</a></p>
+<p>它的定位很直接：</p>
+<p><strong>A coding agent with the IDE wired in.</strong></p>
+<p>也就是：一个把 IDE 能力接进来的 AI Coding Agent。</p>
+<p>这句话很关键。它不是又做了一个终端聊天机器人，而是试图把文件系统、代码搜索、LSP、调试器、浏览器、GitHub、Web 搜索、子代理、多模型路由等能力，放进同一个 AI 编程工作台里。</p>
+<p>如果说很多 AI 编程产品的核心是“让模型回答得更好”，那么 oh-my-pi 的核心是：</p>
+<p><strong>让模型接入真实开发工具链。</strong></p>
+<h2 id="图-1传统-ai-助手-vs-ide-wired-ai-工作台">图 1：传统 AI 助手 vs IDE-wired AI 工作台</h2>
+<p><img alt="传统 AI 助手 vs oh-my-pi 工作台" loading="lazy" decoding="async" fetchpriority="auto" width="1672" height="941" src="/_astro/01-ai-assistant-vs-workbench.DXvY9pN8_Z1XSUNz.webp" ></p>
+<p>左边是普通聊天式 AI：生成代码，然后交给人复制、粘贴、验证。<br>
+右边是 oh-my-pi 代表的工作台式 agent：AI 位于中心，连接 IDE、终端、LSP、调试器、浏览器、GitHub、搜索、记忆和子代理。</p>
+<p>这也是理解 oh-my-pi 的第一把钥匙：<br>
+它不是只想回答问题，而是想接管一部分开发动作。</p>
+<h2 id="oh-my-pi-是什么">oh-my-pi 是什么？</h2>
+<p>oh-my-pi 是一个开源 AI Coding Agent，支持 macOS、Linux 和 Windows。</p>
+<p>它可以作为终端工具使用，也可以通过 SDK、RPC、ACP 等方式被其他程序集成。项目 README 里列出的能力非常密集，包括：</p>
+<ul>
+<li>40+ model providers</li>
+<li>32 个内置工具</li>
+<li>LSP 能力</li>
+<li>DAP 调试能力</li>
+<li>浏览器自动化</li>
+<li>子代理</li>
+<li>持久 Python / JavaScript 执行环境</li>
+<li>GitHub、Web 搜索、项目记忆等工具</li>
+</ul>
+<p>它本身是 Pi 项目的 fork，目前已经扩展成一个比较完整的 AI 编程运行时。</p>
+<p>安装方式也很直接。</p>
+<p>macOS / Linux：</p>
+<pre class="astro-code astro-code-themes min-light night-owl" style="--shiki-light:#24292eff;--shiki-dark:#d6deeb;--shiki-light-bg:#ffffff;--shiki-dark-bg:#011627; overflow-x: auto;--file-name-offset: -0.75rem;" tabindex="0" data-language="bash"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-light-font-style:inherit;--shiki-dark:#82AAFF;--shiki-dark-font-style:italic">curl</span><span style="--shiki-light:#2B5581;--shiki-dark:#82AAFF"> -fsSL</span><span style="--shiki-light:#2B5581;--shiki-dark:#ECC48D"> https://omp.sh/install</span><span style="--shiki-light:#D32F2F;--shiki-dark:#7FDBCA"> |</span><span style="--shiki-light:#6F42C1;--shiki-light-font-style:inherit;--shiki-dark:#82AAFF;--shiki-dark-font-style:italic"> sh</span></span></code></pre>
+<p>Bun：</p>
+<pre class="astro-code astro-code-themes min-light night-owl" style="--shiki-light:#24292eff;--shiki-dark:#d6deeb;--shiki-light-bg:#ffffff;--shiki-dark-bg:#011627; overflow-x: auto;--file-name-offset: -0.75rem;" tabindex="0" data-language="bash"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-light-font-style:inherit;--shiki-dark:#82AAFF;--shiki-dark-font-style:italic">bun</span><span style="--shiki-light:#2B5581;--shiki-dark:#ECC48D"> install</span><span style="--shiki-light:#2B5581;--shiki-dark:#82AAFF"> -g</span><span style="--shiki-light:#2B5581;--shiki-dark:#ECC48D"> @oh-my-pi/pi-coding-agent</span></span></code></pre>
+<p>Windows PowerShell：</p>
+<pre class="astro-code astro-code-themes min-light night-owl" style="--shiki-light:#24292eff;--shiki-dark:#d6deeb;--shiki-light-bg:#ffffff;--shiki-dark-bg:#011627; overflow-x: auto;--file-name-offset: -0.75rem;" tabindex="0" data-language="powershell"><code><span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#D6DEEB">irm https:</span><span style="--shiki-light:#D32F2F;--shiki-dark:#C792EA">//</span><span style="--shiki-light:#24292EFF;--shiki-dark:#D6DEEB">omp.sh</span><span style="--shiki-light:#D32F2F;--shiki-dark:#C792EA">/</span><span style="--shiki-light:#24292EFF;--shiki-dark:#D6DEEB">install.ps1 </span><span style="--shiki-light:#D32F2F;--shiki-dark:#7FDBCA">|</span><span style="--shiki-light:#24292EFF;--shiki-dark:#D6DEEB"> iex</span></span></code></pre>
+<p>安装后，默认入口是 <code>omp</code>。你可以打开交互式 TUI，也可以用一次性 prompt 执行任务，还可以通过 RPC 或 ACP 接入其他宿主环境。</p>
+<p>不过，真正值得关注的不是安装命令，而是它背后的产品判断：</p>
+<p><strong>AI Coding Agent 的能力，不应该只由模型决定，也应该由工具系统决定。</strong></p>
+<h2 id="1-ai-要读懂代码关系不能只靠搜索字符串">1. AI 要读懂代码关系，不能只靠搜索字符串</h2>
+<p>先看一个最常见的场景：重命名函数。</p>
+<p>假设项目里有一个工具函数叫 <code>formatBytes()</code>，你想把它改成 <code>formatFileSize()</code>。</p>
+<p>普通 AI 助手可能会怎么做？</p>
+<p>它会搜索 <code>formatBytes</code>，然后批量替换。<br>
+这个方案看起来简单，但在真实项目里很容易出问题。</p>
+<p>因为一个函数名可能出现在：</p>
+<ul>
+<li>定义文件</li>
+<li>多个调用文件</li>
+<li>barrel export</li>
+<li>类型声明</li>
+<li>测试文件</li>
+<li>路径别名导入</li>
+<li>注释和字符串</li>
+<li>生成文件或文档</li>
+</ul>
+<p>纯字符串搜索并不知道哪些地方是“代码引用”，哪些地方只是普通文本。它可能漏改，也可能误改。</p>
+<p>而 oh-my-pi 接入了 LSP。</p>
+<p>LSP，全称 Language Server Protocol，是很多现代编辑器背后的语言智能协议。VS Code、Neovim、Zed、JetBrains 系工具中的跳转定义、查找引用、诊断、重命名等能力，都可以依赖类似机制实现。</p>
+<p>有了 LSP，agent 可以像 IDE 一样理解代码关系：</p>
+<ul>
+<li>这个符号定义在哪里</li>
+<li>被哪些地方引用</li>
+<li>哪些文件有诊断错误</li>
+<li>重命名会影响哪些 import</li>
+<li>当前类型信息是什么</li>
+<li>有哪些可用 code action</li>
+</ul>
+<p>这会让 AI 从“看文本”往“看代码结构”前进一步。</p>
+<p>这一步非常重要。<br>
+因为真实代码库里，大量修改并不是简单的文本替换，而是语义变更。</p>
+<h2 id="图-2lsp-让-ai-看懂代码关系">图 2：LSP 让 AI 看懂代码关系</h2>
+<p><img alt="LSP 代码关系示意图" loading="lazy" decoding="async" fetchpriority="auto" width="1672" height="941" src="/_astro/02-lsp-code-relationships.DOV0FiVV_Z13EFiY.webp" ></p>
+<p>这张图展示的是 <code>formatBytes()</code> 在多个文件中的关系。</p>
+<p>普通搜索只能看到关键词散落在哪里。<br>
+LSP 能提供定义、引用、重命名、诊断、类型信息等结构化语义。</p>
+<p>对 AI Coding Agent 来说，这意味着它不必完全靠猜，也不必把大量文件塞进上下文里硬读。</p>
+<p>它可以调用开发工具链已经知道的东西。</p>
+<p>这也是 oh-my-pi 最值得关注的方向之一：</p>
+<p><strong>AI 不应该绕开 IDE，而应该继承 IDE。</strong></p>
+<h2 id="2-编辑代码不能靠差不多匹配">2. 编辑代码不能靠“差不多匹配”</h2>
+<p>第二个常见翻车点，是代码编辑。</p>
+<p>很多 AI 工具在编辑文件时，本质上还是靠 patch。模型输出一段旧代码、一段新代码，系统尝试在文件里找到旧代码，然后替换。</p>
+<p>这听起来合理，但实际经常出现问题：</p>
+<ul>
+<li>文件已经被前一步改过</li>
+<li>上下文行不完全一致</li>
+<li>空格、缩进、换行有差异</li>
+<li>同一段代码在文件里出现多次</li>
+<li>模型复制旧代码时少了一行</li>
+<li>patch 找不到位置，开始反复重试</li>
+</ul>
+<p>更麻烦的是，有些情况下它不是失败，而是改到了错误位置。</p>
+<p>oh-my-pi 的一个核心设计叫 <strong>Hashline</strong>。</p>
+<p>可以简单理解为：<br>
+它不是只靠“第几行”或“某段文本”定位修改位置，而是用内容 hash 作为锚点。</p>
+<p>模型要改代码时，会通过 hash 锚定目标区域。<br>
+系统在真正写入前，会校验锚点是否仍然匹配当前文件内容。</p>
+<p>如果文件已经变化，hash 对不上，就拒绝修改。</p>
+<p>这是一种很工程化的设计。</p>
+<p>它的核心原则不是“让模型永远不出错”，而是：</p>
+<p><strong>当系统无法确认修改位置时，宁可失败，也不要悄悄写坏代码。</strong></p>
+<p>这对 agent 尤其关键。因为 agent 往往不是只改一次文件，而是在一个任务里连续执行多个步骤。只要其中某一步使用了过期上下文，就可能造成错误修改。</p>
+<p>Hashline 的价值，就是把“误改”的风险提前挡住。</p>
+<h2 id="图-3hashline-编辑机制">图 3：Hashline 编辑机制</h2>
+<p><img alt="Hashline 编辑机制示意图" loading="lazy" decoding="async" fetchpriority="auto" width="1672" height="941" src="/_astro/03-hashline-safe-edits.DoBwRhFE_1pCMMk.webp" ></p>
+<p>左侧是传统 patch：上下文不匹配时，修改可能失败，甚至可能落到错误位置。<br>
+右侧是 Hashline：每个代码块有内容锚点，写入前先校验。hash 变化时直接拒绝，避免污染文件。</p>
+<p>这类设计看起来不如“模型多聪明”那么性感，但它很接近 AI 编程工具真正的底层竞争力。</p>
+<p>模型负责推理。<br>
+工具协议负责让推理结果可靠落地。</p>
+<h2 id="3-debug-不能只靠建议你加日志">3. Debug 不能只靠“建议你加日志”</h2>
+<p>第三个关键能力，是调试。</p>
+<p>很多 AI 编程助手遇到 bug 时，常见回答是：</p>
+<p>“建议你加一些日志。”<br>
+“可以打印这个变量看看。”<br>
+“可能是这里为空。”<br>
+“你可以检查一下这个条件。”</p>
+<p>这些建议不一定错，但它们还停留在旁观者状态。</p>
+<p>真正的开发者排查复杂 bug 时，往往会接 debugger：</p>
+<ul>
+<li>程序崩溃，看调用栈</li>
+<li>指针异常，看变量和内存</li>
+<li>服务卡住，看线程或 goroutine</li>
+<li>Python 进程挂起，暂停后检查对象</li>
+<li>条件断点定位边界输入</li>
+<li>单步执行观察状态变化</li>
+</ul>
+<p>oh-my-pi 接入了 DAP。</p>
+<p>DAP，全称 Debug Adapter Protocol，是调试器和编辑器之间的通用协议。通过 DAP，agent 可以驱动真实调试器，比如 lldb、dlv、debugpy 等。</p>
+<p>这意味着它不只是能“猜 bug”，还可以进入运行时现场。</p>
+<p>比如：</p>
+<p>C 程序 segfault，它可以通过 lldb 看坏指针。<br>
+Go 服务 hang 住，它可以通过 dlv 看 goroutine。<br>
+Python 进程卡住，它可以通过 debugpy 暂停、检查变量、求值表达式。</p>
+<p>这件事的意义很大。</p>
+<p>因为很多 bug 靠静态阅读很难定位。<br>
+你必须看到程序跑起来之后的状态，才能知道问题到底发生在哪里。</p>
+<p>AI Coding Agent 如果不能接 debugger，就像一个只看病例、不做检查的医生。它可以猜，但很难确认。</p>
+<p>oh-my-pi 把 DAP 放进工具箱，说明它对“真实开发流程”的理解是比较完整的。</p>
+<p>AI 不只是写代码。<br>
+AI 也要能排查运行中的代码。</p>
+<h2 id="4-子代理让复杂任务不再挤在一个上下文里">4. 子代理让复杂任务不再挤在一个上下文里</h2>
+<p>当任务变复杂时，单个 agent 很容易吃力。</p>
+<p>比如你让 AI 分析一个大型前端项目，找出状态管理、路由、组件组织、测试覆盖和构建配置中的问题。</p>
+<p>如果它把所有文件都塞进一个上下文里，很快就会遇到几个问题：</p>
+<ul>
+<li>上下文过长</li>
+<li>注意力分散</li>
+<li>结论泛泛而谈</li>
+<li>细节容易漏</li>
+<li>多个子任务互相干扰</li>
+<li>输出很长但不好执行</li>
+</ul>
+<p>更合理的方式，是拆分任务。</p>
+<p>一个 agent 看路由。<br>
+一个 agent 看组件。<br>
+一个 agent 看测试。<br>
+一个 agent 看构建。<br>
+最后由主 agent 汇总结构化结果，形成计划。</p>
+<p>oh-my-pi 支持 first-class subagents，也就是一等子代理能力。</p>
+<p>它可以把任务派发给多个子代理，让它们在隔离环境中工作，最后返回结构化结果。</p>
+<p>这有两个关键点：</p>
+<p><strong>第一，隔离。</strong><br>
+子代理可以在独立 worktree 中处理任务，减少互相污染和文件冲突。</p>
+<p><strong>第二，结构化。</strong><br>
+子代理返回的不是随意散文，而是主代理可以读取、比较、合并的结果。</p>
+<p>这使得复杂任务更像一个工程流程，而不是一次长对话。</p>
+<h2 id="图-4子代理并行工作流">图 4：子代理并行工作流</h2>
+<p><img alt="子代理并行工作流" loading="lazy" decoding="async" fetchpriority="auto" width="1672" height="941" src="/_astro/04-subagents-workflow.TiFXOO48_rJYFK.webp" ></p>
+<p>主代理把“大型重构”拆成多个子任务。<br>
+每个子代理在独立工作区中分析一部分代码，最后把结构化结果返回给主代理。<br>
+主代理再合并成可执行计划或安全变更。</p>
+<p>这类能力未来会越来越重要。</p>
+<p>因为 AI Coding 的上限，不只是单个模型的能力，还包括它能不能组织任务、管理上下文、并行分析、合并结果。</p>
+<p>从“一个模型回答所有问题”，到“多个 agent 分工协作”，这是 AI 工程化的自然方向。</p>
+<h2 id="5-把文件网页pdfgithub-都当成可读取对象">5. 把文件、网页、PDF、GitHub 都当成可读取对象</h2>
+<p>oh-my-pi 还有一个很实用的设计：统一读取。</p>
+<p>它的 <code>read</code> 工具不只是读普通文件，还能读目录、压缩包、SQLite、PDF、Notebook、URL 等。</p>
+<p>项目里还设计了内部 scheme，比如：</p>
+<ul>
+<li><code>pr://</code></li>
+<li><code>issue://</code></li>
+<li><code>agent://</code></li>
+<li><code>skill://</code></li>
+<li><code>rule://</code></li>
+</ul>
+<p>这意味着 GitHub PR、issue、子代理结果、技能文件、规则文件，都可以像读取文件一样被 agent 读取。</p>
+<p>这比给每种资源单独设计一个工具更优雅。</p>
+<p>如果工具太碎，模型就要不断判断：</p>
+<p>我现在应该调用 <code>read_file</code>，还是 <code>read_url</code>？<br>
+应该用 <code>github_issue_view</code>，还是 <code>github_pr_view</code>？<br>
+PDF 是另一个工具吗？Notebook 呢？</p>
+<p>工具接口越多，调用失败率越高。</p>
+<p>oh-my-pi 的思路是尽量把外部世界抽象成统一的读取路径。</p>
+<p>这对 agent 很友好。</p>
+<p>它降低了工具选择成本，也让更多上下文可以进入同一种工作流。</p>
+<h2 id="6-浏览器也应该是-ai-的眼睛">6. 浏览器也应该是 AI 的眼睛</h2>
+<p>如果你做过前端开发，一定知道一件事：</p>
+<p>代码写完，不打开页面看一眼，基本不算完成。</p>
+<p>UI 代码尤其如此。<br>
+编译通过只是第一步，页面是否能用、布局是否错位、按钮是否能点、表单是否能提交、错误态是否正确，都需要真实验证。</p>
+<p>oh-my-pi 内置浏览器自动化工具，可以驱动浏览器完成访问、点击、截图、检查等动作。</p>
+<p>这让 agent 有机会形成一个前端闭环：</p>
+<ol>
+<li>修改代码</li>
+<li>启动本地服务</li>
+<li>打开页面</li>
+<li>点击交互</li>
+<li>截图检查</li>
+<li>发现问题</li>
+<li>再改代码</li>
+<li>再验证</li>
+</ol>
+<p>很多 AI 写前端的问题是：<br>
+它生成了代码，但从没真正看过页面。</p>
+<p>浏览器工具相当于给 agent 增加了一双眼睛。</p>
+<p>这对 Web 项目尤其关键。</p>
+<h2 id="7-持久执行环境让-ai-能做分析而不只是回答">7. 持久执行环境让 AI 能做分析，而不只是回答</h2>
+<p>oh-my-pi 还提供持久 Python / JavaScript 执行环境。</p>
+<p>这类能力在项目分析里非常有用。</p>
+<p>比如你要：</p>
+<ul>
+<li>分析日志</li>
+<li>读取 CSV</li>
+<li>处理 JSON</li>
+<li>统计代码结构</li>
+<li>快速验证算法</li>
+<li>生成中间结果</li>
+<li>对比性能数据</li>
+<li>检查配置一致性</li>
+</ul>
+<p>如果每次执行都是一次性脚本，agent 很难积累上下文。<br>
+而持久环境可以保留变量、中间结果和分析状态，让任务更像一个连续 session。</p>
+<p>更重要的是，执行环境可以和工具系统配合。<br>
+agent 不只是跑一段孤立代码，而是能读取项目、分析数据、调用工具、再把结果用于后续决策。</p>
+<p>这让 AI 从“回答者”更接近“操作者”。</p>
+<h2 id="8-多模型路由不同任务不该都用同一个模型">8. 多模型路由：不同任务不该都用同一个模型</h2>
+<p>现在很多团队用 AI 编程工具时，会遇到另一个现实问题：成本和模型选择。</p>
+<p>不是所有任务都值得用最强模型。</p>
+<p>写 commit message，用最强推理模型可能浪费。<br>
+简单搜索和格式调整，用便宜模型就够了。<br>
+复杂架构规划，需要强推理模型。<br>
+大上下文阅读，需要长上下文模型。<br>
+代码审查，则需要更稳定的推理和细节能力。</p>
+<p>oh-my-pi 支持 40+ providers，包括 OpenAI、Anthropic、Google Gemini、xAI、Mistral、Groq、OpenRouter、Perplexity 等。</p>
+<p>更重要的是，它支持按角色路由模型。</p>
+<p>比如：</p>
+<ul>
+<li>日常任务用默认模型</li>
+<li>小任务用低成本模型</li>
+<li>深度规划用强推理模型</li>
+<li>子代理任务用更便宜的模型</li>
+<li>commit message 用专门配置</li>
+<li>Web research 用搜索能力更强的模型</li>
+</ul>
+<p>这是一种很现实的工程设计。</p>
+<p>AI 编程不是每次都在追求“最强回答”，而是在成本、速度、上下文、准确率、工具调用可靠性之间做平衡。</p>
+<h2 id="图-5多模型路由">图 5：多模型路由</h2>
+<p><img alt="多模型路由示意图" loading="lazy" decoding="async" fetchpriority="auto" width="1672" height="941" src="/_astro/05-multi-model-routing.C0_lH-6I_Z1HAejo.webp" ></p>
+<p>不同任务进入 Agent Router，再根据成本、延迟、上下文长度、推理深度、工具可靠性路由到不同模型角色。</p>
+<p>这说明 oh-my-pi 不把自己绑定到某一个模型供应商，而是把模型当成可调度资源。</p>
+<p>这也是未来 AI Coding Agent 很可能会走的方向：</p>
+<p><strong>不是一个模型包打天下，而是一个工作流调度多个模型。</strong></p>
+<h2 id="它的工具箱到底有什么">它的工具箱到底有什么？</h2>
+<p>项目 README 中列出了很多内置工具，比较有代表性的包括：</p>
+<ul>
+<li><code>read</code>：读取文件、目录、PDF、Notebook、URL 等</li>
+<li><code>write</code>：写入文件或结构化资源</li>
+<li><code>edit</code>：基于 Hashline 的补丁编辑</li>
+<li><code>ast_edit</code>：结构化代码修改</li>
+<li><code>search</code>：内容搜索</li>
+<li><code>find</code>：路径和文件查找</li>
+<li><code>bash</code>：工作区 shell</li>
+<li><code>eval</code>：持久 Python / JavaScript 执行</li>
+<li><code>lsp</code>：语言服务操作</li>
+<li><code>debug</code>：调试器操作</li>
+<li><code>task</code>：子代理并行任务</li>
+<li><code>browser</code>：浏览器自动化</li>
+<li><code>web_search</code>：多来源搜索</li>
+<li><code>github</code>：GitHub 相关能力</li>
+<li><code>retain</code> / <code>recall</code>：项目记忆</li>
+</ul>
+<p>单看某一个工具，可能不是独一无二。<br>
+但这些工具组合在一起，价值就出来了。</p>
+<p>因为真实开发任务需要的是完整闭环：</p>
+<p>理解需求。<br>
+读取项目。<br>
+搜索上下文。<br>
+制定计划。<br>
+修改代码。<br>
+运行命令。<br>
+调试问题。<br>
+打开页面验证。<br>
+查看 diff。<br>
+补测试。<br>
+处理 PR。<br>
+记住项目约定。</p>
+<p>oh-my-pi 的野心，是把这些都纳入同一个 agent surface。</p>
+<h2 id="它和普通-ai-编程工具最大的区别">它和普通 AI 编程工具最大的区别</h2>
+<p>如果用一句话总结：</p>
+<p><strong>普通 AI 编程工具更像聊天助手，oh-my-pi 更像工程工作台。</strong></p>
+<p>聊天助手的核心是 prompt 和回答。<br>
+工程工作台的核心是读、搜、改、跑、调、验、拆、合、记。</p>
+<p>前者依赖模型一次性回答得好不好。<br>
+后者依赖系统能不能支撑一个长任务持续推进。</p>
+<p>这就是为什么 oh-my-pi 会强调 Hashline、LSP、DAP、browser、subagents、persistent sessions、memory、SDK、ACP。</p>
+<p>这些东西不是为了堆概念，而是为了让 AI 能接入真实开发流程。</p>
+<p>很多时候，AI 编程失败不是因为模型完全不知道答案，而是因为它缺少可靠动作能力。</p>
+<p>它不知道符号关系。<br>
+它不知道文件是不是变了。<br>
+它不能看运行时。<br>
+它不能验证页面。<br>
+它不能把复杂任务拆开。<br>
+它不能在工具之间形成闭环。</p>
+<p>oh-my-pi 试图补的，正是这一层。</p>
+<h2 id="它适合谁">它适合谁？</h2>
+<p>我觉得 oh-my-pi 适合三类人。</p>
+<p>第一类是重度终端用户。</p>
+<p>如果你平时就喜欢在 terminal 里工作，习惯 shell、git、rg、tmux、vim 或 neovim，那么 omp 的终端优先体验会比较自然。</p>
+<p>第二类是 AI Coding Agent 深度用户。</p>
+<p>如果你已经不满足于“帮我写一个函数”，而是希望 AI 能处理真实项目任务，比如重构、调试、代码审查、测试修复、PR 分析，那么 omp 的工具系统值得研究。</p>
+<p>第三类是想研究 AI 编程工具架构的人。</p>
+<p>这个项目是 MIT License，里面涉及 TypeScript、Rust、N-API、TUI、工具系统、模型路由、子代理、编辑协议、LSP/DAP 等实现。</p>
+<p>如果你想理解下一代 AI Coding Agent 怎么做，它是一个很好的观察对象。</p>
+<h2 id="我的判断ai-coding-的竞争会从模型转向工作台">我的判断：AI Coding 的竞争，会从模型转向工作台</h2>
+<p>过去一段时间，我们很容易把 AI 编程工具的能力归因于模型。</p>
+<p>模型强，工具就强。<br>
+模型弱，工具就弱。</p>
+<p>这当然有道理，但不完整。</p>
+<p>未来 AI Coding 的差距，很大一部分会来自工具层和工作流层：</p>
+<ul>
+<li>编辑协议是否可靠</li>
+<li>是否接入 LSP</li>
+<li>是否能调试运行时</li>
+<li>是否能自动验证</li>
+<li>是否能打开浏览器</li>
+<li>是否能处理 PR 和 issue</li>
+<li>是否能拆分任务</li>
+<li>是否能保存项目记忆</li>
+<li>是否能适配多个模型</li>
+<li>是否能和编辑器、终端、CI 融合</li>
+</ul>
+<p>模型像大脑。<br>
+但 agent harness 是手、眼睛、工作台和工具箱。</p>
+<p>没有工具，再强的模型也容易停留在纸上谈兵。<br>
+工具足够好，模型的能力才更容易落地到真实工程。</p>
+<p>oh-my-pi 的价值就在这里。</p>
+<p>它不是只做了一个“会聊天的终端 AI”。<br>
+它更像是在构建一个终端里的 AI 开发环境，把 IDE、调试器、搜索、浏览器、多模型和子代理拼成一个统一工作面。</p>
+<p>这也是它值得关注的原因。</p>
+<h2 id="结尾">结尾</h2>
+<p>AI 编程正在从“代码生成”进入“工程协作”。</p>
+<p>第一阶段，我们惊讶于 AI 能写函数。<br>
+第二阶段，我们希望 AI 能改项目。<br>
+第三阶段，我们会要求 AI 真正理解开发流程，能读、能搜、能改、能跑、能调试、能验证、能协作。</p>
+<p>oh-my-pi 代表的就是第三阶段的一个方向。</p>
+<p>它不只是让 AI 写代码，而是给 AI 配了一整套真实开发者会用的工具。</p>
+<p>如果你正在关注 AI Coding Agent，或者想研究未来开发工具的形态，这个项目值得收藏。</p>
+<p>项目地址：<br>
+<a href="https://github.com/can1357/oh-my-pi">https://github.com/can1357/oh-my-pi</a></p>
+<p>官网：<br>
+<a href="https://omp.sh">https://omp.sh</a></p>
+<p>参考资料：<br>
+oh-my-pi GitHub README、omp.sh 官方介绍、项目页面公开信息。</p> </article> <hr class="my-8 border-dashed">  <ul class="mt-4 mb-8 flex flex-wrap gap-4 sm:my-8"> <li> <a href="/tags/ai/" class="flex items-center gap-0.5 border-b-2 border-dashed border-foreground hover:-mt-0.5 hover:border-accent hover:text-accent focus-visible:border-none focus-visible:text-accent text-sm" data-astro-transition-scope="astro-36ssibgs-2"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-80 size-4"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M5 9l14 0" /><path d="M5 15l14 0" /><path d="M11 4l-4 16" /><path d="M17 4l-4 16" /></svg> AI </a> </li><li> <a href="/tags/llm/" class="flex items-center gap-0.5 border-b-2 border-dashed border-foreground hover:-mt-0.5 hover:border-accent hover:text-accent focus-visible:border-none focus-visible:text-accent text-sm" data-astro-transition-scope="astro-36ssibgs-3"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-80 size-4"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M5 9l14 0" /><path d="M5 15l14 0" /><path d="M11 4l-4 16" /><path d="M17 4l-4 16" /></svg> LLM </a> </li><li> <a href="/tags/开源工具/" class="flex items-center gap-0.5 border-b-2 border-dashed border-foreground hover:-mt-0.5 hover:border-accent hover:text-accent focus-visible:border-none focus-visible:text-accent text-sm" data-astro-transition-scope="astro-36ssibgs-4"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-80 size-4"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M5 9l14 0" /><path d="M5 15l14 0" /><path d="M11 4l-4 16" /><path d="M17 4l-4 16" /></svg> 开源工具 </a> </li> </ul> <div id="btt-btn-container" class="fixed end-4 bottom-8 z-50 md:sticky md:end-auto md:float-end md:me-1 translate-y-14 opacity-0 transition duration-500"> <button data-button="back-to-top" class="group relative bg-background px-2 py-1 size-14 rounded-full shadow-xl md:h-8 md:w-fit md:rounded-md md:shadow-none md:focus-visible:rounded-none md:bg-background/35 md:bg-clip-padding md:backdrop-blur-lg"> <span id="progress-indicator" class="absolute inset-0 -z-10 block size-14 scale-110 rounded-full bg-transparent md:hidden md:h-8 md:rounded-md"></span> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block rotate-90 md:hidden"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M15 6l-6 6l6 6" /></svg> <span class="sr-only text-sm group-hover:text-accent md:not-sr-only"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-4"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M12 5l0 14" /><path d="M16 9l-4 -4" /><path d="M8 9l4 -4" /></svg>
+Back To Top
+</span> </button> </div> <script data-astro-rerun>
+  /** Scrolls the document to the top when
+   * the "Back to Top" button is clicked. */
+  function backToTop() {
+    const rootElement = document.documentElement;
+    const btnContainer = document.querySelector("#btt-btn-container");
+    const backToTopBtn = document.querySelector("[data-button='back-to-top']");
+    const progressIndicator = document.querySelector("#progress-indicator");
+
+    if (!rootElement || !btnContainer || !backToTopBtn || !progressIndicator)
+      return;
+
+    // Attach click event handler for back-to-top button
+    backToTopBtn.addEventListener("click", () => {
+      document.body.scrollTop = 0; // For Safari
+      document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    });
+
+    // Handle button visibility according to scroll position
+    let lastVisible = null;
+    function handleScroll() {
+      const scrollTotal = rootElement.scrollHeight - rootElement.clientHeight;
+      const scrollTop = rootElement.scrollTop;
+      const scrollPercent = Math.floor((scrollTop / scrollTotal) * 100);
+
+      progressIndicator.style.setProperty(
+        "background-image",
+        `conic-gradient(var(--accent), var(--accent) ${scrollPercent}%, transparent ${scrollPercent}%)`
+      );
+
+      const isVisible = scrollTop / scrollTotal > 0.3;
+
+      if (isVisible !== lastVisible) {
+        btnContainer.classList.toggle("opacity-100", isVisible);
+        btnContainer.classList.toggle("translate-y-0", isVisible);
+        btnContainer.classList.toggle("opacity-0", !isVisible);
+        btnContainer.classList.toggle("translate-y-14", !isVisible);
+        lastVisible = isVisible;
+      }
+    }
+
+    let ticking = false;
+    document.addEventListener("scroll", () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+  }
+  backToTop();
+</script> <div class="flex flex-none flex-col items-center justify-center gap-1 md:items-start"><span class="italic">Share this post on:</span><div class="text-center"><a href="https://wa.me/?text=https://0xfelix.li/posts/2026/oh-my-pi-ai-coding-workbench/" title="Share this post via WhatsApp" class="group inline-flex items-center gap-1 hover:text-accent scale-90 p-2 hover:rotate-6 sm:p-1"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" /><path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" /></svg><span class="sr-only">Share this post via WhatsApp</span> </a><a href="https://www.facebook.com/sharer.php?u=https://0xfelix.li/posts/2026/oh-my-pi-ai-coding-workbench/" title="Share this post on Facebook" class="group inline-flex items-center gap-1 hover:text-accent scale-90 p-2 hover:rotate-6 sm:p-1"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" /></svg><span class="sr-only">Share this post on Facebook</span> </a><a href="https://x.com/intent/post?url=https://0xfelix.li/posts/2026/oh-my-pi-ai-coding-workbench/" title="Share this post on X" class="group inline-flex items-center gap-1 hover:text-accent scale-90 p-2 hover:rotate-6 sm:p-1"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M4 4l11.733 16h4.267l-11.733 -16z" /><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" /></svg><span class="sr-only">Share this post on X</span> </a><a href="https://t.me/share/url?url=https://0xfelix.li/posts/2026/oh-my-pi-ai-coding-workbench/" title="Share this post via Telegram" class="group inline-flex items-center gap-1 hover:text-accent scale-90 p-2 hover:rotate-6 sm:p-1"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M15 10l-4 4l6 6l4 -16l-18 7l4 2l2 6l3 -4" /></svg><span class="sr-only">Share this post via Telegram</span> </a><a href="https://pinterest.com/pin/create/button/?url=https://0xfelix.li/posts/2026/oh-my-pi-ai-coding-workbench/" title="Share this post on Pinterest" class="group inline-flex items-center gap-1 hover:text-accent scale-90 p-2 hover:rotate-6 sm:p-1"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M8 20l4 -9" /><path d="M10.7 14c.437 1.263 1.43 2 2.55 2c2.071 0 3.75 -1.554 3.75 -4a5 5 0 1 0 -9.7 1.7" /><path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" /></svg><span class="sr-only">Share this post on Pinterest</span> </a><a href="mailto:?subject=See%20this%20post&#38;body=https://0xfelix.li/posts/2026/oh-my-pi-ai-coding-workbench/" title="Share this post via email" class="group inline-flex items-center gap-1 hover:text-accent scale-90 p-2 hover:rotate-6 sm:p-1"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" /><path d="M3 7l9 6l9 -6" /></svg><span class="sr-only">Share this post via email</span> </a></div></div> <script data-astro-rerun>
+  (() => {
+    function loadGiscusComments() {
+      const section = document.getElementById("comments");
+      const container = document.getElementById("giscus-comments");
+      if (!section || !container) return;
+
+      const rawConfig = section.getAttribute("data-giscus-config");
+      if (!rawConfig) return;
+
+      const config = JSON.parse(rawConfig);
+      const theme =
+        document.documentElement.getAttribute("data-theme") === "dark"
+          ? "dark"
+          : "light";
+
+      container.replaceChildren();
+
+      const script = document.createElement("script");
+      script.src = "https://giscus.app/client.js";
+      script.async = true;
+      script.crossOrigin = "anonymous";
+      script.dataset.repo = config.repo;
+      script.dataset.repoId = config.repoId;
+      script.dataset.category = config.category;
+      script.dataset.categoryId = config.categoryId;
+      script.dataset.mapping = config.mapping;
+      script.dataset.strict = config.strict;
+      script.dataset.reactionsEnabled = config.reactionsEnabled;
+      script.dataset.emitMetadata = config.emitMetadata;
+      script.dataset.inputPosition = config.inputPosition;
+      script.dataset.theme = theme;
+      script.dataset.lang = config.lang;
+      script.dataset.loading = config.loading;
+
+      container.appendChild(script);
+    }
+
+    loadGiscusComments();
+
+    const giscusThemeObserver = new MutationObserver(() => {
+      const iframe = document.querySelector("iframe.giscus-frame");
+      if (!iframe?.contentWindow) return;
+
+      iframe.contentWindow.postMessage(
+        {
+          giscus: {
+            setConfig: {
+              theme:
+                document.documentElement.getAttribute("data-theme") === "dark"
+                  ? "dark"
+                  : "light",
+            },
+          },
+        },
+        "https://giscus.app"
+      );
+    });
+
+    giscusThemeObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-theme"],
+    });
+  })();
+</script> <hr class="my-6 border-dashed"> <div data-pagefind-ignore class="grid grid-cols-1 gap-6 sm:grid-cols-2"> <a href="/posts/2026/ai-engineering-from-scratch" class="flex w-full gap-1 hover:opacity-75"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block flex-none rtl:rotate-180"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M15 6l-6 6l6 6" /></svg> <div> <span>Previous Post</span> <div class="text-sm text-accent/85">从零构建 AI 工程能力：这个开源项目把 435 节课做成了一条硬核路线</div> </div> </a> <a href="/posts/2026/attention-is-all-you-need" class="flex w-full justify-end gap-1 text-end hover:opacity-75 sm:col-start-2"> <div> <span>Next Post</span> <div class="text-sm text-accent/85">Attention Is All You Need 中文精读</div> </div> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block flex-none rtl:rotate-180"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M9 6l6 6l-6 6" /></svg> </a> </div> </main> <footer class="app-layout mt-auto"> <div class="py-6 sm:py-4 border-t border-border flex flex-col items-center justify-between sm:flex-row-reverse"> <div class="flex flex-wrap items-center gap-1"> <a href="https://x.com/0xfelixli" title="Follow 0xfelixli on X" class="group inline-flex items-center gap-1 hover:text-accent p-2 hover:rotate-6 sm:p-1">  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M4 4l11.733 16h4.267l-11.733 -16z" /><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" /></svg> <span class="sr-only">Follow 0xfelixli on X</span>  </a><a href="https://github.com/0xfelixli" title="Visit 0xfelixli on GitHub" class="group inline-flex items-center gap-1 hover:text-accent p-2 hover:rotate-6 sm:p-1">  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" /></svg> <span class="sr-only">Visit 0xfelixli on GitHub</span>  </a><a href="mailto:0xfelixli@gmail.com" title="Email 0xfelixli" class="group inline-flex items-center gap-1 hover:text-accent p-2 hover:rotate-6 sm:p-1">  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" /><path d="M3 7l9 6l9 -6" /></svg> <span class="sr-only">Email 0xfelixli</span>  </a> </div> <div class="my-2 flex flex-col items-center whitespace-nowrap sm:flex-row"> <span>Copyright &#169; 2026</span> <span class="hidden sm:inline">&nbsp;|&nbsp;</span> <span>All rights reserved.</span> </div> </div> </footer>  <!-- Load full theme logic --> <script type="module">const d="theme",r="light",m="dark";function i(){const e=localStorage.getItem(d);return e||(window.matchMedia("(prefers-color-scheme: dark)").matches?m:r)}let t=window.theme?.themeValue??i();function c(){localStorage.setItem(d,t),o()}function o(){document.firstElementChild?.setAttribute("data-theme",t),document.querySelector("#theme-btn")?.setAttribute("aria-label",t);const e=document.body;if(e){const n=window.getComputedStyle(e).backgroundColor;document.querySelector("meta[name='theme-color']")?.setAttribute("content",n)}}window.theme?(window.theme.setPreference=c,window.theme.reflectPreference=o):window.theme={themeValue:t,setPreference:c,reflectPreference:o,getTheme:()=>t,setTheme:e=>{t=e}};o();function s(){o(),document.querySelector("#theme-btn")?.addEventListener("click",()=>{t=t===r?m:r,window.theme?.setTheme(t),c()})}s();document.addEventListener("astro:after-swap",s);document.addEventListener("astro:before-swap",e=>{const a=e,n=document.querySelector("meta[name='theme-color']")?.getAttribute("content");n&&a.newDocument.querySelector("meta[name='theme-color']")?.setAttribute("content",n)});window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",({matches:e})=>{t=e?m:r,window.theme?.setTheme(t),c()});</script> </body> </html> <script data-astro-rerun>
+  /** Create a progress indicator at the top. */
+  function createProgressBar() {
+    const progressContainer = document.createElement("div");
+    progressContainer.className =
+      "progress-container fixed top-0 z-10 h-1 w-full bg-background";
+
+    const progressBar = document.createElement("div");
+    progressBar.className = "progress-bar h-1 w-0 bg-accent";
+    progressBar.id = "myBar";
+
+    progressContainer.appendChild(progressBar);
+    document.body.appendChild(progressContainer);
+  }
+  createProgressBar();
+
+  /** Update the progress bar when user scrolls. */
+  function updateScrollProgress() {
+    document.addEventListener("scroll", () => {
+      const winScroll =
+        document.body.scrollTop || document.documentElement.scrollTop;
+      const height =
+        document.documentElement.scrollHeight -
+        document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      const myBar = document.getElementById("myBar");
+      if (myBar) {
+        myBar.style.width = scrolled + "%";
+      }
+    });
+  }
+  updateScrollProgress();
+</script> <script data-astro-rerun>
+  /** Attaches links to headings in the document,
+   *  allowing sharing of sections easily */
+  function addHeadingLinks() {
+    const headings = Array.from(
+      document.querySelectorAll("h2, h3, h4, h5, h6")
+    );
+    for (const heading of headings) {
+      heading.classList.add("group");
+      const link = document.createElement("a");
+      link.className =
+        "heading-link ms-2 no-underline opacity-75 md:opacity-0 md:group-hover:opacity-100 md:focus:opacity-100";
+      link.href = "#" + heading.id;
+
+      const span = document.createElement("span");
+      span.ariaHidden = "true";
+      span.innerText = "#";
+      link.appendChild(span);
+      heading.appendChild(link);
+    }
+  }
+  addHeadingLinks();
+
+  /** Attaches copy buttons to code blocks in the document,
+   * allowing users to copy code easily. */
+  function attachCopyButtons() {
+    const copyButtonLabel = "Copy";
+    const codeBlocks = Array.from(document.querySelectorAll("pre"));
+
+    for (const codeBlock of codeBlocks) {
+      const wrapper = document.createElement("div");
+      wrapper.style.position = "relative";
+
+      // Check if --file-name-offset custom property exists
+      const computedStyle = getComputedStyle(codeBlock);
+      const hasFileNameOffset =
+        computedStyle.getPropertyValue("--file-name-offset").trim() !== "";
+
+      // Determine the top positioning class
+      const topClass = hasFileNameOffset
+        ? "top-(--file-name-offset)"
+        : "-top-3";
+
+      const copyButton = document.createElement("button");
+      copyButton.className = `copy-code absolute end-3 ${topClass} rounded bg-muted border border-muted px-2 py-1 text-xs leading-4 text-foreground font-medium`;
+      copyButton.innerHTML = copyButtonLabel;
+      codeBlock.setAttribute("tabindex", "0");
+      codeBlock.appendChild(copyButton);
+
+      // wrap codebock with relative parent element
+      codeBlock?.parentNode?.insertBefore(wrapper, codeBlock);
+      wrapper.appendChild(codeBlock);
+
+      copyButton.addEventListener("click", async () => {
+        await copyCode(codeBlock, copyButton);
+      });
+    }
+
+    async function copyCode(block, button) {
+      const code = block.querySelector("code");
+      const text = code?.innerText;
+
+      await navigator.clipboard.writeText(text ?? "");
+
+      // visual feedback that task is completed
+      button.innerText = "Copied";
+
+      setTimeout(() => {
+        button.innerText = copyButtonLabel;
+      }, 700);
+    }
+  }
+  attachCopyButtons();
+
+  /** Opens article images in a lightweight full-screen viewer. */
+  function attachImageLightbox() {
+    const article = document.getElementById("article");
+    if (!article) return;
+
+    const images = Array.from(article.querySelectorAll("img"));
+    if (images.length === 0) return;
+
+    let lightbox = document.getElementById("image-lightbox");
+    if (!lightbox) {
+      lightbox = document.createElement("div");
+      lightbox.id = "image-lightbox";
+      lightbox.setAttribute("aria-hidden", "true");
+      lightbox.innerHTML = `
+        <button type="button" class="image-lightbox__backdrop" aria-label="Close image preview">
+          <img class="image-lightbox__image" alt="" />
+          <span class="image-lightbox__caption"></span>
+        </button>
+      `;
+      document.body.appendChild(lightbox);
+    }
+
+    const backdrop = lightbox.querySelector(".image-lightbox__backdrop");
+    const preview = lightbox.querySelector(".image-lightbox__image");
+    const caption = lightbox.querySelector(".image-lightbox__caption");
+
+    function openImage(image) {
+      preview.src = image.currentSrc || image.src;
+      preview.alt = image.alt || "";
+      caption.textContent = image.alt || "";
+      caption.hidden = !image.alt;
+      lightbox.classList.add("is-open");
+      lightbox.setAttribute("aria-hidden", "false");
+      document.documentElement.classList.add("overflow-hidden");
+      backdrop.focus();
+    }
+
+    function closeImage() {
+      lightbox.classList.remove("is-open");
+      lightbox.setAttribute("aria-hidden", "true");
+      document.documentElement.classList.remove("overflow-hidden");
+      preview.removeAttribute("src");
+    }
+
+    backdrop.onclick = closeImage;
+
+    if (document.documentElement.dataset.imageLightboxEscapeBound !== "true") {
+      document.documentElement.dataset.imageLightboxEscapeBound = "true";
+      document.addEventListener("keydown", event => {
+        const activeLightbox = document.getElementById("image-lightbox");
+        if (
+          event.key === "Escape" &&
+          activeLightbox?.classList.contains("is-open")
+        ) {
+          activeLightbox.classList.remove("is-open");
+          activeLightbox.setAttribute("aria-hidden", "true");
+          document.documentElement.classList.remove("overflow-hidden");
+          activeLightbox
+            .querySelector(".image-lightbox__image")
+            ?.removeAttribute("src");
+        }
+      });
+    }
+
+    for (const image of images) {
+      if (image.dataset.zoomBound === "true" || image.closest("a")) continue;
+
+      image.dataset.zoomBound = "true";
+      image.dataset.zoomable = "true";
+      image.tabIndex = 0;
+      image.setAttribute("role", "button");
+      image.setAttribute("aria-label", image.alt || "Open image preview");
+
+      image.addEventListener("click", () => openImage(image));
+      image.addEventListener("keydown", event => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          openImage(image);
+        }
+      });
+    }
+  }
+  attachImageLightbox();
+
+  /* Go to page start after page swap */
+  document.addEventListener("astro:after-swap", () =>
+    window.scrollTo({ left: 0, top: 0, behavior: "instant" })
+  );
+</script> 

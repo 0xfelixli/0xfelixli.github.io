@@ -1,0 +1,677 @@
+<!DOCTYPE html><html dir="ltr" lang="zh-CN" class="scroll-smooth"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="canonical" href="https://0xfelix.li/posts/2026/taste-skill-frontend-design/"><meta name="generator" content="Astro v5.18.2"><!-- General Meta Tags --><title>让 AI 前端少一点模板味：Taste Skill 把审美写成可执行规则 | Stack Ashes</title><meta name="title" content="让 AI 前端少一点模板味：Taste Skill 把审美写成可执行规则 | Stack Ashes"><meta name="description" content="输入一句“做一个现代 SaaS 首页”，它很快给你一套页面：居中的大标题、渐变背景、三张卡片、圆角按钮、浅色阴影、再加几段看起来正确的文案。"><meta name="author" content="felix"><link rel="sitemap" href="/sitemap-index.xml"><!-- Open Graph / Facebook --><meta property="og:title" content="让 AI 前端少一点模板味：Taste Skill 把审美写成可执行规则 | Stack Ashes"><meta property="og:description" content="输入一句“做一个现代 SaaS 首页”，它很快给你一套页面：居中的大标题、渐变背景、三张卡片、圆角按钮、浅色阴影、再加几段看起来正确的文案。"><meta property="og:url" content="https://0xfelix.li/posts/2026/taste-skill-frontend-design/"><meta property="og:image" content="https://0xfelix.li/astropaper-og.jpg"><!-- Article Published/Modified time --><meta property="article:published_time" content="2026-05-27T16:00:00.000Z"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://0xfelix.li/posts/2026/taste-skill-frontend-design/"><meta property="twitter:title" content="让 AI 前端少一点模板味：Taste Skill 把审美写成可执行规则 | Stack Ashes"><meta property="twitter:description" content="输入一句“做一个现代 SaaS 首页”，它很快给你一套页面：居中的大标题、渐变背景、三张卡片、圆角按钮、浅色阴影、再加几段看起来正确的文案。"><meta property="twitter:image" content="https://0xfelix.li/astropaper-og.jpg"><!-- Google JSON-LD Structured data --><script type="application/ld+json">[{"@context":"https://schema.org","@type":"BlogPosting","headline":"让 AI 前端少一点模板味：Taste Skill 把审美写成可执行规则","description":"输入一句“做一个现代 SaaS 首页”，它很快给你一套页面：居中的大标题、渐变背景、三张卡片、圆角按钮、浅色阴影、再加几段看起来正确的文案。","image":"https://0xfelix.li/astropaper-og.jpg","url":"https://0xfelix.li/posts/2026/taste-skill-frontend-design/","mainEntityOfPage":{"@type":"WebPage","@id":"https://0xfelix.li/posts/2026/taste-skill-frontend-design/"},"datePublished":"2026-05-27T16:00:00.000Z","inLanguage":"zh-CN","keywords":"AI, LLM, 开源工具","author":{"@type":"Person","name":"felix","url":"https://github.com/0xfelixli"}},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://0xfelix.li/"},{"@type":"ListItem","position":2,"name":"Posts","item":"https://0xfelix.li/posts/"},{"@type":"ListItem","position":3,"name":"让 AI 前端少一点模板味：Taste Skill 把审美写成可执行规则","item":"https://0xfelix.li/posts/2026/taste-skill-frontend-design/"}]}]</script><!-- Enable RSS feed auto-discovery  --><!-- https://docs.astro.build/en/recipes/rss/#enabling-rss-feed-auto-discovery --><link rel="alternate" type="application/rss+xml" title="Stack Ashes" href="https://0xfelix.li/rss.xml"><meta name="theme-color" content=""><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><!-- Minimal inline script to prevent FOUC - sets theme immediately --><script>
+      (function () {
+        const initialColorScheme = ""; // "light" | "dark"
+        const currentTheme = localStorage.getItem("theme");
+
+        function getPreferTheme() {
+          if (currentTheme) return currentTheme;
+          if (initialColorScheme) return initialColorScheme;
+          return window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light";
+        }
+
+        const themeValue = getPreferTheme();
+
+        // Set theme immediately to prevent flash
+        document.firstElementChild?.setAttribute("data-theme", themeValue);
+
+        // Export minimal API for external script
+        window.theme = {
+          themeValue: themeValue,
+          getTheme: () => window.theme.themeValue,
+          setTheme: val => {
+            window.theme.themeValue = val;
+          },
+        };
+      })();
+    </script><link rel="stylesheet" href="/_astro/about.kw09u4Im.css">
+<style>#image-lightbox{position:fixed;inset:0;z-index:60;display:none}#image-lightbox.is-open{display:block}.image-lightbox__backdrop{display:flex;width:100%;height:100%;flex-direction:column;align-items:center;justify-content:center;gap:1rem;border:0;background:#000000d1;padding:1rem;cursor:zoom-out}.image-lightbox__image{max-width:min(96vw,1440px);max-height:86vh;border:1px solid rgb(255 255 255 / .18);background:#fff;object-fit:contain}.image-lightbox__caption{max-width:min(90vw,960px);color:#fff;font-size:.875rem;line-height:1.5;text-align:center}
+@keyframes astroFadeInOut{0%{opacity:1}to{opacity:0}}@keyframes astroFadeIn{0%{opacity:0;mix-blend-mode:plus-lighter}to{opacity:1;mix-blend-mode:plus-lighter}}@keyframes astroFadeOut{0%{opacity:1;mix-blend-mode:plus-lighter}to{opacity:0;mix-blend-mode:plus-lighter}}@keyframes astroSlideFromRight{0%{transform:translate(100%)}}@keyframes astroSlideFromLeft{0%{transform:translate(-100%)}}@keyframes astroSlideToRight{to{transform:translate(100%)}}@keyframes astroSlideToLeft{to{transform:translate(-100%)}}@media (prefers-reduced-motion){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}[data-astro-transition-scope]{animation:none!important}}
+:where([data-astro-image]){object-fit:var(--fit);object-position:var(--pos);height:auto}:where([data-astro-image=full-width]){width:100%}:where([data-astro-image=constrained]){max-width:100%}
+</style><style>[data-astro-transition-scope="astro-undyc7o6-1"] { view-transition-name: \8BA9-ai-\524D\7AEF\5C11\4E00\70B9\6A21\677F\5473\FF1A-taste-skill-\628A\5BA1\7F8E\5199\6210\53EF\6267\884C\89C4\5219; }@layer astro { ::view-transition-old(\8BA9-ai-\524D\7AEF\5C11\4E00\70B9\6A21\677F\5473\FF1A-taste-skill-\628A\5BA1\7F8E\5199\6210\53EF\6267\884C\89C4\5219) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(\8BA9-ai-\524D\7AEF\5C11\4E00\70B9\6A21\677F\5473\FF1A-taste-skill-\628A\5BA1\7F8E\5199\6210\53EF\6267\884C\89C4\5219) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(\8BA9-ai-\524D\7AEF\5C11\4E00\70B9\6A21\677F\5473\FF1A-taste-skill-\628A\5BA1\7F8E\5199\6210\53EF\6267\884C\89C4\5219) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(\8BA9-ai-\524D\7AEF\5C11\4E00\70B9\6A21\677F\5473\FF1A-taste-skill-\628A\5BA1\7F8E\5199\6210\53EF\6267\884C\89C4\5219) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-undyc7o6-1"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-undyc7o6-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-undyc7o6-1"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-undyc7o6-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-undyc7o6-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-undyc7o6-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-undyc7o6-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-undyc7o6-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style><style>[data-astro-transition-scope="astro-36ssibgs-2"] { view-transition-name: ai; }@layer astro { ::view-transition-old(ai) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(ai) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(ai) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(ai) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-36ssibgs-2"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-36ssibgs-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-36ssibgs-2"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-36ssibgs-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-36ssibgs-2"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-36ssibgs-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-36ssibgs-2"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-36ssibgs-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style><style>[data-astro-transition-scope="astro-36ssibgs-3"] { view-transition-name: llm; }@layer astro { ::view-transition-old(llm) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(llm) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(llm) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(llm) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-36ssibgs-3"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-36ssibgs-3"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-36ssibgs-3"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-36ssibgs-3"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-36ssibgs-3"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-36ssibgs-3"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-36ssibgs-3"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-36ssibgs-3"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style><style>[data-astro-transition-scope="astro-36ssibgs-4"] { view-transition-name: \5F00\6E90\5DE5\5177; }@layer astro { ::view-transition-old(\5F00\6E90\5DE5\5177) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(\5F00\6E90\5DE5\5177) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(\5F00\6E90\5DE5\5177) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(\5F00\6E90\5DE5\5177) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-36ssibgs-4"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-36ssibgs-4"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-36ssibgs-4"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-36ssibgs-4"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-36ssibgs-4"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-36ssibgs-4"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-36ssibgs-4"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-36ssibgs-4"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style></head> <body>  <a id="skip-to-content" href="#main-content" class="absolute start-16 -top-full z-50 bg-background px-3 py-2 text-accent backdrop-blur-lg transition-all focus:top-4">
+Skip to content
+</a> <header class="app-layout flex flex-col items-center justify-between sm:flex-row"> <div id="top-nav-wrap" class="py-4 sm:py-6 border-b border-border relative w-full bg-background flex items-baseline justify-between sm:items-center"> <a href="/" class="absolute py-1 text-xl leading-8 font-semibold whitespace-nowrap sm:static sm:my-auto sm:text-2xl sm:leading-none"> Stack Ashes </a> <nav id="nav-menu" class="flex w-full flex-col items-center sm:ms-2 sm:flex-row sm:justify-end sm:space-x-4 sm:py-0"> <button id="menu-btn" class="focus-outline self-end p-2 sm:hidden" aria-label="Open Menu" aria-expanded="false" aria-controls="menu-items"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden" id="close-icon"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M18 6l-12 12" /><path d="M6 6l12 12" /></svg> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-menu-deep" id="menu-icon"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M4 6h16" /><path d="M7 12h13" /><path d="M10 18h10" /></svg> </button> <ul id="menu-items" class="mt-4 grid w-44 grid-cols-2 place-content-center gap-2 [&#38;>li>a]:block [&#38;>li>a]:px-4 [&#38;>li>a]:py-3 [&#38;>li>a]:text-center [&#38;>li>a]:font-medium [&#38;>li>a]:hover:text-accent sm:[&#38;>li>a]:px-2 sm:[&#38;>li>a]:py-1 hidden sm:mt-0 sm:flex sm:w-auto sm:gap-x-5 sm:gap-y-0"> <li class="col-span-2"> <a href="/posts" class="active-nav">
+Posts
+</a> </li> <li class="col-span-2"> <a href="/tags">
+Tags
+</a> </li> <li class="col-span-2"> <a href="/gallery">
+Gallery
+</a> </li> <li class="col-span-2"> <a href="/about">
+About
+</a> </li> <li class="col-span-2"> <a href="/archives" title="Archives" aria-label="archives" class="group inline-flex items-center gap-1 hover:text-accent focus-outline flex justify-center p-3 sm:p-1">  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden sm:inline-block"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 4m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z" /><path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" /><path d="M10 12l4 0" /></svg> <span class="sm:sr-only">Archives</span>  </a> </li> <li class="col-span-1 flex items-center justify-center"> <a href="/search" title="Search" aria-label="search" class="group inline-flex items-center gap-1 hover:text-accent focus-outline flex p-3 sm:p-1">  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-search"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" /><path d="M21 21l-6 -6" /></svg> <span class="sr-only">Search</span>  </a> </li> <li class="col-span-1 flex items-center justify-center"> <button id="theme-btn" class="focus-outline relative size-12 p-4 sm:size-8 hover:[&>svg]:stroke-accent" title="Toggles light & dark" aria-label="auto" aria-live="polite"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute top-[50%] left-[50%] -translate-[50%] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" /></svg> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute top-[50%] left-[50%] -translate-[50%] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M14.828 14.828a4 4 0 1 0 -5.656 -5.656a4 4 0 0 0 5.656 5.656z" /><path d="M6.343 17.657l-1.414 1.414" /><path d="M6.343 6.343l-1.414 -1.414" /><path d="M17.657 6.343l1.414 -1.414" /><path d="M17.657 17.657l1.414 1.414" /><path d="M4 12h-2" /><path d="M12 4v-2" /><path d="M20 12h2" /><path d="M12 20v2" /></svg> </button> </li> </ul> </nav> </div> </header> <script type="module">function s(){const e=document.querySelector("#menu-btn"),t=document.querySelector("#menu-items"),n=document.querySelector("#menu-icon"),o=document.querySelector("#close-icon");!e||!t||!n||!o||e.addEventListener("click",()=>{const c=e.getAttribute("aria-expanded")==="true";e.setAttribute("aria-expanded",c?"false":"true"),e.setAttribute("aria-label",c?"Open Menu":"Close Menu"),t.classList.toggle("hidden"),n.classList.toggle("hidden"),o.classList.toggle("hidden")})}s();document.addEventListener("astro:after-swap",s);</script> <div class="app-layout flex items-center justify-start"><a id="back-button" href="/" class="group inline-flex items-center gap-1 hover:text-accent focus-outline -ms-2 mt-8 mb-2 hover:text-foreground/75"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 rtl:rotate-180"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M15 6l-6 6l6 6" /></svg><span>Go back</span> </a></div><script type="module">function o(){const t=document.querySelector("#back-button"),e=sessionStorage.getItem("backUrl");e&&t&&(t.href=e)}document.addEventListener("astro:page-load",o);o();</script> <main id="main-content" class="app-layout pb-12" data-pagefind-body> <header> <h1 class="inline-block text-2xl font-bold text-accent sm:text-3xl" data-astro-transition-scope="astro-undyc7o6-1"> 让 AI 前端少一点模板味：Taste Skill 把审美写成可执行规则 </h1> <div class="my-2 flex items-center gap-2"> <div class="flex items-center gap-x-2 opacity-80"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 min-w-5.5"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z" /><path d="M16 3v4" /><path d="M8 3v4" /><path d="M4 11h16" /><path d="M7 14h.013" /><path d="M10.01 14h.005" /><path d="M13.01 14h.005" /><path d="M16.015 14h.005" /><path d="M13.015 17h.005" /><path d="M7.01 17h.005" /><path d="M10.01 17h.005" /></svg>  <time class="text-sm sm:text-base" datetime="2026-05-27T16:00:00.000Z">28 May, 2026</time> </div> <span aria-hidden="true" class="max-sm:hidden hidden">|</span>  </div>  </header> <article id="article" class="app-prose mt-8 w-full max-w-app prose-pre:bg-(--shiki-light-bg) dark:prose-pre:bg-(--shiki-dark-bg)"> <h1 id="让-ai-前端少一点模板味taste-skill-把审美写成可执行规则">让 AI 前端少一点模板味：Taste Skill 把审美写成可执行规则</h1>
+<p>现在让 AI 写一个前端页面很容易。</p>
+<p>输入一句“做一个现代 SaaS 首页”，它很快给你一套页面：居中的大标题、渐变背景、三张卡片、圆角按钮、浅色阴影、再加几段看起来正确的文案。</p>
+<p>页面能跑，也不丑。</p>
+<p>问题在于，它太像了。</p>
+<p>换一个项目，还是同样的 hero。<br>
+换一个行业，还是同样的卡片。<br>
+换一个产品，还是同样的蓝紫渐变。</p>
+<p>你能感到它来自 AI，但很难说哪一行代码出了问题。</p>
+<p>最近看到一个很有意思的开源项目：<strong>Taste Skill</strong>。</p>
+<p>项目地址：<br>
+<a href="https://github.com/Leonxlnx/taste-skill">https://github.com/Leonxlnx/taste-skill</a></p>
+<p>它不是一个组件库，也不是一个模板市场。它更像一组给 AI Agent 用的“前端审美约束”。</p>
+<p>项目 README 里给出的定位很直接：</p>
+<p><strong>Portable Agent Skills for building tasteful web applications and high-quality UI assets.</strong></p>
+<p>翻成中文，就是一套可移植的 Agent Skills，用来让 AI 构建更有审美判断的 Web 应用和 UI 资产。</p>
+<p>这里的关键词不是“更漂亮”，而是“更有判断”。</p>
+<h2 id="一ai-前端的模板味从哪里来">一、AI 前端的模板味从哪里来</h2>
+<p><img alt="让 AI 前端少一点模板味" loading="lazy" decoding="async" fetchpriority="auto" width="1672" height="941" src="/_astro/01-anti-slop-frontend.Dht_DFnO_Z13Yg4t.webp" ></p>
+<p>AI 做前端时，常见问题并不是完全不会写。</p>
+<p>它会用 React。<br>
+它会写 Tailwind。<br>
+它会加响应式。<br>
+它会放按钮、卡片、导航和图标。</p>
+<p>真正的问题是，它习惯走安全路线。</p>
+<p>安全路线通常长这样：</p>
+<ul>
+<li>页面从一个居中的 hero 开始</li>
+<li>H1 很大，副标题很长</li>
+<li>背景是蓝紫渐变</li>
+<li>内容被拆成三张功能卡</li>
+<li>卡片圆角很大，阴影很轻</li>
+<li>section 之间留很多空白</li>
+<li>所有东西都对齐得很规矩</li>
+<li>文案在解释“这个产品如何帮助你提升效率”</li>
+</ul>
+<p>这种页面不难看，但没有记忆点。</p>
+<p>它像一个“合格默认值”。用户不会被吓到，也不会记住它。</p>
+<p>Taste Skill 想解决的就是这个问题：把“别再写默认模板”这件事，写成 AI 能执行的规则。</p>
+<p>它不让模型只追求干净。它要求模型考虑布局、字体、密度、动效、颜色、组件完成度，以及不同场景下页面应该有什么气质。</p>
+<h2 id="二这个仓库里有什么">二、这个仓库里有什么</h2>
+<p>Taste Skill 不是一个单独 skill，而是一组 skills。</p>
+<p>从 README 看，它把内容分成两类。</p>
+<p>第一类是 <strong>Coding Agents</strong> 用的 skills，用来指导 AI 写前端代码。包括：</p>
+<ul>
+<li><code>design-taste-frontend</code></li>
+<li><code>gpt-taste</code></li>
+<li><code>image-to-code</code></li>
+<li><code>redesign-existing-projects</code></li>
+<li><code>minimalist-ui</code></li>
+<li><code>industrial-brutalist-ui</code></li>
+<li><code>full-output-enforcement</code></li>
+<li><code>stop-slop</code></li>
+<li><code>prevent-text-overflow</code></li>
+</ul>
+<p>第二类是 <strong>Image Generation</strong> 用的 skills，用来生成前端参考图、移动端 mockup、brandkit 等视觉素材。包括：</p>
+<ul>
+<li><code>imagegen-frontend-web</code></li>
+<li><code>imagegen-frontend-mobile</code></li>
+<li><code>imagegen-frontend-brandkit</code></li>
+<li><code>imagegen-icon-patterns</code></li>
+</ul>
+<p>这套结构说明作者并不把“审美”看成一句 prompt。</p>
+<p>不同任务需要不同规则。</p>
+<p>新做一个页面，需要 <code>design-taste-frontend</code>。<br>
+把图片还原成代码，需要 <code>image-to-code</code>。<br>
+重做旧项目，需要 <code>redesign-existing-projects</code>。<br>
+想走极简方向，可以用 <code>minimalist-ui</code>。<br>
+想要更硬、更工业化的视觉，可以用 <code>industrial-brutalist-ui</code>。<br>
+生成参考图，则走 imagegen 系列。</p>
+<p>把所有风格都塞进一条指令，结果往往会互相打架。Taste Skill 的思路是按任务拆开。</p>
+<h2 id="三核心-skilldesign-taste-frontend">三、核心 skill：design-taste-frontend</h2>
+<p>Taste Skill 默认安装的是 <code>design-taste-frontend</code>。</p>
+<p>它主要管三件事：</p>
+<p>第一，避免常见 AI 视觉套路。</p>
+<p>比如不要默认使用一眼 AI 的 hero、随机渐变、过度卡片化布局、同质化 section。</p>
+<p>第二，让页面从产品和场景出发。</p>
+<p>一个 AI infra dashboard，不应该长得像消费级 App landing page。<br>
+一个开发者工具，不应该用过多装饰性卡片。<br>
+一个创意作品集，也不该像企业后台。</p>
+<p>第三，提高完成度。</p>
+<p>前端页面不只是“看起来有内容”。它需要处理真实状态：</p>
+<ul>
+<li>hover</li>
+<li>focus</li>
+<li>loading</li>
+<li>empty state</li>
+<li>error state</li>
+<li>mobile layout</li>
+<li>text overflow</li>
+<li>chart or table density</li>
+<li>icon and button affordance</li>
+</ul>
+<p>这类细节决定页面能不能像产品，而不是像 demo。</p>
+<h2 id="四三个旋钮控制页面气质">四、三个旋钮控制页面气质</h2>
+<p><img alt="三个旋钮控制前端气质" loading="lazy" decoding="async" fetchpriority="auto" width="1672" height="941" src="/_astro/02-design-dials.CChX91Hy_1BF54l.webp" ></p>
+<p>Taste Skill 里有一个很实用的设计：用环境变量控制生成风格。</p>
+<p>README 里列了三个旋钮：</p>
+<pre class="astro-code astro-code-themes min-light night-owl" style="--shiki-light:#24292eff;--shiki-dark:#d6deeb;--shiki-light-bg:#ffffff;--shiki-dark-bg:#011627; overflow-x: auto;--file-name-offset: -0.75rem;" tabindex="0" data-language="bash"><code><span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#C5E478">DESIGN_VARIANCE</span><span style="--shiki-light:#D32F2F;--shiki-dark:#C792EA">=</span><span style="--shiki-light:#2B5581;--shiki-dark:#ECC48D">0.7</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#C5E478">MOTION_INTENSITY</span><span style="--shiki-light:#D32F2F;--shiki-dark:#C792EA">=</span><span style="--shiki-light:#2B5581;--shiki-dark:#ECC48D">0.3</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#C5E478">VISUAL_DENSITY</span><span style="--shiki-light:#D32F2F;--shiki-dark:#C792EA">=</span><span style="--shiki-light:#2B5581;--shiki-dark:#ECC48D">0.6</span></span></code></pre>
+<p><code>DESIGN_VARIANCE</code> 控制布局实验度。</p>
+<p>值低一点，页面更稳，更接近常规布局。<br>
+值高一点，模型会尝试更强的布局变化，比如不对称构图、重叠层级、非标准网格。</p>
+<p><code>MOTION_INTENSITY</code> 控制动效强度。</p>
+<p>值低一点，只保留 hover、transition 这类轻动作。<br>
+值高一点，可以加入 scroll reveal、磁吸交互、视差和更强的状态反馈。</p>
+<p><code>VISUAL_DENSITY</code> 控制信息密度。</p>
+<p>值低一点，适合 landing page、品牌页、展示页。<br>
+值高一点，适合 dashboard、编辑器、管理后台和专业工具。</p>
+<p>这三个变量很有意思。</p>
+<p>它们把“我要更有设计感一点”这种模糊要求，拆成了 AI 能理解的控制项。</p>
+<p>你不需要每次都写一大段审美描述。你可以把方向收敛到几个明确参数上。</p>
+<h2 id="五不是一个-skill而是一套前端审美工具箱">五、不是一个 Skill，而是一套前端审美工具箱</h2>
+<p><img alt="Taste Skill 工具箱" loading="lazy" decoding="async" fetchpriority="auto" width="1672" height="941" src="/_astro/03-skill-toolbox.Clq8kyOS_Z1gYFu2.webp" ></p>
+<p>Taste Skill 的另一个特点是可移植。</p>
+<p>README 给了几种安装方式：</p>
+<p>安装全部 skills：</p>
+<pre class="astro-code astro-code-themes min-light night-owl" style="--shiki-light:#24292eff;--shiki-dark:#d6deeb;--shiki-light-bg:#ffffff;--shiki-dark-bg:#011627; overflow-x: auto;--file-name-offset: -0.75rem;" tabindex="0" data-language="bash"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-light-font-style:inherit;--shiki-dark:#82AAFF;--shiki-dark-font-style:italic">curl</span><span style="--shiki-light:#2B5581;--shiki-dark:#82AAFF"> -fsSL</span><span style="--shiki-light:#2B5581;--shiki-dark:#ECC48D"> https://raw.githubusercontent.com/Leonxlnx/taste-skill/main/scripts/install.sh</span><span style="--shiki-light:#D32F2F;--shiki-dark:#7FDBCA"> |</span><span style="--shiki-light:#6F42C1;--shiki-light-font-style:inherit;--shiki-dark:#82AAFF;--shiki-dark-font-style:italic"> bash</span></span></code></pre>
+<p>只安装默认的 <code>design-taste-frontend</code>：</p>
+<pre class="astro-code astro-code-themes min-light night-owl" style="--shiki-light:#24292eff;--shiki-dark:#d6deeb;--shiki-light-bg:#ffffff;--shiki-dark-bg:#011627; overflow-x: auto;--file-name-offset: -0.75rem;" tabindex="0" data-language="bash"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-light-font-style:inherit;--shiki-dark:#82AAFF;--shiki-dark-font-style:italic">curl</span><span style="--shiki-light:#2B5581;--shiki-dark:#82AAFF"> -fsSL</span><span style="--shiki-light:#2B5581;--shiki-dark:#ECC48D"> https://raw.githubusercontent.com/Leonxlnx/taste-skill/main/scripts/install-default.sh</span><span style="--shiki-light:#D32F2F;--shiki-dark:#7FDBCA"> |</span><span style="--shiki-light:#6F42C1;--shiki-light-font-style:inherit;--shiki-dark:#82AAFF;--shiki-dark-font-style:italic"> bash</span></span></code></pre>
+<p>也可以手动复制到不同 agent 环境：</p>
+<ul>
+<li>Codex：<code>$CODEX_HOME/skills/&#x3C;skill-name>/SKILL.md</code></li>
+<li>Cursor：<code>.cursor/skills/&#x3C;skill-name>/SKILL.md</code></li>
+<li>Claude Code：<code>$CLAUDE_HOME/skills/&#x3C;skill-name>/SKILL.md</code></li>
+<li>Gemini：<code>$GEMINI_HOME/skills/&#x3C;skill-name>/GEMINI.md</code></li>
+</ul>
+<p>这说明项目的目标不是绑定某个工具，而是把审美规则写成可迁移的 agent skill。</p>
+<p>同一套规则，可以在 Codex、Cursor、Claude Code、Gemini 这类环境里复用。</p>
+<h2 id="六它适合什么场景">六、它适合什么场景</h2>
+<p>第一类场景，是从零生成一个前端应用。</p>
+<p>比如你让 AI 做一个 SaaS dashboard、开发者工具、管理后台或作品集页面。Taste Skill 能帮模型少走默认模板。</p>
+<p>第二类场景，是重做旧项目。</p>
+<p>很多旧项目不是功能不行，而是 UI 缺少层级、状态和密度。<code>redesign-existing-projects</code> 这类 skill 更适合这类任务。</p>
+<p>第三类场景，是从设计图还原代码。</p>
+<p><code>image-to-code</code> 和 imagegen 系列 skills 可以用于参考图到界面的转换，适合先出视觉方向，再让 agent 写实现。</p>
+<p>第四类场景，是长期维护一个产品的前端气质。</p>
+<p>团队可以把常用 skill 固定下来，让 AI 每次生成页面时都遵守同一套审美边界。这样比每次重新写 prompt 更稳。</p>
+<h2 id="七它的边界">七、它的边界</h2>
+<p>Taste Skill 不能替代设计师。</p>
+<p>它不能理解品牌历史。<br>
+它不能替你做用户研究。<br>
+它也不能保证生成出来的页面一定符合业务目标。</p>
+<p>它解决的是另一个问题：AI Agent 写前端时缺少稳定的审美约束。</p>
+<p>如果你的输入只有“做个现代页面”，模型大概率会交一个安全默认值。Taste Skill 会把这个默认值往更明确的方向推。</p>
+<p>真正好的页面仍然需要人来判断：</p>
+<p>这个布局是否符合使用场景？<br>
+这个密度是否适合目标用户？<br>
+这个动效是否干扰操作？<br>
+这个色彩是否符合品牌？<br>
+这个页面是否真的比旧版更好用？</p>
+<p>Skill 能提高下限。上限还在人的判断里。</p>
+<h2 id="我的看法">我的看法</h2>
+<p>Taste Skill 抓住了 AI 前端生成里的一个实际问题。</p>
+<p>现在模型写代码越来越强，但生成的界面经常停在“能看”的层级。代码结构对了，组件也有了，页面却像十个 demo 拼出来的。</p>
+<p>这不是单纯的 CSS 问题。</p>
+<p>它和模型的默认偏好有关：选择最常见的布局，使用最安全的配色，复用最容易预测的 section 结构。</p>
+<p>Taste Skill 的做法是把这些偏好显式写出来，再用规则约束它。</p>
+<p>不要默认卡片。<br>
+不要默认蓝紫渐变。<br>
+不要只有 hero 和三列功能点。<br>
+不要忽略文字溢出。<br>
+不要省略状态。<br>
+不要把所有产品都做成同一种 SaaS 首页。</p>
+<p>这些规则看起来琐碎，但正是这些琐碎细节，让页面从 demo 接近产品。</p>
+<p>如果你经常让 AI 生成前端页面，这个项目值得试试。</p>
+<h2 id="结尾">结尾</h2>
+<p>AI 前端工具已经能把页面搭起来。</p>
+<p>接下来更重要的问题是：它搭出来的页面有没有判断。</p>
+<p>Taste Skill 给出的答案不是再加一个模板，而是把设计偏好、反模板规则和交付标准写进 skill。</p>
+<p>这很适合今天的 agent 工作流。</p>
+<p>让模型写代码。<br>
+让 skill 约束审美。<br>
+让人做最后判断。</p>
+<p>项目地址：<br>
+<a href="https://github.com/Leonxlnx/taste-skill">https://github.com/Leonxlnx/taste-skill</a></p>
+<p>参考资料：<br>
+Taste Skill GitHub README、项目默认 <code>design-taste-frontend</code> skill 说明。</p> </article> <hr class="my-8 border-dashed">  <ul class="mt-4 mb-8 flex flex-wrap gap-4 sm:my-8"> <li> <a href="/tags/ai/" class="flex items-center gap-0.5 border-b-2 border-dashed border-foreground hover:-mt-0.5 hover:border-accent hover:text-accent focus-visible:border-none focus-visible:text-accent text-sm" data-astro-transition-scope="astro-36ssibgs-2"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-80 size-4"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M5 9l14 0" /><path d="M5 15l14 0" /><path d="M11 4l-4 16" /><path d="M17 4l-4 16" /></svg> AI </a> </li><li> <a href="/tags/llm/" class="flex items-center gap-0.5 border-b-2 border-dashed border-foreground hover:-mt-0.5 hover:border-accent hover:text-accent focus-visible:border-none focus-visible:text-accent text-sm" data-astro-transition-scope="astro-36ssibgs-3"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-80 size-4"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M5 9l14 0" /><path d="M5 15l14 0" /><path d="M11 4l-4 16" /><path d="M17 4l-4 16" /></svg> LLM </a> </li><li> <a href="/tags/开源工具/" class="flex items-center gap-0.5 border-b-2 border-dashed border-foreground hover:-mt-0.5 hover:border-accent hover:text-accent focus-visible:border-none focus-visible:text-accent text-sm" data-astro-transition-scope="astro-36ssibgs-4"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-80 size-4"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M5 9l14 0" /><path d="M5 15l14 0" /><path d="M11 4l-4 16" /><path d="M17 4l-4 16" /></svg> 开源工具 </a> </li> </ul> <div id="btt-btn-container" class="fixed end-4 bottom-8 z-50 md:sticky md:end-auto md:float-end md:me-1 translate-y-14 opacity-0 transition duration-500"> <button data-button="back-to-top" class="group relative bg-background px-2 py-1 size-14 rounded-full shadow-xl md:h-8 md:w-fit md:rounded-md md:shadow-none md:focus-visible:rounded-none md:bg-background/35 md:bg-clip-padding md:backdrop-blur-lg"> <span id="progress-indicator" class="absolute inset-0 -z-10 block size-14 scale-110 rounded-full bg-transparent md:hidden md:h-8 md:rounded-md"></span> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block rotate-90 md:hidden"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M15 6l-6 6l6 6" /></svg> <span class="sr-only text-sm group-hover:text-accent md:not-sr-only"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-4"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M12 5l0 14" /><path d="M16 9l-4 -4" /><path d="M8 9l4 -4" /></svg>
+Back To Top
+</span> </button> </div> <script data-astro-rerun>
+  /** Scrolls the document to the top when
+   * the "Back to Top" button is clicked. */
+  function backToTop() {
+    const rootElement = document.documentElement;
+    const btnContainer = document.querySelector("#btt-btn-container");
+    const backToTopBtn = document.querySelector("[data-button='back-to-top']");
+    const progressIndicator = document.querySelector("#progress-indicator");
+
+    if (!rootElement || !btnContainer || !backToTopBtn || !progressIndicator)
+      return;
+
+    // Attach click event handler for back-to-top button
+    backToTopBtn.addEventListener("click", () => {
+      document.body.scrollTop = 0; // For Safari
+      document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    });
+
+    // Handle button visibility according to scroll position
+    let lastVisible = null;
+    function handleScroll() {
+      const scrollTotal = rootElement.scrollHeight - rootElement.clientHeight;
+      const scrollTop = rootElement.scrollTop;
+      const scrollPercent = Math.floor((scrollTop / scrollTotal) * 100);
+
+      progressIndicator.style.setProperty(
+        "background-image",
+        `conic-gradient(var(--accent), var(--accent) ${scrollPercent}%, transparent ${scrollPercent}%)`
+      );
+
+      const isVisible = scrollTop / scrollTotal > 0.3;
+
+      if (isVisible !== lastVisible) {
+        btnContainer.classList.toggle("opacity-100", isVisible);
+        btnContainer.classList.toggle("translate-y-0", isVisible);
+        btnContainer.classList.toggle("opacity-0", !isVisible);
+        btnContainer.classList.toggle("translate-y-14", !isVisible);
+        lastVisible = isVisible;
+      }
+    }
+
+    let ticking = false;
+    document.addEventListener("scroll", () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+  }
+  backToTop();
+</script> <div class="flex flex-none flex-col items-center justify-center gap-1 md:items-start"><span class="italic">Share this post on:</span><div class="text-center"><a href="https://wa.me/?text=https://0xfelix.li/posts/2026/taste-skill-frontend-design/" title="Share this post via WhatsApp" class="group inline-flex items-center gap-1 hover:text-accent scale-90 p-2 hover:rotate-6 sm:p-1"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" /><path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" /></svg><span class="sr-only">Share this post via WhatsApp</span> </a><a href="https://www.facebook.com/sharer.php?u=https://0xfelix.li/posts/2026/taste-skill-frontend-design/" title="Share this post on Facebook" class="group inline-flex items-center gap-1 hover:text-accent scale-90 p-2 hover:rotate-6 sm:p-1"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" /></svg><span class="sr-only">Share this post on Facebook</span> </a><a href="https://x.com/intent/post?url=https://0xfelix.li/posts/2026/taste-skill-frontend-design/" title="Share this post on X" class="group inline-flex items-center gap-1 hover:text-accent scale-90 p-2 hover:rotate-6 sm:p-1"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M4 4l11.733 16h4.267l-11.733 -16z" /><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" /></svg><span class="sr-only">Share this post on X</span> </a><a href="https://t.me/share/url?url=https://0xfelix.li/posts/2026/taste-skill-frontend-design/" title="Share this post via Telegram" class="group inline-flex items-center gap-1 hover:text-accent scale-90 p-2 hover:rotate-6 sm:p-1"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M15 10l-4 4l6 6l4 -16l-18 7l4 2l2 6l3 -4" /></svg><span class="sr-only">Share this post via Telegram</span> </a><a href="https://pinterest.com/pin/create/button/?url=https://0xfelix.li/posts/2026/taste-skill-frontend-design/" title="Share this post on Pinterest" class="group inline-flex items-center gap-1 hover:text-accent scale-90 p-2 hover:rotate-6 sm:p-1"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M8 20l4 -9" /><path d="M10.7 14c.437 1.263 1.43 2 2.55 2c2.071 0 3.75 -1.554 3.75 -4a5 5 0 1 0 -9.7 1.7" /><path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" /></svg><span class="sr-only">Share this post on Pinterest</span> </a><a href="mailto:?subject=See%20this%20post&#38;body=https://0xfelix.li/posts/2026/taste-skill-frontend-design/" title="Share this post via email" class="group inline-flex items-center gap-1 hover:text-accent scale-90 p-2 hover:rotate-6 sm:p-1"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" /><path d="M3 7l9 6l9 -6" /></svg><span class="sr-only">Share this post via email</span> </a></div></div> <script data-astro-rerun>
+  (() => {
+    function loadGiscusComments() {
+      const section = document.getElementById("comments");
+      const container = document.getElementById("giscus-comments");
+      if (!section || !container) return;
+
+      const rawConfig = section.getAttribute("data-giscus-config");
+      if (!rawConfig) return;
+
+      const config = JSON.parse(rawConfig);
+      const theme =
+        document.documentElement.getAttribute("data-theme") === "dark"
+          ? "dark"
+          : "light";
+
+      container.replaceChildren();
+
+      const script = document.createElement("script");
+      script.src = "https://giscus.app/client.js";
+      script.async = true;
+      script.crossOrigin = "anonymous";
+      script.dataset.repo = config.repo;
+      script.dataset.repoId = config.repoId;
+      script.dataset.category = config.category;
+      script.dataset.categoryId = config.categoryId;
+      script.dataset.mapping = config.mapping;
+      script.dataset.strict = config.strict;
+      script.dataset.reactionsEnabled = config.reactionsEnabled;
+      script.dataset.emitMetadata = config.emitMetadata;
+      script.dataset.inputPosition = config.inputPosition;
+      script.dataset.theme = theme;
+      script.dataset.lang = config.lang;
+      script.dataset.loading = config.loading;
+
+      container.appendChild(script);
+    }
+
+    loadGiscusComments();
+
+    const giscusThemeObserver = new MutationObserver(() => {
+      const iframe = document.querySelector("iframe.giscus-frame");
+      if (!iframe?.contentWindow) return;
+
+      iframe.contentWindow.postMessage(
+        {
+          giscus: {
+            setConfig: {
+              theme:
+                document.documentElement.getAttribute("data-theme") === "dark"
+                  ? "dark"
+                  : "light",
+            },
+          },
+        },
+        "https://giscus.app"
+      );
+    });
+
+    giscusThemeObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-theme"],
+    });
+  })();
+</script> <hr class="my-6 border-dashed"> <div data-pagefind-ignore class="grid grid-cols-1 gap-6 sm:grid-cols-2"> <a href="/posts/2026/ecc-agent-workflow-system" class="flex w-full gap-1 hover:opacity-75"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block flex-none rtl:rotate-180"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M15 6l-6 6l6 6" /></svg> <div> <span>Previous Post</span> <div class="text-sm text-accent/85">别再把 AI 编程当聊天：ECC 把 Agent 工作流做成工程系统</div> </div> </a> <a href="/posts/2026/stop-slop-remove-ai-writing" class="flex w-full justify-end gap-1 text-end hover:opacity-75 sm:col-start-2"> <div> <span>Next Post</span> <div class="text-sm text-accent/85">去掉 AI 味：Stop Slop 教你把机器腔改成人话</div> </div> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block flex-none rtl:rotate-180"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M9 6l6 6l-6 6" /></svg> </a> </div> </main> <footer class="app-layout mt-auto"> <div class="py-6 sm:py-4 border-t border-border flex flex-col items-center justify-between sm:flex-row-reverse"> <div class="flex flex-wrap items-center gap-1"> <a href="https://x.com/0xfelixli" title="Follow 0xfelixli on X" class="group inline-flex items-center gap-1 hover:text-accent p-2 hover:rotate-6 sm:p-1">  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M4 4l11.733 16h4.267l-11.733 -16z" /><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" /></svg> <span class="sr-only">Follow 0xfelixli on X</span>  </a><a href="https://github.com/0xfelixli" title="Visit 0xfelixli on GitHub" class="group inline-flex items-center gap-1 hover:text-accent p-2 hover:rotate-6 sm:p-1">  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" /></svg> <span class="sr-only">Visit 0xfelixli on GitHub</span>  </a><a href="mailto:0xfelixli@gmail.com" title="Email 0xfelixli" class="group inline-flex items-center gap-1 hover:text-accent p-2 hover:rotate-6 sm:p-1">  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" /><path d="M3 7l9 6l9 -6" /></svg> <span class="sr-only">Email 0xfelixli</span>  </a> </div> <div class="my-2 flex flex-col items-center whitespace-nowrap sm:flex-row"> <span>Copyright &#169; 2026</span> <span class="hidden sm:inline">&nbsp;|&nbsp;</span> <span>All rights reserved.</span> </div> </div> </footer>  <!-- Load full theme logic --> <script type="module">const d="theme",r="light",m="dark";function i(){const e=localStorage.getItem(d);return e||(window.matchMedia("(prefers-color-scheme: dark)").matches?m:r)}let t=window.theme?.themeValue??i();function c(){localStorage.setItem(d,t),o()}function o(){document.firstElementChild?.setAttribute("data-theme",t),document.querySelector("#theme-btn")?.setAttribute("aria-label",t);const e=document.body;if(e){const n=window.getComputedStyle(e).backgroundColor;document.querySelector("meta[name='theme-color']")?.setAttribute("content",n)}}window.theme?(window.theme.setPreference=c,window.theme.reflectPreference=o):window.theme={themeValue:t,setPreference:c,reflectPreference:o,getTheme:()=>t,setTheme:e=>{t=e}};o();function s(){o(),document.querySelector("#theme-btn")?.addEventListener("click",()=>{t=t===r?m:r,window.theme?.setTheme(t),c()})}s();document.addEventListener("astro:after-swap",s);document.addEventListener("astro:before-swap",e=>{const a=e,n=document.querySelector("meta[name='theme-color']")?.getAttribute("content");n&&a.newDocument.querySelector("meta[name='theme-color']")?.setAttribute("content",n)});window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",({matches:e})=>{t=e?m:r,window.theme?.setTheme(t),c()});</script> </body> </html> <script data-astro-rerun>
+  /** Create a progress indicator at the top. */
+  function createProgressBar() {
+    const progressContainer = document.createElement("div");
+    progressContainer.className =
+      "progress-container fixed top-0 z-10 h-1 w-full bg-background";
+
+    const progressBar = document.createElement("div");
+    progressBar.className = "progress-bar h-1 w-0 bg-accent";
+    progressBar.id = "myBar";
+
+    progressContainer.appendChild(progressBar);
+    document.body.appendChild(progressContainer);
+  }
+  createProgressBar();
+
+  /** Update the progress bar when user scrolls. */
+  function updateScrollProgress() {
+    document.addEventListener("scroll", () => {
+      const winScroll =
+        document.body.scrollTop || document.documentElement.scrollTop;
+      const height =
+        document.documentElement.scrollHeight -
+        document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      const myBar = document.getElementById("myBar");
+      if (myBar) {
+        myBar.style.width = scrolled + "%";
+      }
+    });
+  }
+  updateScrollProgress();
+</script> <script data-astro-rerun>
+  /** Attaches links to headings in the document,
+   *  allowing sharing of sections easily */
+  function addHeadingLinks() {
+    const headings = Array.from(
+      document.querySelectorAll("h2, h3, h4, h5, h6")
+    );
+    for (const heading of headings) {
+      heading.classList.add("group");
+      const link = document.createElement("a");
+      link.className =
+        "heading-link ms-2 no-underline opacity-75 md:opacity-0 md:group-hover:opacity-100 md:focus:opacity-100";
+      link.href = "#" + heading.id;
+
+      const span = document.createElement("span");
+      span.ariaHidden = "true";
+      span.innerText = "#";
+      link.appendChild(span);
+      heading.appendChild(link);
+    }
+  }
+  addHeadingLinks();
+
+  /** Attaches copy buttons to code blocks in the document,
+   * allowing users to copy code easily. */
+  function attachCopyButtons() {
+    const copyButtonLabel = "Copy";
+    const codeBlocks = Array.from(document.querySelectorAll("pre"));
+
+    for (const codeBlock of codeBlocks) {
+      const wrapper = document.createElement("div");
+      wrapper.style.position = "relative";
+
+      // Check if --file-name-offset custom property exists
+      const computedStyle = getComputedStyle(codeBlock);
+      const hasFileNameOffset =
+        computedStyle.getPropertyValue("--file-name-offset").trim() !== "";
+
+      // Determine the top positioning class
+      const topClass = hasFileNameOffset
+        ? "top-(--file-name-offset)"
+        : "-top-3";
+
+      const copyButton = document.createElement("button");
+      copyButton.className = `copy-code absolute end-3 ${topClass} rounded bg-muted border border-muted px-2 py-1 text-xs leading-4 text-foreground font-medium`;
+      copyButton.innerHTML = copyButtonLabel;
+      codeBlock.setAttribute("tabindex", "0");
+      codeBlock.appendChild(copyButton);
+
+      // wrap codebock with relative parent element
+      codeBlock?.parentNode?.insertBefore(wrapper, codeBlock);
+      wrapper.appendChild(codeBlock);
+
+      copyButton.addEventListener("click", async () => {
+        await copyCode(codeBlock, copyButton);
+      });
+    }
+
+    async function copyCode(block, button) {
+      const code = block.querySelector("code");
+      const text = code?.innerText;
+
+      await navigator.clipboard.writeText(text ?? "");
+
+      // visual feedback that task is completed
+      button.innerText = "Copied";
+
+      setTimeout(() => {
+        button.innerText = copyButtonLabel;
+      }, 700);
+    }
+  }
+  attachCopyButtons();
+
+  /** Opens article images in a lightweight full-screen viewer. */
+  function attachImageLightbox() {
+    const article = document.getElementById("article");
+    if (!article) return;
+
+    const images = Array.from(article.querySelectorAll("img"));
+    if (images.length === 0) return;
+
+    let lightbox = document.getElementById("image-lightbox");
+    if (!lightbox) {
+      lightbox = document.createElement("div");
+      lightbox.id = "image-lightbox";
+      lightbox.setAttribute("aria-hidden", "true");
+      lightbox.innerHTML = `
+        <button type="button" class="image-lightbox__backdrop" aria-label="Close image preview">
+          <img class="image-lightbox__image" alt="" />
+          <span class="image-lightbox__caption"></span>
+        </button>
+      `;
+      document.body.appendChild(lightbox);
+    }
+
+    const backdrop = lightbox.querySelector(".image-lightbox__backdrop");
+    const preview = lightbox.querySelector(".image-lightbox__image");
+    const caption = lightbox.querySelector(".image-lightbox__caption");
+
+    function openImage(image) {
+      preview.src = image.currentSrc || image.src;
+      preview.alt = image.alt || "";
+      caption.textContent = image.alt || "";
+      caption.hidden = !image.alt;
+      lightbox.classList.add("is-open");
+      lightbox.setAttribute("aria-hidden", "false");
+      document.documentElement.classList.add("overflow-hidden");
+      backdrop.focus();
+    }
+
+    function closeImage() {
+      lightbox.classList.remove("is-open");
+      lightbox.setAttribute("aria-hidden", "true");
+      document.documentElement.classList.remove("overflow-hidden");
+      preview.removeAttribute("src");
+    }
+
+    backdrop.onclick = closeImage;
+
+    if (document.documentElement.dataset.imageLightboxEscapeBound !== "true") {
+      document.documentElement.dataset.imageLightboxEscapeBound = "true";
+      document.addEventListener("keydown", event => {
+        const activeLightbox = document.getElementById("image-lightbox");
+        if (
+          event.key === "Escape" &&
+          activeLightbox?.classList.contains("is-open")
+        ) {
+          activeLightbox.classList.remove("is-open");
+          activeLightbox.setAttribute("aria-hidden", "true");
+          document.documentElement.classList.remove("overflow-hidden");
+          activeLightbox
+            .querySelector(".image-lightbox__image")
+            ?.removeAttribute("src");
+        }
+      });
+    }
+
+    for (const image of images) {
+      if (image.dataset.zoomBound === "true" || image.closest("a")) continue;
+
+      image.dataset.zoomBound = "true";
+      image.dataset.zoomable = "true";
+      image.tabIndex = 0;
+      image.setAttribute("role", "button");
+      image.setAttribute("aria-label", image.alt || "Open image preview");
+
+      image.addEventListener("click", () => openImage(image));
+      image.addEventListener("keydown", event => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          openImage(image);
+        }
+      });
+    }
+  }
+  attachImageLightbox();
+
+  /* Go to page start after page swap */
+  document.addEventListener("astro:after-swap", () =>
+    window.scrollTo({ left: 0, top: 0, behavior: "instant" })
+  );
+</script> 

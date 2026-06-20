@@ -1,0 +1,801 @@
+<!DOCTYPE html><html dir="ltr" lang="zh-CN" class="scroll-smooth"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="canonical" href="https://0xfelix.li/posts/2026/ecc-agent-workflow-system/"><meta name="generator" content="Astro v5.18.2"><!-- General Meta Tags --><title>别再把 AI 编程当聊天：ECC 把 Agent 工作流做成工程系统 | Stack Ashes</title><meta name="title" content="别再把 AI 编程当聊天：ECC 把 Agent 工作流做成工程系统 | Stack Ashes"><meta name="description" content="```bash /plugin marketplace add https://github.com/affaan-m/ECC /plugin install ecc@ecc ```"><meta name="author" content="felix"><link rel="sitemap" href="/sitemap-index.xml"><!-- Open Graph / Facebook --><meta property="og:title" content="别再把 AI 编程当聊天：ECC 把 Agent 工作流做成工程系统 | Stack Ashes"><meta property="og:description" content="```bash /plugin marketplace add https://github.com/affaan-m/ECC /plugin install ecc@ecc ```"><meta property="og:url" content="https://0xfelix.li/posts/2026/ecc-agent-workflow-system/"><meta property="og:image" content="https://0xfelix.li/astropaper-og.jpg"><!-- Article Published/Modified time --><meta property="article:published_time" content="2026-05-30T16:00:00.000Z"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://0xfelix.li/posts/2026/ecc-agent-workflow-system/"><meta property="twitter:title" content="别再把 AI 编程当聊天：ECC 把 Agent 工作流做成工程系统 | Stack Ashes"><meta property="twitter:description" content="```bash /plugin marketplace add https://github.com/affaan-m/ECC /plugin install ecc@ecc ```"><meta property="twitter:image" content="https://0xfelix.li/astropaper-og.jpg"><!-- Google JSON-LD Structured data --><script type="application/ld+json">[{"@context":"https://schema.org","@type":"BlogPosting","headline":"别再把 AI 编程当聊天：ECC 把 Agent 工作流做成工程系统","description":"```bash /plugin marketplace add https://github.com/affaan-m/ECC /plugin install ecc@ecc ```","image":"https://0xfelix.li/astropaper-og.jpg","url":"https://0xfelix.li/posts/2026/ecc-agent-workflow-system/","mainEntityOfPage":{"@type":"WebPage","@id":"https://0xfelix.li/posts/2026/ecc-agent-workflow-system/"},"datePublished":"2026-05-30T16:00:00.000Z","inLanguage":"zh-CN","keywords":"AI, LLM, 开源工具","author":{"@type":"Person","name":"felix","url":"https://github.com/0xfelixli"}},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://0xfelix.li/"},{"@type":"ListItem","position":2,"name":"Posts","item":"https://0xfelix.li/posts/"},{"@type":"ListItem","position":3,"name":"别再把 AI 编程当聊天：ECC 把 Agent 工作流做成工程系统","item":"https://0xfelix.li/posts/2026/ecc-agent-workflow-system/"}]}]</script><!-- Enable RSS feed auto-discovery  --><!-- https://docs.astro.build/en/recipes/rss/#enabling-rss-feed-auto-discovery --><link rel="alternate" type="application/rss+xml" title="Stack Ashes" href="https://0xfelix.li/rss.xml"><meta name="theme-color" content=""><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><!-- Minimal inline script to prevent FOUC - sets theme immediately --><script>
+      (function () {
+        const initialColorScheme = ""; // "light" | "dark"
+        const currentTheme = localStorage.getItem("theme");
+
+        function getPreferTheme() {
+          if (currentTheme) return currentTheme;
+          if (initialColorScheme) return initialColorScheme;
+          return window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light";
+        }
+
+        const themeValue = getPreferTheme();
+
+        // Set theme immediately to prevent flash
+        document.firstElementChild?.setAttribute("data-theme", themeValue);
+
+        // Export minimal API for external script
+        window.theme = {
+          themeValue: themeValue,
+          getTheme: () => window.theme.themeValue,
+          setTheme: val => {
+            window.theme.themeValue = val;
+          },
+        };
+      })();
+    </script><link rel="stylesheet" href="/_astro/about.kw09u4Im.css">
+<style>#image-lightbox{position:fixed;inset:0;z-index:60;display:none}#image-lightbox.is-open{display:block}.image-lightbox__backdrop{display:flex;width:100%;height:100%;flex-direction:column;align-items:center;justify-content:center;gap:1rem;border:0;background:#000000d1;padding:1rem;cursor:zoom-out}.image-lightbox__image{max-width:min(96vw,1440px);max-height:86vh;border:1px solid rgb(255 255 255 / .18);background:#fff;object-fit:contain}.image-lightbox__caption{max-width:min(90vw,960px);color:#fff;font-size:.875rem;line-height:1.5;text-align:center}
+@keyframes astroFadeInOut{0%{opacity:1}to{opacity:0}}@keyframes astroFadeIn{0%{opacity:0;mix-blend-mode:plus-lighter}to{opacity:1;mix-blend-mode:plus-lighter}}@keyframes astroFadeOut{0%{opacity:1;mix-blend-mode:plus-lighter}to{opacity:0;mix-blend-mode:plus-lighter}}@keyframes astroSlideFromRight{0%{transform:translate(100%)}}@keyframes astroSlideFromLeft{0%{transform:translate(-100%)}}@keyframes astroSlideToRight{to{transform:translate(100%)}}@keyframes astroSlideToLeft{to{transform:translate(-100%)}}@media (prefers-reduced-motion){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}[data-astro-transition-scope]{animation:none!important}}
+:where([data-astro-image]){object-fit:var(--fit);object-position:var(--pos);height:auto}:where([data-astro-image=full-width]){width:100%}:where([data-astro-image=constrained]){max-width:100%}
+</style><style>[data-astro-transition-scope="astro-undyc7o6-1"] { view-transition-name: \522B\518D\628A-ai-\7F16\7A0B\5F53\804A\5929\FF1A ecc-\628A-agent-\5DE5\4F5C\6D41\505A\6210\5DE5\7A0B\7CFB\7EDF; }@layer astro { ::view-transition-old(\522B\518D\628A-ai-\7F16\7A0B\5F53\804A\5929\FF1A ecc-\628A-agent-\5DE5\4F5C\6D41\505A\6210\5DE5\7A0B\7CFB\7EDF) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(\522B\518D\628A-ai-\7F16\7A0B\5F53\804A\5929\FF1A ecc-\628A-agent-\5DE5\4F5C\6D41\505A\6210\5DE5\7A0B\7CFB\7EDF) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(\522B\518D\628A-ai-\7F16\7A0B\5F53\804A\5929\FF1A ecc-\628A-agent-\5DE5\4F5C\6D41\505A\6210\5DE5\7A0B\7CFB\7EDF) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(\522B\518D\628A-ai-\7F16\7A0B\5F53\804A\5929\FF1A ecc-\628A-agent-\5DE5\4F5C\6D41\505A\6210\5DE5\7A0B\7CFB\7EDF) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-undyc7o6-1"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-undyc7o6-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-undyc7o6-1"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-undyc7o6-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-undyc7o6-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-undyc7o6-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-undyc7o6-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-undyc7o6-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style><style>[data-astro-transition-scope="astro-36ssibgs-2"] { view-transition-name: ai; }@layer astro { ::view-transition-old(ai) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(ai) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(ai) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(ai) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-36ssibgs-2"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-36ssibgs-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-36ssibgs-2"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-36ssibgs-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-36ssibgs-2"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-36ssibgs-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-36ssibgs-2"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-36ssibgs-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style><style>[data-astro-transition-scope="astro-36ssibgs-3"] { view-transition-name: llm; }@layer astro { ::view-transition-old(llm) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(llm) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(llm) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(llm) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-36ssibgs-3"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-36ssibgs-3"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-36ssibgs-3"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-36ssibgs-3"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-36ssibgs-3"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-36ssibgs-3"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-36ssibgs-3"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-36ssibgs-3"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style><style>[data-astro-transition-scope="astro-36ssibgs-4"] { view-transition-name: \5F00\6E90\5DE5\5177; }@layer astro { ::view-transition-old(\5F00\6E90\5DE5\5177) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(\5F00\6E90\5DE5\5177) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(\5F00\6E90\5DE5\5177) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(\5F00\6E90\5DE5\5177) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-36ssibgs-4"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-36ssibgs-4"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-36ssibgs-4"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-36ssibgs-4"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-36ssibgs-4"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-36ssibgs-4"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-36ssibgs-4"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-36ssibgs-4"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style></head> <body>  <a id="skip-to-content" href="#main-content" class="absolute start-16 -top-full z-50 bg-background px-3 py-2 text-accent backdrop-blur-lg transition-all focus:top-4">
+Skip to content
+</a> <header class="app-layout flex flex-col items-center justify-between sm:flex-row"> <div id="top-nav-wrap" class="py-4 sm:py-6 border-b border-border relative w-full bg-background flex items-baseline justify-between sm:items-center"> <a href="/" class="absolute py-1 text-xl leading-8 font-semibold whitespace-nowrap sm:static sm:my-auto sm:text-2xl sm:leading-none"> Stack Ashes </a> <nav id="nav-menu" class="flex w-full flex-col items-center sm:ms-2 sm:flex-row sm:justify-end sm:space-x-4 sm:py-0"> <button id="menu-btn" class="focus-outline self-end p-2 sm:hidden" aria-label="Open Menu" aria-expanded="false" aria-controls="menu-items"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden" id="close-icon"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M18 6l-12 12" /><path d="M6 6l12 12" /></svg> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-menu-deep" id="menu-icon"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M4 6h16" /><path d="M7 12h13" /><path d="M10 18h10" /></svg> </button> <ul id="menu-items" class="mt-4 grid w-44 grid-cols-2 place-content-center gap-2 [&#38;>li>a]:block [&#38;>li>a]:px-4 [&#38;>li>a]:py-3 [&#38;>li>a]:text-center [&#38;>li>a]:font-medium [&#38;>li>a]:hover:text-accent sm:[&#38;>li>a]:px-2 sm:[&#38;>li>a]:py-1 hidden sm:mt-0 sm:flex sm:w-auto sm:gap-x-5 sm:gap-y-0"> <li class="col-span-2"> <a href="/posts" class="active-nav">
+Posts
+</a> </li> <li class="col-span-2"> <a href="/tags">
+Tags
+</a> </li> <li class="col-span-2"> <a href="/gallery">
+Gallery
+</a> </li> <li class="col-span-2"> <a href="/about">
+About
+</a> </li> <li class="col-span-2"> <a href="/archives" title="Archives" aria-label="archives" class="group inline-flex items-center gap-1 hover:text-accent focus-outline flex justify-center p-3 sm:p-1">  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden sm:inline-block"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 4m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z" /><path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" /><path d="M10 12l4 0" /></svg> <span class="sm:sr-only">Archives</span>  </a> </li> <li class="col-span-1 flex items-center justify-center"> <a href="/search" title="Search" aria-label="search" class="group inline-flex items-center gap-1 hover:text-accent focus-outline flex p-3 sm:p-1">  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-search"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" /><path d="M21 21l-6 -6" /></svg> <span class="sr-only">Search</span>  </a> </li> <li class="col-span-1 flex items-center justify-center"> <button id="theme-btn" class="focus-outline relative size-12 p-4 sm:size-8 hover:[&>svg]:stroke-accent" title="Toggles light & dark" aria-label="auto" aria-live="polite"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute top-[50%] left-[50%] -translate-[50%] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" /></svg> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute top-[50%] left-[50%] -translate-[50%] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M14.828 14.828a4 4 0 1 0 -5.656 -5.656a4 4 0 0 0 5.656 5.656z" /><path d="M6.343 17.657l-1.414 1.414" /><path d="M6.343 6.343l-1.414 -1.414" /><path d="M17.657 6.343l1.414 -1.414" /><path d="M17.657 17.657l1.414 1.414" /><path d="M4 12h-2" /><path d="M12 4v-2" /><path d="M20 12h2" /><path d="M12 20v2" /></svg> </button> </li> </ul> </nav> </div> </header> <script type="module">function s(){const e=document.querySelector("#menu-btn"),t=document.querySelector("#menu-items"),n=document.querySelector("#menu-icon"),o=document.querySelector("#close-icon");!e||!t||!n||!o||e.addEventListener("click",()=>{const c=e.getAttribute("aria-expanded")==="true";e.setAttribute("aria-expanded",c?"false":"true"),e.setAttribute("aria-label",c?"Open Menu":"Close Menu"),t.classList.toggle("hidden"),n.classList.toggle("hidden"),o.classList.toggle("hidden")})}s();document.addEventListener("astro:after-swap",s);</script> <div class="app-layout flex items-center justify-start"><a id="back-button" href="/" class="group inline-flex items-center gap-1 hover:text-accent focus-outline -ms-2 mt-8 mb-2 hover:text-foreground/75"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 rtl:rotate-180"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M15 6l-6 6l6 6" /></svg><span>Go back</span> </a></div><script type="module">function o(){const t=document.querySelector("#back-button"),e=sessionStorage.getItem("backUrl");e&&t&&(t.href=e)}document.addEventListener("astro:page-load",o);o();</script> <main id="main-content" class="app-layout pb-12" data-pagefind-body> <header> <h1 class="inline-block text-2xl font-bold text-accent sm:text-3xl" data-astro-transition-scope="astro-undyc7o6-1"> 别再把 AI 编程当聊天：ECC 把 Agent 工作流做成工程系统 </h1> <div class="my-2 flex items-center gap-2"> <div class="flex items-center gap-x-2 opacity-80"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 min-w-5.5"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z" /><path d="M16 3v4" /><path d="M8 3v4" /><path d="M4 11h16" /><path d="M7 14h.013" /><path d="M10.01 14h.005" /><path d="M13.01 14h.005" /><path d="M16.015 14h.005" /><path d="M13.015 17h.005" /><path d="M7.01 17h.005" /><path d="M10.01 17h.005" /></svg>  <time class="text-sm sm:text-base" datetime="2026-05-30T16:00:00.000Z">31 May, 2026</time> </div> <span aria-hidden="true" class="max-sm:hidden hidden">|</span>  </div>  </header> <article id="article" class="app-prose mt-8 w-full max-w-app prose-pre:bg-(--shiki-light-bg) dark:prose-pre:bg-(--shiki-dark-bg)"> <h1 id="别再把-ai-编程当聊天ecc-把-agent-工作流做成工程系统">别再把 AI 编程当聊天：ECC 把 Agent 工作流做成工程系统</h1>
+<p>先看两行命令。</p>
+<pre class="astro-code astro-code-themes min-light night-owl" style="--shiki-light:#24292eff;--shiki-dark:#d6deeb;--shiki-light-bg:#ffffff;--shiki-dark-bg:#011627; overflow-x: auto;--file-name-offset: -0.75rem;" tabindex="0" data-language="bash"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-light-font-style:inherit;--shiki-dark:#82AAFF;--shiki-dark-font-style:italic">/plugin</span><span style="--shiki-light:#2B5581;--shiki-dark:#ECC48D"> marketplace</span><span style="--shiki-light:#2B5581;--shiki-dark:#ECC48D"> add</span><span style="--shiki-light:#2B5581;--shiki-dark:#ECC48D"> https://github.com/affaan-m/ECC</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-light-font-style:inherit;--shiki-dark:#82AAFF;--shiki-dark-font-style:italic">/plugin</span><span style="--shiki-light:#2B5581;--shiki-dark:#ECC48D"> install</span><span style="--shiki-light:#2B5581;--shiki-dark:#ECC48D"> ecc@ecc</span></span></code></pre>
+<p>这不是安装一个模型，也不是复制一段提示词。</p>
+<p>它装进去的是一套给 AI Coding Agent 用的工作系统：agents、skills、rules、hooks、MCP 配置、命令适配层、Dashboard，以及正在推进的 ECC 2.0 控制层。</p>
+<p>项目地址：<br>
+<a href="https://github.com/affaan-m/ECC">https://github.com/affaan-m/ECC</a></p>
+<p>ECC 早期的名字和叙事更接近 <strong>Everything Claude Code</strong>。但看现在的英文 README，它已经把自己定位成：</p>
+<p><strong>The harness-native operator system for agentic work.</strong></p>
+<p>翻成更顺的中文，就是：</p>
+<p><strong>一套贴着不同 AI agent 运行环境设计的操作系统式工作层。</strong></p>
+<p>这句话比“Claude Code 配置合集”准确得多。</p>
+<p>因为 ECC 现在明确支持 Codex、Claude Code、Cursor、OpenCode、Gemini、Zed、GitHub Copilot 等 harness。它想解决的问题也不只是“让 Claude Code 多几个命令”，而是让 AI 编程从聊天框，进入可复用、可验证、可治理的工程流程。</p>
+<p><img alt="从聊天框到工程系统" loading="lazy" decoding="async" fetchpriority="auto" width="1672" height="941" src="/_astro/01-chat-to-engineering-system.DNk3k85__Zg1QLY.webp" ></p>
+<h2 id="一ai-编程的问题不是不会写代码">一、AI 编程的问题，不是不会写代码</h2>
+<p>现在让 AI 写代码已经很容易。</p>
+<p>你说“做个登录页”，它能吐出 React 组件。<br>
+你贴一个 TypeScript 报错，它能猜到类型哪里没对上。<br>
+你让它补测试，它也能生成几个 case。</p>
+<p>真正麻烦的是下一步。</p>
+<p>它写完之后，有没有先确认需求边界？<br>
+改 bug 之前，有没有复现问题？<br>
+改完代码，有没有跑测试？<br>
+看到安全风险，有没有停下来扫描？<br>
+换一个会话之后，还记不记得项目规则？</p>
+<p>很多 AI 编程工具的问题不在“写不出”，而在“工作方式不稳定”。</p>
+<p>同一个任务，这次它会先规划，下一次它可能直接改文件。<br>
+这次它会跑验证，下一次它可能写完就收工。<br>
+这次它记得项目约束，下一次它又像刚进组。</p>
+<p>人类开发者也会犯错，但团队会用流程补：需求评审、测试、CI、代码审查、发布检查、安全扫描。</p>
+<p>AI agent 也需要类似的东西。</p>
+<p>ECC 的核心价值就在这里：它不是让模型更会聊天，而是给 agent 加一套工程纪律。</p>
+<p>可以拿一个很普通的需求举例：给现有产品加一个“邀请成员”功能。</p>
+<p>如果只是把需求扔给聊天式 AI，它可能会很快生成页面、接口和数据库字段。看起来效率很高，但真实项目里会马上出现一堆后续问题：</p>
+<p>有没有看现有权限模型？<br>
+有没有复用当前邮件发送服务？<br>
+有没有处理邀请过期？<br>
+有没有考虑重复邀请？<br>
+有没有补管理员、普通成员、已禁用用户这些测试？<br>
+有没有更新审计日志？<br>
+有没有检查这个功能会不会绕过团队人数限制？</p>
+<p>这些问题不是“写代码能力”本身能解决的。</p>
+<p>它们属于工程上下文、产品边界和交付纪律。</p>
+<p>一个成熟开发者不会只问“代码怎么写”，而是会把任务拆成几个动作：读现有实现、确认数据模型、设计状态流转、写测试、实现最小改动、跑验证、检查边界。</p>
+<p>ECC 想沉淀的就是这类动作。</p>
+<p>它把“下次别忘了”变成 skill、rule、hook，而不是靠用户每次重新提醒。</p>
+<h2 id="二ecc-不是-prompt-包而是工作层">二、ECC 不是 prompt 包，而是工作层</h2>
+<p>打开仓库结构，会看到一组很清楚的目录：</p>
+<ul>
+<li><code>agents</code></li>
+<li><code>skills</code></li>
+<li><code>hooks</code></li>
+<li><code>rules</code></li>
+<li><code>mcp-configs</code></li>
+<li><code>legacy-command-shims</code></li>
+<li><code>.codex</code></li>
+<li><code>.cursor</code></li>
+<li><code>.gemini</code></li>
+<li><code>.opencode</code></li>
+<li><code>.zed</code></li>
+<li><code>ecc2</code></li>
+</ul>
+<p>这组目录已经说明问题。</p>
+<p>它不是把一堆提示词扔进 README，让你复制粘贴。它在做一层跨工具的 agent 工作表面。</p>
+<p><img alt="ECC 的 Agent 工作层" loading="lazy" decoding="async" fetchpriority="auto" width="1672" height="941" src="/_astro/02-ecc-working-layer.DUrHAPFV_Z1SQ1JE.webp" ></p>
+<p>README 里写到，v2.0.0-rc.1 的公开表面同步到了真实开源仓库：<strong>63 个 agents、249 个 skills、79 个 legacy command shims</strong>。</p>
+<p>这些数字本身不是重点。</p>
+<p>重点是拆法。</p>
+<p>agent 负责角色分工，比如代码审查、安全检查、文档处理。<br>
+skill 负责工作流程，比如 TDD、文章写作、调试、验证。<br>
+rule 负责长期约束，比如某种语言的代码规范。<br>
+hook 负责关键时机的提醒、拦截和自动检查。<br>
+MCP 配置负责接外部工具和上下文。</p>
+<p>换句话说，ECC 把“AI 应该怎么工作”拆成了可安装、可组合、可迁移的部件。</p>
+<p>这比一句“请你像资深工程师一样思考”硬得多。</p>
+<p>更准确地说，ECC 关心的是 agent 的整个生命周期。</p>
+<p>一个任务开始时，agent 需要知道项目上下文：当前目录是什么、技术栈是什么、最近在做什么、有哪些规则不能破坏。</p>
+<p>任务执行中，agent 需要有合适的工具：能读文件、搜代码、调用 MCP、分配子任务、用 skill 约束步骤。</p>
+<p>任务落地时，agent 需要验证：测试有没有跑、类型有没有过、安全风险有没有检查、输出有没有可复用记录。</p>
+<p>任务结束后，agent 还应该留下痕迹：这次踩过什么坑、什么流程有效、哪些规则应该沉淀。</p>
+<p>这四件事连起来，才像一个工作系统。</p>
+<p>单独看每个部件都不神奇。</p>
+<p>一个 agent 文件，只是角色定义。<br>
+一个 skill 文件，只是工作步骤。<br>
+一个 hook，只是某个时机跑一段检查。<br>
+一个 rule，只是长期约束。</p>
+<p>但当它们一起工作时，AI 就不再只是“回答一个问题”，而是开始沿着一套工程轨道推进任务。</p>
+<h2 id="三skill-是-ecc-最值得看的部分">三、Skill 是 ECC 最值得看的部分</h2>
+<p>很多人用 AI 写代码，会加一句：</p>
+<pre class="astro-code astro-code-themes min-light night-owl" style="--shiki-light:#24292eff;--shiki-dark:#d6deeb;--shiki-light-bg:#ffffff;--shiki-dark-bg:#011627; overflow-x: auto;--file-name-offset: -0.75rem;" tabindex="0" data-language="text"><code><span class="line"><span>请使用测试驱动开发。</span></span></code></pre>
+<p>这句话有用，但不稳定。</p>
+<p>模型可能真的先写测试，也可能点头之后直接实现。它没有恶意，只是这句话太软，缺少可执行步骤。</p>
+<p>ECC 里的 skill 更像一份操作规程。</p>
+<p><img alt="Skill 把提示词压成可重复流程" loading="lazy" decoding="async" fetchpriority="auto" width="1672" height="941" src="/_astro/03-skill-repeatable-process.Cc0W22ib_tpS0I.webp" ></p>
+<p>README 给的 TDD 示例很直接：</p>
+<pre class="astro-code astro-code-themes min-light night-owl" style="--shiki-light:#24292eff;--shiki-dark:#d6deeb;--shiki-light-bg:#ffffff;--shiki-dark-bg:#011627; overflow-x: auto;--file-name-offset: -0.75rem;" tabindex="0" data-language="markdown"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-light-font-weight:bold;--shiki-dark:#82B1FF;--shiki-dark-font-weight:inherit"># TDD Workflow</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#D9F5DD">1.</span><span style="--shiki-light:#24292EFF;--shiki-dark:#D6DEEB"> Define interfaces first</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#D9F5DD">2.</span><span style="--shiki-light:#24292EFF;--shiki-dark:#D6DEEB"> Write failing tests (RED)</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#D9F5DD">3.</span><span style="--shiki-light:#24292EFF;--shiki-dark:#D6DEEB"> Implement minimal code (GREEN)</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#D9F5DD">4.</span><span style="--shiki-light:#24292EFF;--shiki-dark:#D6DEEB"> Refactor (IMPROVE)</span></span>
+<span class="line"><span style="--shiki-light:#24292EFF;--shiki-dark:#D9F5DD">5.</span><span style="--shiki-light:#24292EFF;--shiki-dark:#D6DEEB"> Verify 80%+ coverage</span></span></code></pre>
+<p>这才是对 agent 真正有用的格式。</p>
+<p>不是“你要重视测试”，而是：</p>
+<p>先定义接口。<br>
+再写失败测试。<br>
+再实现最小代码。<br>
+再重构。<br>
+最后验证覆盖率。</p>
+<p>skill 的价值，就是把团队经验压成 agent 能重复执行的流程。</p>
+<p>你可以把它理解成一种“可携带的工程习惯”。</p>
+<p>今天在 Claude Code 里用。<br>
+明天在 Codex 里用。<br>
+后天换到 Cursor 或 OpenCode，也应该尽量能复用。</p>
+<p>这件事对团队很关键。</p>
+<p>因为团队真正需要的不是每个人都收藏一堆私有 prompt，而是把有效工作方式沉淀成共同资产。</p>
+<p>这也是 skill 和普通 prompt 最大的差异。</p>
+<p>prompt 更像一次性沟通。</p>
+<p>你这次告诉 AI：“请先分析再动手。”<br>
+下一次你还得再说。<br>
+换一个人用，还得重新教。<br>
+换一个工具用，还得改写一遍。</p>
+<p>skill 更像团队 SOP。</p>
+<p>它不追求一句话把模型“点醒”，而是把工作拆成模型不能轻易跳过的步骤。</p>
+<p>比如调试类 skill，可以要求先复现问题，再收集证据，再提出假设，再做最小改动，最后验证。<br>
+比如代码审查类 skill，可以要求先看风险和回归，再看风格，而不是把 diff 翻译成自然语言。<br>
+比如写作类 skill，可以要求先核对来源，再按读者问题组织文章，而不是复述 README。</p>
+<p>这类东西长期看很有价值。</p>
+<p>因为它让团队开始拥有自己的 AI 工作方法，而不是被每个模型的默认习惯牵着走。</p>
+<h2 id="四hooks-解决的是关键时刻拦一下">四、Hooks 解决的是“关键时刻拦一下”</h2>
+<p>AI agent 越能干，风险越大。</p>
+<p>它可以改文件。<br>
+它可以跑命令。<br>
+它可以接浏览器、GitHub、搜索、数据库。<br>
+它可以在一个任务里连续执行很多步。</p>
+<p>这时候，只靠模型自觉是不够的。</p>
+<p>ECC 的 hooks 就是用来处理这些关键时刻的。</p>
+<p><img alt="Hooks 给 Agent 加上安全检查点" loading="lazy" decoding="async" fetchpriority="auto" width="1672" height="941" src="/_astro/04-hooks-safety-gate.pqV5Ma1G_56Fts.webp" ></p>
+<p>README 里给了一个非常具体的例子：当 agent 编辑 TypeScript、JavaScript 文件时，hook 可以检查 <code>console.log</code>，并提示移除。</p>
+<p>这不是一个惊天动地的功能。</p>
+<p>但它说明 ECC 的设计方向：让 agent 的动作经过工程检查点。</p>
+<p>会话开始时，可以加载上下文。<br>
+编辑文件时，可以做规则检查。<br>
+任务停止前，可以生成总结或触发验证。<br>
+运行高风险命令时，可以增加提醒。</p>
+<p>这类机制不负责“替模型思考”，它负责让模型的动作更可控。</p>
+<p>真正的工程系统往往就是这样：不是假设人永远正确，而是在关键路径上放检查。</p>
+<p>agent 也是一样。</p>
+<p>hooks 的另一层价值，是把“隐性经验”变成“自动提醒”。</p>
+<p>很多团队都有一些口头规则：</p>
+<p>不要把调试日志提交上去。<br>
+改数据库 schema 要同步迁移脚本。<br>
+动认证逻辑必须补测试。<br>
+改前端交互要确认移动端。<br>
+生成文件不要手改。</p>
+<p>人类开发者靠 code review 和 CI 兜底。AI agent 更需要早一点被提醒。</p>
+<p>因为 agent 一旦进入连续执行状态，可能会在几分钟内改很多文件。如果问题到最后才被发现，返工成本会很高。</p>
+<p>hook 的意义，就是在动作发生时插入一个小检查点。</p>
+<p>不是等代码全写完才说“不对”，而是在它刚要写、刚写完、刚要结束任务时，就把风险抬出来。</p>
+<h2 id="五ecc-20-的方向从配置仓库到控制层">五、ECC 2.0 的方向：从配置仓库到控制层</h2>
+<p>ECC 当前最有意思的变化，是它正在从“配置和技能仓库”往“控制层”走。</p>
+<p>README 的 v2.0.0-rc.1 更新里提到几个点：</p>
+<ul>
+<li>新增 Tkinter 桌面 Dashboard，可以用 <code>ecc_dashboard.py</code> 或 <code>npm run dashboard</code> 打开</li>
+<li>public surface 同步到真实仓库：63 agents、249 skills、79 legacy command shims</li>
+<li>扩展 operator 工作流，比如 brand voice、社交发布、billing ops、workspace audit</li>
+<li>增加媒体和发布工具，比如 Manim、Remotion</li>
+<li><code>ecc2/</code> 下的 Rust control-plane alpha 已经能本地构建</li>
+<li><code>ecc2</code> 暴露了 <code>dashboard</code>、<code>start</code>、<code>sessions</code>、<code>status</code>、<code>stop</code>、<code>resume</code>、<code>daemon</code> 等命令</li>
+</ul>
+<p>这里可以看到一个趋势：</p>
+<p>ECC 不满足于做“命令集合”。它在把 agent 的运行状态、会话、技能健康度、安装状态、工作项同步等东西纳入同一套控制面。</p>
+<p>这也是为什么我更愿意把它看成 agent 工作系统，而不是提示词项目。</p>
+<p>提示词解决的是“这次怎么说”。<br>
+工作系统解决的是“每次怎么干”。</p>
+<p>这条路线也解释了为什么 ECC 会往 Dashboard、status、sessions 这些方向扩展。</p>
+<p>当 agent 只是聊天框时，你只需要一个输入框和一个回复区。</p>
+<p>但当 agent 真的参与工程交付，你就会开始关心更多状态：</p>
+<p>当前有哪些会话在跑？<br>
+哪些 skill 被调用过？<br>
+哪些安装项缺失？<br>
+哪些工作项还没有完成？<br>
+哪些验证没有通过？<br>
+哪些上下文需要交接？</p>
+<p>这和传统软件工程里的 CI、任务看板、日志、监控有点像。</p>
+<p>不是因为开发者喜欢复杂工具，而是因为真实工作需要可见性。</p>
+<p>AI agent 也一样。</p>
+<p>只要它开始执行多步任务，系统就需要回答一个问题：现在到底发生了什么？</p>
+<p>ECC 2.0 的控制层，就是朝这个问题走。</p>
+<h2 id="六怎么开始用别一上来全量乱装">六、怎么开始用，别一上来全量乱装</h2>
+<p>ECC 的 README 推荐从插件安装开始。</p>
+<pre class="astro-code astro-code-themes min-light night-owl" style="--shiki-light:#24292eff;--shiki-dark:#d6deeb;--shiki-light-bg:#ffffff;--shiki-dark-bg:#011627; overflow-x: auto;--file-name-offset: -0.75rem;" tabindex="0" data-language="bash"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-light-font-style:inherit;--shiki-dark:#82AAFF;--shiki-dark-font-style:italic">/plugin</span><span style="--shiki-light:#2B5581;--shiki-dark:#ECC48D"> marketplace</span><span style="--shiki-light:#2B5581;--shiki-dark:#ECC48D"> add</span><span style="--shiki-light:#2B5581;--shiki-dark:#ECC48D"> https://github.com/affaan-m/ECC</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-light-font-style:inherit;--shiki-dark:#82AAFF;--shiki-dark-font-style:italic">/plugin</span><span style="--shiki-light:#2B5581;--shiki-dark:#ECC48D"> install</span><span style="--shiki-light:#2B5581;--shiki-dark:#ECC48D"> ecc@ecc</span></span></code></pre>
+<p>安装后，可以试一个带命名空间的命令：</p>
+<pre class="astro-code astro-code-themes min-light night-owl" style="--shiki-light:#24292eff;--shiki-dark:#d6deeb;--shiki-light-bg:#ffffff;--shiki-dark-bg:#011627; overflow-x: auto;--file-name-offset: -0.75rem;" tabindex="0" data-language="bash"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-light-font-style:inherit;--shiki-dark:#82AAFF;--shiki-dark-font-style:italic">/ecc:plan</span><span style="--shiki-light:#22863A;--shiki-dark:#D9F5DD"> "</span><span style="--shiki-light:#22863A;--shiki-dark:#ECC48D">添加用户认证</span><span style="--shiki-light:#22863A;--shiki-dark:#D9F5DD">"</span></span></code></pre>
+<p>如果只需要规则，README 建议手动复制需要的 <code>rules/</code> 目录，比如：</p>
+<pre class="astro-code astro-code-themes min-light night-owl" style="--shiki-light:#24292eff;--shiki-dark:#d6deeb;--shiki-light-bg:#ffffff;--shiki-dark-bg:#011627; overflow-x: auto;--file-name-offset: -0.75rem;" tabindex="0" data-language="bash"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-light-font-style:inherit;--shiki-dark:#82AAFF;--shiki-dark-font-style:italic">git</span><span style="--shiki-light:#2B5581;--shiki-dark:#ECC48D"> clone</span><span style="--shiki-light:#2B5581;--shiki-dark:#ECC48D"> https://github.com/affaan-m/ECC.git</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-light-font-style:inherit;--shiki-dark:#C5E478;--shiki-dark-font-style:italic">cd</span><span style="--shiki-light:#2B5581;--shiki-dark:#ECC48D"> ECC</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-light-font-style:inherit;--shiki-dark:#82AAFF;--shiki-dark-font-style:italic">npm</span><span style="--shiki-light:#2B5581;--shiki-dark:#ECC48D"> install</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-light-font-style:inherit;--shiki-dark:#82AAFF;--shiki-dark-font-style:italic">mkdir</span><span style="--shiki-light:#2B5581;--shiki-dark:#82AAFF"> -p</span><span style="--shiki-light:#2B5581;--shiki-dark:#ECC48D"> ~/.claude/rules</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-light-font-style:inherit;--shiki-dark:#82AAFF;--shiki-dark-font-style:italic">cp</span><span style="--shiki-light:#2B5581;--shiki-dark:#82AAFF"> -R</span><span style="--shiki-light:#2B5581;--shiki-dark:#ECC48D"> rules/common</span><span style="--shiki-light:#2B5581;--shiki-dark:#ECC48D"> ~/.claude/rules/</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-light-font-style:inherit;--shiki-dark:#82AAFF;--shiki-dark-font-style:italic">cp</span><span style="--shiki-light:#2B5581;--shiki-dark:#82AAFF"> -R</span><span style="--shiki-light:#2B5581;--shiki-dark:#ECC48D"> rules/typescript</span><span style="--shiki-light:#2B5581;--shiki-dark:#ECC48D"> ~/.claude/rules/</span></span></code></pre>
+<p>这里有一个非常重要的坑：</p>
+<p><strong>不要把插件安装和完整手动安装叠加。</strong></p>
+<p>中文 README 里明确提醒：如果已经通过 <code>/plugin install</code> 安装 ECC，就不要再跑 <code>./install.sh --profile full</code>、<code>.\install.ps1 --profile full</code> 或 <code>npx ecc-install --profile full</code>。</p>
+<p>原因很简单：插件已经会加载 skills、commands 和 hooks。你再完整安装一遍，可能会复制出重复内容，导致技能重复、hook 重复、运行行为重复。</p>
+<p>如果只是试用，我建议从这几个场景开始：</p>
+<ul>
+<li>用 <code>/ecc:plan</code> 做新功能规划</li>
+<li>选一个 TDD skill 跑一次小改动</li>
+<li>用代码审查类 agent 检查一个 PR</li>
+<li>用 hooks 做最简单的编辑提醒</li>
+<li>看 Dashboard 了解组件结构</li>
+</ul>
+<p>先跑通一个小闭环，再考虑扩展。</p>
+<p>别一上来把 249 个 skills 当菜单全点一遍。</p>
+<p>更实际的落地方式，是先选一个团队最痛的场景。</p>
+<p>如果你们的问题是“AI 经常写完不验证”，那就先围绕验证流程做 skill 和 hook。</p>
+<p>比如规定：</p>
+<ul>
+<li>改 TypeScript 代码后必须跑类型检查</li>
+<li>改后端逻辑后必须跑对应测试</li>
+<li>改 UI 后必须给出浏览器验证结果</li>
+<li>任务结束前必须说明哪些命令跑过、哪些没跑</li>
+</ul>
+<p>如果你们的问题是“AI 经常乱改架构”，那就先补 rules。</p>
+<p>比如规定：</p>
+<ul>
+<li>不新增未批准的状态管理库</li>
+<li>不绕过现有 API client</li>
+<li>不在业务组件里直接写请求逻辑</li>
+<li>不把测试工具代码混进生产路径</li>
+</ul>
+<p>如果你们的问题是“每次都重新解释项目背景”，那就先做上下文和记忆。</p>
+<p>比如把项目结构、常用命令、部署方式、关键目录、代码风格、禁止事项整理成可加载上下文。</p>
+<p>不要从“大而全的 AI 工程系统”开始。</p>
+<p>从一个高频返工点开始。</p>
+<p>把它固化成 rule、skill 或 hook。<br>
+用几次。<br>
+看它有没有减少返工。<br>
+有效，再扩展下一块。</p>
+<p>这样 ECC 才会变成工程资产，而不是另一个复杂配置包。</p>
+<h2 id="七谁最该关注-ecc">七、谁最该关注 ECC</h2>
+<p>如果你只是偶尔让 AI 写一个脚本，ECC 可能太重。</p>
+<p>但如果你已经把 AI 编程工具放进真实项目，它很值得看。</p>
+<p>第一类，是重度使用 Claude Code、Codex、Cursor 的开发者。</p>
+<p>你会很快遇到“单次回答很好，长期协作不稳”的问题。ECC 的 skills、rules、hooks 正好对应这个痛点。</p>
+<p>第二类，是在团队里推广 AI 编程的人。</p>
+<p>团队最怕的不是没人用 AI，而是每个人都用自己的方式乱用。最后代码风格、验证习惯、安全边界全不一样。</p>
+<p>ECC 至少给了一个可讨论的起点：哪些流程应该固化成 skill？哪些约束应该进 rule？哪些动作应该挂 hook？</p>
+<p>第三类，是做 AI 工程基础设施的人。</p>
+<p>ECC 展示了一个很现实的方向：AI 编程基础设施不只包括模型调用、上下文窗口和 IDE 插件，还包括工作流、记忆、安全、验证、状态管理和跨 harness 适配。</p>
+<p>第四类，是关心 agent 安全的人。</p>
+<p>AgentShield、安全扫描、hook 约束、sandbox、成本控制这些内容，说明 ECC 已经在处理“agent 能力变强之后怎么管”的问题。</p>
+<p>这里还有一个容易被忽略的人群：技术内容和开发者关系团队。</p>
+<p>README 的 v2.0.0-rc.1 更新里提到，ECC 已经把 brand voice、social publishing、Manim、Remotion 等媒体和发布工具纳入同一套系统。</p>
+<p>这说明它的边界已经不只是“写代码”。</p>
+<p>一个技术项目从开发到发布，通常会经历：</p>
+<p>写功能。<br>
+写文档。<br>
+做 demo。<br>
+录视频。<br>
+发 release note。<br>
+发社交平台。<br>
+收集反馈。</p>
+<p>这些动作过去分散在不同工具和不同人手里。</p>
+<p>ECC 的 operator workflow 方向，试图把这类外向型工作也纳入 agent 工作流。</p>
+<p>这不一定是每个开发团队现在就需要的能力，但它说明 agent 工作系统的边界正在变宽：从“帮我改代码”，走向“帮我推进一个工程任务的完整生命周期”。</p>
+<h2 id="我的看法">我的看法</h2>
+<p>ECC 最值得看的，不是它有多少 star。</p>
+<p>GitHub 页面上能看到它已经是一个很高关注度的项目，README 里也写着 182K+ stars、28K+ forks、170+ contributors。但 star 不是重点。</p>
+<p>重点是它代表了一个方向：</p>
+<p><strong>AI 编程的竞争，正在从“模型会不会写代码”，转向“系统能不能稳定交付”。</strong></p>
+<p>过去我们问：</p>
+<p>哪个模型更强？<br>
+哪个工具补全更快？<br>
+哪个 IDE 体验更顺？</p>
+<p>以后还要问：</p>
+<p>agent 有没有规划流程？<br>
+有没有测试纪律？<br>
+有没有验证闭环？<br>
+有没有安全护栏？<br>
+有没有跨会话记忆？<br>
+有没有团队级规范？<br>
+有没有办法把成功经验沉淀下来？</p>
+<p>ECC 的答案不是“换一个更大的模型”。</p>
+<p>它的答案是：</p>
+<p><strong>给 agent 建一套工作系统。</strong></p>
+<p>这可能才是 AI 编程进入真实团队之后，最缺的一块。</p>
+<h2 id="结尾">结尾</h2>
+<p>AI 编程工具不该只是一个更聪明的聊天框。</p>
+<p>聊天框能回答问题。<br>
+工程系统要能规划、执行、验证、记录、复用、拦截风险。</p>
+<p>ECC 这个项目的价值，是把这些动作放到了同一个框架里。</p>
+<p>它不保证 agent 永远正确，但它让 agent 更像一个能被管理的工程成员。</p>
+<p>这比“再写一条神奇 prompt”更接近未来。</p>
+<p>项目地址：<br>
+<a href="https://github.com/affaan-m/ECC">https://github.com/affaan-m/ECC</a></p>
+<p>参考资料：</p>
+<ul>
+<li>ECC GitHub 仓库：<a href="https://github.com/affaan-m/ECC">https://github.com/affaan-m/ECC</a></li>
+</ul> </article> <hr class="my-8 border-dashed">  <ul class="mt-4 mb-8 flex flex-wrap gap-4 sm:my-8"> <li> <a href="/tags/ai/" class="flex items-center gap-0.5 border-b-2 border-dashed border-foreground hover:-mt-0.5 hover:border-accent hover:text-accent focus-visible:border-none focus-visible:text-accent text-sm" data-astro-transition-scope="astro-36ssibgs-2"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-80 size-4"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M5 9l14 0" /><path d="M5 15l14 0" /><path d="M11 4l-4 16" /><path d="M17 4l-4 16" /></svg> AI </a> </li><li> <a href="/tags/llm/" class="flex items-center gap-0.5 border-b-2 border-dashed border-foreground hover:-mt-0.5 hover:border-accent hover:text-accent focus-visible:border-none focus-visible:text-accent text-sm" data-astro-transition-scope="astro-36ssibgs-3"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-80 size-4"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M5 9l14 0" /><path d="M5 15l14 0" /><path d="M11 4l-4 16" /><path d="M17 4l-4 16" /></svg> LLM </a> </li><li> <a href="/tags/开源工具/" class="flex items-center gap-0.5 border-b-2 border-dashed border-foreground hover:-mt-0.5 hover:border-accent hover:text-accent focus-visible:border-none focus-visible:text-accent text-sm" data-astro-transition-scope="astro-36ssibgs-4"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-80 size-4"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M5 9l14 0" /><path d="M5 15l14 0" /><path d="M11 4l-4 16" /><path d="M17 4l-4 16" /></svg> 开源工具 </a> </li> </ul> <div id="btt-btn-container" class="fixed end-4 bottom-8 z-50 md:sticky md:end-auto md:float-end md:me-1 translate-y-14 opacity-0 transition duration-500"> <button data-button="back-to-top" class="group relative bg-background px-2 py-1 size-14 rounded-full shadow-xl md:h-8 md:w-fit md:rounded-md md:shadow-none md:focus-visible:rounded-none md:bg-background/35 md:bg-clip-padding md:backdrop-blur-lg"> <span id="progress-indicator" class="absolute inset-0 -z-10 block size-14 scale-110 rounded-full bg-transparent md:hidden md:h-8 md:rounded-md"></span> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block rotate-90 md:hidden"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M15 6l-6 6l6 6" /></svg> <span class="sr-only text-sm group-hover:text-accent md:not-sr-only"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-4"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M12 5l0 14" /><path d="M16 9l-4 -4" /><path d="M8 9l4 -4" /></svg>
+Back To Top
+</span> </button> </div> <script data-astro-rerun>
+  /** Scrolls the document to the top when
+   * the "Back to Top" button is clicked. */
+  function backToTop() {
+    const rootElement = document.documentElement;
+    const btnContainer = document.querySelector("#btt-btn-container");
+    const backToTopBtn = document.querySelector("[data-button='back-to-top']");
+    const progressIndicator = document.querySelector("#progress-indicator");
+
+    if (!rootElement || !btnContainer || !backToTopBtn || !progressIndicator)
+      return;
+
+    // Attach click event handler for back-to-top button
+    backToTopBtn.addEventListener("click", () => {
+      document.body.scrollTop = 0; // For Safari
+      document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    });
+
+    // Handle button visibility according to scroll position
+    let lastVisible = null;
+    function handleScroll() {
+      const scrollTotal = rootElement.scrollHeight - rootElement.clientHeight;
+      const scrollTop = rootElement.scrollTop;
+      const scrollPercent = Math.floor((scrollTop / scrollTotal) * 100);
+
+      progressIndicator.style.setProperty(
+        "background-image",
+        `conic-gradient(var(--accent), var(--accent) ${scrollPercent}%, transparent ${scrollPercent}%)`
+      );
+
+      const isVisible = scrollTop / scrollTotal > 0.3;
+
+      if (isVisible !== lastVisible) {
+        btnContainer.classList.toggle("opacity-100", isVisible);
+        btnContainer.classList.toggle("translate-y-0", isVisible);
+        btnContainer.classList.toggle("opacity-0", !isVisible);
+        btnContainer.classList.toggle("translate-y-14", !isVisible);
+        lastVisible = isVisible;
+      }
+    }
+
+    let ticking = false;
+    document.addEventListener("scroll", () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+  }
+  backToTop();
+</script> <div class="flex flex-none flex-col items-center justify-center gap-1 md:items-start"><span class="italic">Share this post on:</span><div class="text-center"><a href="https://wa.me/?text=https://0xfelix.li/posts/2026/ecc-agent-workflow-system/" title="Share this post via WhatsApp" class="group inline-flex items-center gap-1 hover:text-accent scale-90 p-2 hover:rotate-6 sm:p-1"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" /><path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" /></svg><span class="sr-only">Share this post via WhatsApp</span> </a><a href="https://www.facebook.com/sharer.php?u=https://0xfelix.li/posts/2026/ecc-agent-workflow-system/" title="Share this post on Facebook" class="group inline-flex items-center gap-1 hover:text-accent scale-90 p-2 hover:rotate-6 sm:p-1"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" /></svg><span class="sr-only">Share this post on Facebook</span> </a><a href="https://x.com/intent/post?url=https://0xfelix.li/posts/2026/ecc-agent-workflow-system/" title="Share this post on X" class="group inline-flex items-center gap-1 hover:text-accent scale-90 p-2 hover:rotate-6 sm:p-1"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M4 4l11.733 16h4.267l-11.733 -16z" /><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" /></svg><span class="sr-only">Share this post on X</span> </a><a href="https://t.me/share/url?url=https://0xfelix.li/posts/2026/ecc-agent-workflow-system/" title="Share this post via Telegram" class="group inline-flex items-center gap-1 hover:text-accent scale-90 p-2 hover:rotate-6 sm:p-1"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M15 10l-4 4l6 6l4 -16l-18 7l4 2l2 6l3 -4" /></svg><span class="sr-only">Share this post via Telegram</span> </a><a href="https://pinterest.com/pin/create/button/?url=https://0xfelix.li/posts/2026/ecc-agent-workflow-system/" title="Share this post on Pinterest" class="group inline-flex items-center gap-1 hover:text-accent scale-90 p-2 hover:rotate-6 sm:p-1"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M8 20l4 -9" /><path d="M10.7 14c.437 1.263 1.43 2 2.55 2c2.071 0 3.75 -1.554 3.75 -4a5 5 0 1 0 -9.7 1.7" /><path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" /></svg><span class="sr-only">Share this post on Pinterest</span> </a><a href="mailto:?subject=See%20this%20post&#38;body=https://0xfelix.li/posts/2026/ecc-agent-workflow-system/" title="Share this post via email" class="group inline-flex items-center gap-1 hover:text-accent scale-90 p-2 hover:rotate-6 sm:p-1"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" /><path d="M3 7l9 6l9 -6" /></svg><span class="sr-only">Share this post via email</span> </a></div></div> <script data-astro-rerun>
+  (() => {
+    function loadGiscusComments() {
+      const section = document.getElementById("comments");
+      const container = document.getElementById("giscus-comments");
+      if (!section || !container) return;
+
+      const rawConfig = section.getAttribute("data-giscus-config");
+      if (!rawConfig) return;
+
+      const config = JSON.parse(rawConfig);
+      const theme =
+        document.documentElement.getAttribute("data-theme") === "dark"
+          ? "dark"
+          : "light";
+
+      container.replaceChildren();
+
+      const script = document.createElement("script");
+      script.src = "https://giscus.app/client.js";
+      script.async = true;
+      script.crossOrigin = "anonymous";
+      script.dataset.repo = config.repo;
+      script.dataset.repoId = config.repoId;
+      script.dataset.category = config.category;
+      script.dataset.categoryId = config.categoryId;
+      script.dataset.mapping = config.mapping;
+      script.dataset.strict = config.strict;
+      script.dataset.reactionsEnabled = config.reactionsEnabled;
+      script.dataset.emitMetadata = config.emitMetadata;
+      script.dataset.inputPosition = config.inputPosition;
+      script.dataset.theme = theme;
+      script.dataset.lang = config.lang;
+      script.dataset.loading = config.loading;
+
+      container.appendChild(script);
+    }
+
+    loadGiscusComments();
+
+    const giscusThemeObserver = new MutationObserver(() => {
+      const iframe = document.querySelector("iframe.giscus-frame");
+      if (!iframe?.contentWindow) return;
+
+      iframe.contentWindow.postMessage(
+        {
+          giscus: {
+            setConfig: {
+              theme:
+                document.documentElement.getAttribute("data-theme") === "dark"
+                  ? "dark"
+                  : "light",
+            },
+          },
+        },
+        "https://giscus.app"
+      );
+    });
+
+    giscusThemeObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-theme"],
+    });
+  })();
+</script> <hr class="my-6 border-dashed"> <div data-pagefind-ignore class="grid grid-cols-1 gap-6 sm:grid-cols-2"> <a href="/posts/2026/how-llm-trained" class="flex w-full gap-1 hover:opacity-75"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block flex-none rtl:rotate-180"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M15 6l-6 6l6 6" /></svg> <div> <span>Previous Post</span> <div class="text-sm text-accent/85">大模型是如何训练的：从一堆文本到一个能干活的助手</div> </div> </a> <a href="/posts/2026/taste-skill-frontend-design" class="flex w-full justify-end gap-1 text-end hover:opacity-75 sm:col-start-2"> <div> <span>Next Post</span> <div class="text-sm text-accent/85">让 AI 前端少一点模板味：Taste Skill 把审美写成可执行规则</div> </div> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block flex-none rtl:rotate-180"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M9 6l6 6l-6 6" /></svg> </a> </div> </main> <footer class="app-layout mt-auto"> <div class="py-6 sm:py-4 border-t border-border flex flex-col items-center justify-between sm:flex-row-reverse"> <div class="flex flex-wrap items-center gap-1"> <a href="https://x.com/0xfelixli" title="Follow 0xfelixli on X" class="group inline-flex items-center gap-1 hover:text-accent p-2 hover:rotate-6 sm:p-1">  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M4 4l11.733 16h4.267l-11.733 -16z" /><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" /></svg> <span class="sr-only">Follow 0xfelixli on X</span>  </a><a href="https://github.com/0xfelixli" title="Visit 0xfelixli on GitHub" class="group inline-flex items-center gap-1 hover:text-accent p-2 hover:rotate-6 sm:p-1">  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" /></svg> <span class="sr-only">Visit 0xfelixli on GitHub</span>  </a><a href="mailto:0xfelixli@gmail.com" title="Email 0xfelixli" class="group inline-flex items-center gap-1 hover:text-accent p-2 hover:rotate-6 sm:p-1">  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" /><path d="M3 7l9 6l9 -6" /></svg> <span class="sr-only">Email 0xfelixli</span>  </a> </div> <div class="my-2 flex flex-col items-center whitespace-nowrap sm:flex-row"> <span>Copyright &#169; 2026</span> <span class="hidden sm:inline">&nbsp;|&nbsp;</span> <span>All rights reserved.</span> </div> </div> </footer>  <!-- Load full theme logic --> <script type="module">const d="theme",r="light",m="dark";function i(){const e=localStorage.getItem(d);return e||(window.matchMedia("(prefers-color-scheme: dark)").matches?m:r)}let t=window.theme?.themeValue??i();function c(){localStorage.setItem(d,t),o()}function o(){document.firstElementChild?.setAttribute("data-theme",t),document.querySelector("#theme-btn")?.setAttribute("aria-label",t);const e=document.body;if(e){const n=window.getComputedStyle(e).backgroundColor;document.querySelector("meta[name='theme-color']")?.setAttribute("content",n)}}window.theme?(window.theme.setPreference=c,window.theme.reflectPreference=o):window.theme={themeValue:t,setPreference:c,reflectPreference:o,getTheme:()=>t,setTheme:e=>{t=e}};o();function s(){o(),document.querySelector("#theme-btn")?.addEventListener("click",()=>{t=t===r?m:r,window.theme?.setTheme(t),c()})}s();document.addEventListener("astro:after-swap",s);document.addEventListener("astro:before-swap",e=>{const a=e,n=document.querySelector("meta[name='theme-color']")?.getAttribute("content");n&&a.newDocument.querySelector("meta[name='theme-color']")?.setAttribute("content",n)});window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",({matches:e})=>{t=e?m:r,window.theme?.setTheme(t),c()});</script> </body> </html> <script data-astro-rerun>
+  /** Create a progress indicator at the top. */
+  function createProgressBar() {
+    const progressContainer = document.createElement("div");
+    progressContainer.className =
+      "progress-container fixed top-0 z-10 h-1 w-full bg-background";
+
+    const progressBar = document.createElement("div");
+    progressBar.className = "progress-bar h-1 w-0 bg-accent";
+    progressBar.id = "myBar";
+
+    progressContainer.appendChild(progressBar);
+    document.body.appendChild(progressContainer);
+  }
+  createProgressBar();
+
+  /** Update the progress bar when user scrolls. */
+  function updateScrollProgress() {
+    document.addEventListener("scroll", () => {
+      const winScroll =
+        document.body.scrollTop || document.documentElement.scrollTop;
+      const height =
+        document.documentElement.scrollHeight -
+        document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      const myBar = document.getElementById("myBar");
+      if (myBar) {
+        myBar.style.width = scrolled + "%";
+      }
+    });
+  }
+  updateScrollProgress();
+</script> <script data-astro-rerun>
+  /** Attaches links to headings in the document,
+   *  allowing sharing of sections easily */
+  function addHeadingLinks() {
+    const headings = Array.from(
+      document.querySelectorAll("h2, h3, h4, h5, h6")
+    );
+    for (const heading of headings) {
+      heading.classList.add("group");
+      const link = document.createElement("a");
+      link.className =
+        "heading-link ms-2 no-underline opacity-75 md:opacity-0 md:group-hover:opacity-100 md:focus:opacity-100";
+      link.href = "#" + heading.id;
+
+      const span = document.createElement("span");
+      span.ariaHidden = "true";
+      span.innerText = "#";
+      link.appendChild(span);
+      heading.appendChild(link);
+    }
+  }
+  addHeadingLinks();
+
+  /** Attaches copy buttons to code blocks in the document,
+   * allowing users to copy code easily. */
+  function attachCopyButtons() {
+    const copyButtonLabel = "Copy";
+    const codeBlocks = Array.from(document.querySelectorAll("pre"));
+
+    for (const codeBlock of codeBlocks) {
+      const wrapper = document.createElement("div");
+      wrapper.style.position = "relative";
+
+      // Check if --file-name-offset custom property exists
+      const computedStyle = getComputedStyle(codeBlock);
+      const hasFileNameOffset =
+        computedStyle.getPropertyValue("--file-name-offset").trim() !== "";
+
+      // Determine the top positioning class
+      const topClass = hasFileNameOffset
+        ? "top-(--file-name-offset)"
+        : "-top-3";
+
+      const copyButton = document.createElement("button");
+      copyButton.className = `copy-code absolute end-3 ${topClass} rounded bg-muted border border-muted px-2 py-1 text-xs leading-4 text-foreground font-medium`;
+      copyButton.innerHTML = copyButtonLabel;
+      codeBlock.setAttribute("tabindex", "0");
+      codeBlock.appendChild(copyButton);
+
+      // wrap codebock with relative parent element
+      codeBlock?.parentNode?.insertBefore(wrapper, codeBlock);
+      wrapper.appendChild(codeBlock);
+
+      copyButton.addEventListener("click", async () => {
+        await copyCode(codeBlock, copyButton);
+      });
+    }
+
+    async function copyCode(block, button) {
+      const code = block.querySelector("code");
+      const text = code?.innerText;
+
+      await navigator.clipboard.writeText(text ?? "");
+
+      // visual feedback that task is completed
+      button.innerText = "Copied";
+
+      setTimeout(() => {
+        button.innerText = copyButtonLabel;
+      }, 700);
+    }
+  }
+  attachCopyButtons();
+
+  /** Opens article images in a lightweight full-screen viewer. */
+  function attachImageLightbox() {
+    const article = document.getElementById("article");
+    if (!article) return;
+
+    const images = Array.from(article.querySelectorAll("img"));
+    if (images.length === 0) return;
+
+    let lightbox = document.getElementById("image-lightbox");
+    if (!lightbox) {
+      lightbox = document.createElement("div");
+      lightbox.id = "image-lightbox";
+      lightbox.setAttribute("aria-hidden", "true");
+      lightbox.innerHTML = `
+        <button type="button" class="image-lightbox__backdrop" aria-label="Close image preview">
+          <img class="image-lightbox__image" alt="" />
+          <span class="image-lightbox__caption"></span>
+        </button>
+      `;
+      document.body.appendChild(lightbox);
+    }
+
+    const backdrop = lightbox.querySelector(".image-lightbox__backdrop");
+    const preview = lightbox.querySelector(".image-lightbox__image");
+    const caption = lightbox.querySelector(".image-lightbox__caption");
+
+    function openImage(image) {
+      preview.src = image.currentSrc || image.src;
+      preview.alt = image.alt || "";
+      caption.textContent = image.alt || "";
+      caption.hidden = !image.alt;
+      lightbox.classList.add("is-open");
+      lightbox.setAttribute("aria-hidden", "false");
+      document.documentElement.classList.add("overflow-hidden");
+      backdrop.focus();
+    }
+
+    function closeImage() {
+      lightbox.classList.remove("is-open");
+      lightbox.setAttribute("aria-hidden", "true");
+      document.documentElement.classList.remove("overflow-hidden");
+      preview.removeAttribute("src");
+    }
+
+    backdrop.onclick = closeImage;
+
+    if (document.documentElement.dataset.imageLightboxEscapeBound !== "true") {
+      document.documentElement.dataset.imageLightboxEscapeBound = "true";
+      document.addEventListener("keydown", event => {
+        const activeLightbox = document.getElementById("image-lightbox");
+        if (
+          event.key === "Escape" &&
+          activeLightbox?.classList.contains("is-open")
+        ) {
+          activeLightbox.classList.remove("is-open");
+          activeLightbox.setAttribute("aria-hidden", "true");
+          document.documentElement.classList.remove("overflow-hidden");
+          activeLightbox
+            .querySelector(".image-lightbox__image")
+            ?.removeAttribute("src");
+        }
+      });
+    }
+
+    for (const image of images) {
+      if (image.dataset.zoomBound === "true" || image.closest("a")) continue;
+
+      image.dataset.zoomBound = "true";
+      image.dataset.zoomable = "true";
+      image.tabIndex = 0;
+      image.setAttribute("role", "button");
+      image.setAttribute("aria-label", image.alt || "Open image preview");
+
+      image.addEventListener("click", () => openImage(image));
+      image.addEventListener("keydown", event => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          openImage(image);
+        }
+      });
+    }
+  }
+  attachImageLightbox();
+
+  /* Go to page start after page swap */
+  document.addEventListener("astro:after-swap", () =>
+    window.scrollTo({ left: 0, top: 0, behavior: "instant" })
+  );
+</script> 
