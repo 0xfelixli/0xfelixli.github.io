@@ -1,4 +1,4 @@
-<!DOCTYPE html><html dir="ltr" lang="zh-CN" class="scroll-smooth"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="canonical" href="https://0xfelix.li/posts/2026/agent-prompt-retrospective/"><meta name="generator" content="Astro v5.18.2"><!-- General Meta Tags --><title>把自己 8 个月、11373 条 prompt 翻出来看了一遍：我和 Agent 协作的坏习惯、盲区和知识缺口 | Stack Ashes</title><meta name="title" content="把自己 8 个月、11373 条 prompt 翻出来看了一遍：我和 Agent 协作的坏习惯、盲区和知识缺口 | Stack Ashes"><meta name="description" content="我让 Agent 读完了我过去 8 个月和 Claude Code、Codex 的全部对话记录：3418 个会话，11373 条我亲手打的 prompt。结论不太好看，但很具体。"><meta name="author" content="felix"><link rel="sitemap" href="/sitemap-index.xml"><!-- Open Graph / Facebook --><meta property="og:title" content="把自己 8 个月、11373 条 prompt 翻出来看了一遍：我和 Agent 协作的坏习惯、盲区和知识缺口 | Stack Ashes"><meta property="og:description" content="我让 Agent 读完了我过去 8 个月和 Claude Code、Codex 的全部对话记录：3418 个会话，11373 条我亲手打的 prompt。结论不太好看，但很具体。"><meta property="og:url" content="https://0xfelix.li/posts/2026/agent-prompt-retrospective/"><meta property="og:image" content="https://0xfelix.li/astropaper-og.jpg"><!-- Article Published/Modified time --><meta property="article:published_time" content="2026-09-12T15:00:00.000Z"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://0xfelix.li/posts/2026/agent-prompt-retrospective/"><meta property="twitter:title" content="把自己 8 个月、11373 条 prompt 翻出来看了一遍：我和 Agent 协作的坏习惯、盲区和知识缺口 | Stack Ashes"><meta property="twitter:description" content="我让 Agent 读完了我过去 8 个月和 Claude Code、Codex 的全部对话记录：3418 个会话，11373 条我亲手打的 prompt。结论不太好看，但很具体。"><meta property="twitter:image" content="https://0xfelix.li/astropaper-og.jpg"><!-- Google JSON-LD Structured data --><script type="application/ld+json">[{"@context":"https://schema.org","@type":"BlogPosting","headline":"把自己 8 个月、11373 条 prompt 翻出来看了一遍：我和 Agent 协作的坏习惯、盲区和知识缺口","description":"我让 Agent 读完了我过去 8 个月和 Claude Code、Codex 的全部对话记录：3418 个会话，11373 条我亲手打的 prompt。结论不太好看，但很具体。","image":"https://0xfelix.li/astropaper-og.jpg","url":"https://0xfelix.li/posts/2026/agent-prompt-retrospective/","mainEntityOfPage":{"@type":"WebPage","@id":"https://0xfelix.li/posts/2026/agent-prompt-retrospective/"},"datePublished":"2026-09-12T15:00:00.000Z","inLanguage":"zh-CN","keywords":"AI, Agent, Productivity, Thinking","author":{"@type":"Person","name":"felix","url":"https://github.com/0xfelixli"}},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://0xfelix.li/"},{"@type":"ListItem","position":2,"name":"Posts","item":"https://0xfelix.li/posts/"},{"@type":"ListItem","position":3,"name":"把自己 8 个月、11373 条 prompt 翻出来看了一遍：我和 Agent 协作的坏习惯、盲区和知识缺口","item":"https://0xfelix.li/posts/2026/agent-prompt-retrospective/"}]}]</script><!-- Enable RSS feed auto-discovery  --><!-- https://docs.astro.build/en/recipes/rss/#enabling-rss-feed-auto-discovery --><link rel="alternate" type="application/rss+xml" title="Stack Ashes" href="https://0xfelix.li/rss.xml"><meta name="theme-color" content=""><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><!-- Minimal inline script to prevent FOUC - sets theme immediately --><script>
+<!DOCTYPE html><html dir="ltr" lang="zh-CN" class="scroll-smooth"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="canonical" href="https://0xfelix.li/posts/2026/agent-prompt-retrospective/"><meta name="generator" content="Astro v5.18.2"><!-- General Meta Tags --><title>11373 条 prompt 的复盘：我以为自己在用 Agent，其实是在用搜索框 | Stack Ashes</title><meta name="title" content="11373 条 prompt 的复盘：我以为自己在用 Agent，其实是在用搜索框 | Stack Ashes"><meta name="description" content="我让 Agent 读完了我过去 8 个月和 Claude Code、Codex 的全部对话记录，只看我自己打的字。数据推翻了我原来的假设，也把三件看起来无关的事连成了同一个 bug。"><meta name="author" content="felix"><link rel="sitemap" href="/sitemap-index.xml"><!-- Open Graph / Facebook --><meta property="og:title" content="11373 条 prompt 的复盘：我以为自己在用 Agent，其实是在用搜索框 | Stack Ashes"><meta property="og:description" content="我让 Agent 读完了我过去 8 个月和 Claude Code、Codex 的全部对话记录，只看我自己打的字。数据推翻了我原来的假设，也把三件看起来无关的事连成了同一个 bug。"><meta property="og:url" content="https://0xfelix.li/posts/2026/agent-prompt-retrospective/"><meta property="og:image" content="https://0xfelix.li/astropaper-og.jpg"><!-- Article Published/Modified time --><meta property="article:published_time" content="2026-09-12T15:00:00.000Z"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://0xfelix.li/posts/2026/agent-prompt-retrospective/"><meta property="twitter:title" content="11373 条 prompt 的复盘：我以为自己在用 Agent，其实是在用搜索框 | Stack Ashes"><meta property="twitter:description" content="我让 Agent 读完了我过去 8 个月和 Claude Code、Codex 的全部对话记录，只看我自己打的字。数据推翻了我原来的假设，也把三件看起来无关的事连成了同一个 bug。"><meta property="twitter:image" content="https://0xfelix.li/astropaper-og.jpg"><!-- Google JSON-LD Structured data --><script type="application/ld+json">[{"@context":"https://schema.org","@type":"BlogPosting","headline":"11373 条 prompt 的复盘：我以为自己在用 Agent，其实是在用搜索框","description":"我让 Agent 读完了我过去 8 个月和 Claude Code、Codex 的全部对话记录，只看我自己打的字。数据推翻了我原来的假设，也把三件看起来无关的事连成了同一个 bug。","image":"https://0xfelix.li/astropaper-og.jpg","url":"https://0xfelix.li/posts/2026/agent-prompt-retrospective/","mainEntityOfPage":{"@type":"WebPage","@id":"https://0xfelix.li/posts/2026/agent-prompt-retrospective/"},"datePublished":"2026-09-12T15:00:00.000Z","inLanguage":"zh-CN","keywords":"AI, Agent, Productivity, Thinking","author":{"@type":"Person","name":"felix","url":"https://github.com/0xfelixli"}},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://0xfelix.li/"},{"@type":"ListItem","position":2,"name":"Posts","item":"https://0xfelix.li/posts/"},{"@type":"ListItem","position":3,"name":"11373 条 prompt 的复盘：我以为自己在用 Agent，其实是在用搜索框","item":"https://0xfelix.li/posts/2026/agent-prompt-retrospective/"}]}]</script><!-- Enable RSS feed auto-discovery  --><!-- https://docs.astro.build/en/recipes/rss/#enabling-rss-feed-auto-discovery --><link rel="alternate" type="application/rss+xml" title="Stack Ashes" href="https://0xfelix.li/rss.xml"><meta name="theme-color" content=""><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CDGfc0hd.js"></script><!-- Minimal inline script to prevent FOUC - sets theme immediately --><script>
       (function () {
         const initialColorScheme = ""; // "light" | "dark"
         const currentTheme = localStorage.getItem("theme");
@@ -29,19 +29,19 @@
 <style>#image-lightbox{position:fixed;inset:0;z-index:60;display:none}#image-lightbox.is-open{display:block}.image-lightbox__backdrop{display:flex;width:100%;height:100%;flex-direction:column;align-items:center;justify-content:center;gap:1rem;border:0;background:#000000d1;padding:1rem;cursor:zoom-out}.image-lightbox__image{max-width:min(96vw,1440px);max-height:86vh;border:1px solid rgb(255 255 255 / .18);background:#fff;object-fit:contain}.image-lightbox__caption{max-width:min(90vw,960px);color:#fff;font-size:.875rem;line-height:1.5;text-align:center}
 @keyframes astroFadeInOut{0%{opacity:1}to{opacity:0}}@keyframes astroFadeIn{0%{opacity:0;mix-blend-mode:plus-lighter}to{opacity:1;mix-blend-mode:plus-lighter}}@keyframes astroFadeOut{0%{opacity:1;mix-blend-mode:plus-lighter}to{opacity:0;mix-blend-mode:plus-lighter}}@keyframes astroSlideFromRight{0%{transform:translate(100%)}}@keyframes astroSlideFromLeft{0%{transform:translate(-100%)}}@keyframes astroSlideToRight{to{transform:translate(100%)}}@keyframes astroSlideToLeft{to{transform:translate(-100%)}}@media (prefers-reduced-motion){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}[data-astro-transition-scope]{animation:none!important}}
 :where([data-astro-image]){object-fit:var(--fit);object-position:var(--pos);height:auto}:where([data-astro-image=full-width]){width:100%}:where([data-astro-image=constrained]){max-width:100%}
-</style><style>[data-astro-transition-scope="astro-undyc7o6-1"] { view-transition-name: \628A\81EA\5DF1-8-\4E2A\6708\3001-11373-\6761-prompt-\7FFB\51FA\6765\770B\4E86\4E00\904D\FF1A\6211\548C-agent-\534F\4F5C\7684\574F\4E60\60EF\3001\76F2\533A\548C\77E5\8BC6\7F3A\53E3; }@layer astro { ::view-transition-old(\628A\81EA\5DF1-8-\4E2A\6708\3001-11373-\6761-prompt-\7FFB\51FA\6765\770B\4E86\4E00\904D\FF1A\6211\548C-agent-\534F\4F5C\7684\574F\4E60\60EF\3001\76F2\533A\548C\77E5\8BC6\7F3A\53E3) { 
+</style><style>[data-astro-transition-scope="astro-undyc7o6-1"] { view-transition-name: _11373-\6761-prompt-\7684\590D\76D8\FF1A\6211\4EE5\4E3A\81EA\5DF1\5728\7528-agent\FF0C\5176\5B9E\662F\5728\7528\641C\7D22\6846; }@layer astro { ::view-transition-old(_11373-\6761-prompt-\7684\590D\76D8\FF1A\6211\4EE5\4E3A\81EA\5DF1\5728\7528-agent\FF0C\5176\5B9E\662F\5728\7528\641C\7D22\6846) { 
 	animation-duration: 180ms;
 	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
 	animation-fill-mode: both;
-	animation-name: astroFadeOut; }::view-transition-new(\628A\81EA\5DF1-8-\4E2A\6708\3001-11373-\6761-prompt-\7FFB\51FA\6765\770B\4E86\4E00\904D\FF1A\6211\548C-agent-\534F\4F5C\7684\574F\4E60\60EF\3001\76F2\533A\548C\77E5\8BC6\7F3A\53E3) { 
+	animation-name: astroFadeOut; }::view-transition-new(_11373-\6761-prompt-\7684\590D\76D8\FF1A\6211\4EE5\4E3A\81EA\5DF1\5728\7528-agent\FF0C\5176\5B9E\662F\5728\7528\641C\7D22\6846) { 
 	animation-duration: 180ms;
 	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
 	animation-fill-mode: both;
-	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(\628A\81EA\5DF1-8-\4E2A\6708\3001-11373-\6761-prompt-\7FFB\51FA\6765\770B\4E86\4E00\904D\FF1A\6211\548C-agent-\534F\4F5C\7684\574F\4E60\60EF\3001\76F2\533A\548C\77E5\8BC6\7F3A\53E3) { 
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(_11373-\6761-prompt-\7684\590D\76D8\FF1A\6211\4EE5\4E3A\81EA\5DF1\5728\7528-agent\FF0C\5176\5B9E\662F\5728\7528\641C\7D22\6846) { 
 	animation-duration: 180ms;
 	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
 	animation-fill-mode: both;
-	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(\628A\81EA\5DF1-8-\4E2A\6708\3001-11373-\6761-prompt-\7FFB\51FA\6765\770B\4E86\4E00\904D\FF1A\6211\548C-agent-\534F\4F5C\7684\574F\4E60\60EF\3001\76F2\533A\548C\77E5\8BC6\7F3A\53E3) { 
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(_11373-\6761-prompt-\7684\590D\76D8\FF1A\6211\4EE5\4E3A\81EA\5DF1\5728\7528-agent\FF0C\5176\5B9E\662F\5728\7528\641C\7D22\6846) { 
 	animation-duration: 180ms;
 	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
 	animation-fill-mode: both;
@@ -219,23 +219,20 @@ Tags
 Gallery
 </a> </li> <li class="col-span-2"> <a href="/about">
 About
-</a> </li> <li class="col-span-2"> <a href="/archives" title="Archives" aria-label="archives" class="group inline-flex items-center gap-1 hover:text-accent focus-outline flex justify-center p-3 sm:p-1">  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden sm:inline-block"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 4m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z" /><path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" /><path d="M10 12l4 0" /></svg> <span class="sm:sr-only">Archives</span>  </a> </li> <li class="col-span-1 flex items-center justify-center"> <a href="/search" title="Search" aria-label="search" class="group inline-flex items-center gap-1 hover:text-accent focus-outline flex p-3 sm:p-1">  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-search"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" /><path d="M21 21l-6 -6" /></svg> <span class="sr-only">Search</span>  </a> </li> <li class="col-span-1 flex items-center justify-center"> <button id="theme-btn" class="focus-outline relative size-12 p-4 sm:size-8 hover:[&>svg]:stroke-accent" title="Toggles light & dark" aria-label="auto" aria-live="polite"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute top-[50%] left-[50%] -translate-[50%] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" /></svg> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute top-[50%] left-[50%] -translate-[50%] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M14.828 14.828a4 4 0 1 0 -5.656 -5.656a4 4 0 0 0 5.656 5.656z" /><path d="M6.343 17.657l-1.414 1.414" /><path d="M6.343 6.343l-1.414 -1.414" /><path d="M17.657 6.343l1.414 -1.414" /><path d="M17.657 17.657l1.414 1.414" /><path d="M4 12h-2" /><path d="M12 4v-2" /><path d="M20 12h2" /><path d="M12 20v2" /></svg> </button> </li> </ul> </nav> </div> </header> <script type="module">function s(){const e=document.querySelector("#menu-btn"),t=document.querySelector("#menu-items"),n=document.querySelector("#menu-icon"),o=document.querySelector("#close-icon");!e||!t||!n||!o||e.addEventListener("click",()=>{const c=e.getAttribute("aria-expanded")==="true";e.setAttribute("aria-expanded",c?"false":"true"),e.setAttribute("aria-label",c?"Open Menu":"Close Menu"),t.classList.toggle("hidden"),n.classList.toggle("hidden"),o.classList.toggle("hidden")})}s();document.addEventListener("astro:after-swap",s);</script> <div class="app-layout flex items-center justify-start"><a id="back-button" href="/" class="group inline-flex items-center gap-1 hover:text-accent focus-outline -ms-2 mt-8 mb-2 hover:text-foreground/75"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 rtl:rotate-180"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M15 6l-6 6l6 6" /></svg><span>Go back</span> </a></div><script type="module">function o(){const t=document.querySelector("#back-button"),e=sessionStorage.getItem("backUrl");e&&t&&(t.href=e)}document.addEventListener("astro:page-load",o);o();</script> <main id="main-content" class="app-layout pb-12" data-pagefind-body> <header> <h1 class="inline-block text-2xl font-bold text-accent sm:text-3xl" data-astro-transition-scope="astro-undyc7o6-1"> 把自己 8 个月、11373 条 prompt 翻出来看了一遍：我和 Agent 协作的坏习惯、盲区和知识缺口 </h1> <div class="my-2 flex items-center gap-2"> <div class="flex items-center gap-x-2 opacity-80"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 min-w-5.5"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z" /><path d="M16 3v4" /><path d="M8 3v4" /><path d="M4 11h16" /><path d="M7 14h.013" /><path d="M10.01 14h.005" /><path d="M13.01 14h.005" /><path d="M16.015 14h.005" /><path d="M13.015 17h.005" /><path d="M7.01 17h.005" /><path d="M10.01 17h.005" /></svg>  <time class="text-sm sm:text-base" datetime="2026-09-12T15:00:00.000Z">12 Sep, 2026</time> </div> <span aria-hidden="true" class="max-sm:hidden hidden">|</span>  </div>  </header> <article id="article" class="app-prose mt-8 w-full max-w-app prose-pre:bg-(--shiki-light-bg) dark:prose-pre:bg-(--shiki-dark-bg)"> <h1 id="把自己-8-个月11373-条-prompt-翻出来看了一遍">把自己 8 个月、11373 条 prompt 翻出来看了一遍</h1>
-<p>我让 Agent 读完了我过去 8 个月和 Claude Code、Codex 的全部对话记录。</p>
-<p>不是让它总结”学到了什么”，而是让它只看我自己打的那些字，回答三个问题：我在和 Agent 交流的时候有哪些不好的习惯？哪些地方一直在重复浪费？我反复问”这是什么”的东西，暴露了哪些知识缺口？</p>
-<p>结论不太好看，但很具体。这篇是复盘。</p>
+</a> </li> <li class="col-span-2"> <a href="/archives" title="Archives" aria-label="archives" class="group inline-flex items-center gap-1 hover:text-accent focus-outline flex justify-center p-3 sm:p-1">  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden sm:inline-block"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 4m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z" /><path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" /><path d="M10 12l4 0" /></svg> <span class="sm:sr-only">Archives</span>  </a> </li> <li class="col-span-1 flex items-center justify-center"> <a href="/search" title="Search" aria-label="search" class="group inline-flex items-center gap-1 hover:text-accent focus-outline flex p-3 sm:p-1">  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-search"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" /><path d="M21 21l-6 -6" /></svg> <span class="sr-only">Search</span>  </a> </li> <li class="col-span-1 flex items-center justify-center"> <button id="theme-btn" class="focus-outline relative size-12 p-4 sm:size-8 hover:[&>svg]:stroke-accent" title="Toggles light & dark" aria-label="auto" aria-live="polite"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute top-[50%] left-[50%] -translate-[50%] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" /></svg> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute top-[50%] left-[50%] -translate-[50%] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M14.828 14.828a4 4 0 1 0 -5.656 -5.656a4 4 0 0 0 5.656 5.656z" /><path d="M6.343 17.657l-1.414 1.414" /><path d="M6.343 6.343l-1.414 -1.414" /><path d="M17.657 6.343l1.414 -1.414" /><path d="M17.657 17.657l1.414 1.414" /><path d="M4 12h-2" /><path d="M12 4v-2" /><path d="M20 12h2" /><path d="M12 20v2" /></svg> </button> </li> </ul> </nav> </div> </header> <script type="module">function s(){const e=document.querySelector("#menu-btn"),t=document.querySelector("#menu-items"),n=document.querySelector("#menu-icon"),o=document.querySelector("#close-icon");!e||!t||!n||!o||e.addEventListener("click",()=>{const c=e.getAttribute("aria-expanded")==="true";e.setAttribute("aria-expanded",c?"false":"true"),e.setAttribute("aria-label",c?"Open Menu":"Close Menu"),t.classList.toggle("hidden"),n.classList.toggle("hidden"),o.classList.toggle("hidden")})}s();document.addEventListener("astro:after-swap",s);</script> <div class="app-layout flex items-center justify-start"><a id="back-button" href="/" class="group inline-flex items-center gap-1 hover:text-accent focus-outline -ms-2 mt-8 mb-2 hover:text-foreground/75"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 rtl:rotate-180"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M15 6l-6 6l6 6" /></svg><span>Go back</span> </a></div><script type="module">function o(){const t=document.querySelector("#back-button"),e=sessionStorage.getItem("backUrl");e&&t&&(t.href=e)}document.addEventListener("astro:page-load",o);o();</script> <main id="main-content" class="app-layout pb-12" data-pagefind-body> <header> <h1 class="inline-block text-2xl font-bold text-accent sm:text-3xl" data-astro-transition-scope="astro-undyc7o6-1"> 11373 条 prompt 的复盘：我以为自己在用 Agent，其实是在用搜索框 </h1> <div class="my-2 flex items-center gap-2"> <div class="flex items-center gap-x-2 opacity-80"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-6 min-w-5.5"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z" /><path d="M16 3v4" /><path d="M8 3v4" /><path d="M4 11h16" /><path d="M7 14h.013" /><path d="M10.01 14h.005" /><path d="M13.01 14h.005" /><path d="M16.015 14h.005" /><path d="M13.015 17h.005" /><path d="M7.01 17h.005" /><path d="M10.01 17h.005" /></svg>  <time class="text-sm sm:text-base" datetime="2026-09-12T15:00:00.000Z">12 Sep, 2026</time> </div> <span aria-hidden="true" class="max-sm:hidden hidden">|</span>  </div>  </header> <article id="article" class="app-prose mt-8 w-full max-w-app prose-pre:bg-(--shiki-light-bg) dark:prose-pre:bg-(--shiki-dark-bg)"> <h1 id="11373-条-prompt-的复盘我以为自己在用-agent其实是在用搜索框">11373 条 prompt 的复盘：我以为自己在用 Agent，其实是在用搜索框</h1>
+<p>过去 8 个月，我和 Claude Code、Codex 的全部对话都躺在硬盘上，3.3 GB，3418 个会话。我一次都没打开过。</p>
+<p>这次我让 Agent 把它们全读了一遍，但只看一种东西：我自己敲进去的字。不看它回了什么，不看代码改了什么，只看我说了什么、怎么说的、说完之后又说了什么。</p>
+<p>一开始我想验证的假设很朴素：我 prompt 写得太短，所以返工多。数据说这个假设不成立。真正的问题比”写短了”难看。</p>
 <h2 id="太长也要读">太长也要读</h2>
 <ul>
-<li>8 个月，3418 个会话，我亲手打了 11373 条 prompt。8 月一个月 5821 条，是 7 月的 7 倍。</li>
-<li>数量涨的同时，每条 prompt 的信息量在掉：中位长度从 4 月的 91 字掉到 9 月的 20 字，10 字以内的占比从 16% 涨到 29%。</li>
-<li>最常打的三句话是”实施”（141 次）、“继续”（109 次）、“做的咋样了”（96 次）。</li>
-<li>354 条 prompt 以”吧 / 对吧 / 对不对 / 是不是更好”结尾。我一直在引导 Agent 同意我。</li>
-<li>393 次”这是什么 / 帮我理解”。同一个核心概念（门限签名）被讲了三遍，5 个月后我还是说”我还是不理解”。</li>
-<li>两天前做过一次类似的分析，Agent 给了四条改进规则。两天后全局配置文件一个字没动。</li>
+<li>8 个月，我亲手打了 11373 条 prompt，约 560 万字（含粘贴）。模型产出约 1.25 亿 token。输入和输出的比例超过 1:20。</li>
+<li>我的纠正率是一个常数：不管 prompt 长短、一天开几个会话、几点钟，我发现 Agent 错误的比例都在 4% 上下。限制我纠错的是我的注意力预算。短 prompt 的代价是我没有标准去判断该不该返工。</li>
+<li>只有 1.8% 的 prompt 说了”做完的样子”。一字批准（“实施""继续""做吧”）有 301 次。</li>
+<li>“你确定吗 / 对抗式审查”和”对吧 / 是不是更好”两种句式逐月同步上涨。我对 Agent 的结论越来越怀疑，对自己的前提越来越不怀疑。</li>
+<li>同一个核心概念被讲了三遍，5 个月后我还是说”我还是不理解”。两天前的复盘给出四条规则，两天后配置文件一个字没动。这两件事是同一个 bug：把”看懂了”当成了”做到了”。Agent 让”看懂”变得无限便宜，这个 bug 因此被放大。</li>
 </ul>
-<p>最后一条最值得记：<strong>分析做完不落地，等于没做。</strong></p>
 <h2 id="一数据从哪来">一、数据从哪来</h2>
-<p>本机有两份原始记录：Claude Code 的 <code>~/.claude/projects/</code>，Codex 的 <code>~/.codex/sessions/</code>，都是 JSONL，加起来 3.3 GB。我用 <a href="https://github.com/huggingface/funes">funes</a> 把它们索引成可检索的记忆，再写了一个几十行的脚本，只抽出 <code>role=user</code> 且来源是真人输入的消息，过滤掉系统注入、工具回传、子 agent 的任务书。</p>
-<p>剩下的就是我自己一个字一个字打出来的东西。</p>
+<p>本机两份原始记录：Claude Code 的 <code>~/.claude/projects/</code>，Codex 的 <code>~/.codex/sessions/</code>，都是 JSONL。我用 <a href="https://github.com/huggingface/funes">funes</a> 索引成可检索的记忆，再写脚本只抽 <code>role=user</code> 且来源是真人输入的消息，过滤掉系统注入、工具回传和子 agent 的任务书。</p>
 
 
 
@@ -269,96 +266,156 @@ About
 
 
 
-<table><thead><tr><th>指标</th><th>数值</th></tr></thead><tbody><tr><td>时间范围</td><td>2026-01-05 到 2026-09-12，140 个活跃日</td></tr><tr><td>会话数</td><td>978 个有真人输入的会话（总 3418，其余是自动化流水线）</td></tr><tr><td>prompt 数</td><td>11373（Claude Code 4936，Codex 6437）</td></tr><tr><td>涉及目录</td><td>177 个</td></tr><tr><td>模型输出</td><td>约 1.25 亿 token（Claude 6980 万，Codex 5500 万）</td></tr><tr><td>手动中断</td><td>158 次，其中 8 月 99 次</td></tr></tbody></table>
+<table><thead><tr><th>指标</th><th>数值</th></tr></thead><tbody><tr><td>时间范围</td><td>2026-01-05 到 09-12，140 个活跃日</td></tr><tr><td>有真人输入的会话</td><td>978（总 3418，其余是自动化流水线）</td></tr><tr><td>prompt 数</td><td>11373（Claude Code 4936，Codex 6437）</td></tr><tr><td>我的输入</td><td>约 560 万字</td></tr><tr><td>模型输出</td><td>约 1.25 亿 token（Claude 6980 万，Codex 5500 万）</td></tr><tr><td>手动中断</td><td>158 次，8 月占 99</td></tr></tbody></table>
 <p><img alt="2026 年 3 到 9 月每月 prompt 数与中位长度" loading="lazy" decoding="async" fetchpriority="auto" width="760" height="360" src="/_astro/agent-prompt-retro-monthly.BU9uJgfA_iu4t0.svg" ></p>
-<p>8 月是分水岭。那个月我开始同时开多个终端面板跑多个 Agent，量上去了，每条 prompt 却越来越短。这不是巧合，后面几条坏习惯基本都是从这里长出来的。</p>
-<h2 id="二六个坏习惯">二、六个坏习惯</h2>
-<h3 id="1-一字令和代词式追问">1. 一字令和代词式追问</h3>
-<p>10 字以内的 prompt 有 2862 条，占四分之一。排在最前面的是：</p>
-<pre class="astro-code astro-code-themes min-light night-owl" style="--shiki-light:#24292eff;--shiki-dark:#d6deeb;--shiki-light-bg:#ffffff;--shiki-dark-bg:#011627; overflow-x: auto;--file-name-offset: -0.75rem;" tabindex="0" data-language="text"><code><span class="line"><span>实施          141</span></span>
-<span class="line"><span>继续          109</span></span>
-<span class="line"><span>做的咋样了     96</span></span>
-<span class="line"><span>好的          34</span></span>
-<span class="line"><span>要的          29</span></span>
-<span class="line"><span>改动大吗       26</span></span>
-<span class="line"><span>现在呢        13</span></span>
-<span class="line"><span>如何改呢       11</span></span></code></pre>
-<p>“实施”本身没问题，它是在 Agent 给完方案之后的批准。问题在于批准的时候我几乎从不补一句验收标准。“实施""继续”这类一字批准一共 285 次，紧跟着的下一条 prompt 有 37 次是”为什么……""不对……""还是……”这类返工。方案被批准了，但”做完的样子”从来没被说清楚。</p>
-<p>“现在呢""这些呢""改法呢”更糟。它指哪件事、要什么粒度、要不要跑命令验证，全靠 Agent 猜。猜错就是整整一轮白跑。</p>
-<p><strong>改法</strong>：每条 prompt 至少带三样东西：对象、动作、验收方式。“现在呢”改成”刚才那 4 个 TODO 现在各是什么状态，跑一次测试后回答”。多打十几个字，省一轮。</p>
-<h3 id="2-催进度而不是要汇报">2. 催进度，而不是要汇报</h3>
-<p>“做的咋样了""做完了吗""跑的咋样了”一共出现 96 次。</p>
-<p>这暴露的不是我着急，而是我把任务派出去的时候没有定义完成信号。Agent 在后台跑，我不知道它到哪了，只能隔一会儿戳一下。每戳一下都是一轮上下文消耗，而且 Agent 为了回答”做得咋样”还得先自己盘一遍状态。</p>
-<p><strong>改法</strong>：派任务的时候一句话说清”做完的标志”：写到哪个文件、最后一行输出什么、哪个测试变绿。长任务要求它每完成一个阶段主动汇报三行，我不再主动问。</p>
-<h3 id="3-引导式提问">3. 引导式提问</h3>
-<p>354 条 prompt 以”吧 / 对吧 / 对不对 / 是不是更好”结尾。典型的一条：</p>
-<blockquote>
-<p>肯定是 1 啊 对不对 做代码审计是有调用关系的 别的又能会调用 肯定要读到啊 同一个仓库中其他目录能读到是合理的啊对吧</p>
-</blockquote>
-<p>这不是提问，这是要求附和。模型面对这种句式的默认行为就是顺着说。我得到的不是判断，是回声。</p>
-<p>讽刺的是，我另一边又有 129 次在要求”对抗式审查""证伪""给我反驳理由”，还写过”你不要臆想，做事要有证据”。说明我知道该怎么问，只是在有倾向的时候忘了。</p>
-<p><strong>改法</strong>：凡是自己已经有答案的问题，反着问。“是不是 1 更合理”改成”给我两条 1 不成立的理由，再给结论”。</p>
-<h3 id="4-一个会话装下四天">4. 一个会话装下四天</h3>
-<p>超过 50 条 prompt 的会话有 45 个。最长的一个 428 条，从 7 月 31 日开到 8 月 4 日，开头是”对这个文件你有什么看法”，中间经历了性能优化、删模块、协议设计、召回率讨论，结尾是”作为一个工作 10 年的工程师系统性地 review 下整个流程”。四天的工作塞进一个上下文里，后半程的判断全是被前半程的残留拖着走的。</p>
-<p>还有一个更典型的：9 月 5 日晚上我说”这里面的中文输入有问题，帮我分析下”。这个会话跑了 1400 多轮、13 个小时，中途换了两次 UI 组件库，做了一次整体重设计，最后一条是我自己说的”还是按照终端的方式，不要分别处理了”。绕了一圈，回到起点附近。</p>
-<p>问题不在 Agent 跑偏，在于我没给边界。“帮我分析下”没有说”只修输入法，别碰别的”。一个开放式的开头加上一个不换会话的习惯，就会长成这样。</p>
-<p><strong>改法</strong>：一个问题一个会话。会话过 100 轮或者话题明显换了，让它先写一份 <code>HANDOFF.md</code>（做到哪、下一步、坑），新会话读文件接手。我口头转述必然丢信息。</p>
-<h3 id="5-情绪化连问">5. 情绪化连问</h3>
-<p>9 月 8 日一个会话里，我连着问了四遍”为什么没有发现""为什么没发现呢""所以为什么没有发现呢”，最后一条是”所以到底发没发现？你给我说出最核心的一句话就行了，不要搞什么很大的段落，我也没有耐心看”。</p>
-<p>最后那句其实是对的。它说清了我要什么：一句话结论。但它应该是第一句，而不是第四句。前三句只是同一个问题换了语气重发，Agent 每次都认真地又铺一大段，我每次都更烦。</p>
-<p>“还是不行”出现了 16 次，集中在几个前端和输入法的问题上。连说三次”还是不行”，说明我提供的信息（截图、复现步骤、环境）和上一次一模一样。Agent 拿到的输入没变，输出当然也不会变。</p>
-<p>另外一个数字：23 点到凌晨 4 点之间的 prompt，8 月有 488 条，占当月 8%。上面几条坏习惯在深夜时段明显更密。</p>
-<p><strong>改法</strong>：同一个问题问到第二遍，就停下来换方式：要么补新证据（截图、日志、复现命令），要么明确要求输出格式（“一句话""一张表”）。重复问第三遍等于承认自己没在思考。</p>
-<h3 id="6-分析做了规则没落地">6. 分析做了，规则没落地</h3>
-<p>9 月 10 日我做过一次类似的复盘，让 Agent 看我最近两天的对话。它给出了四条建议，写好了可以直接粘进 <code>~/.claude/CLAUDE.md</code> 的文本，并问我”要不要我直接写进去”。</p>
-<p>我没有回答。今天检查，那个文件的修改时间还停在 9 月 6 日。Codex 的全局 <code>AGENTS.md</code> 是 0 字节。</p>
-<p>同类的还有：45 个会话以”hi”开场，47 次要求”用中文回复”。这些都是应该写进配置一次、以后再也不用打的东西。习惯要改一辈子，规则改一次就够，而我选了更贵的那条路。</p>
-<p><strong>改法</strong>：任何”以后要注意”的结论，当天写进 <code>CLAUDE.md</code> 或 <code>AGENTS.md</code>，不写就不算复盘完成。</p>
-<h2 id="三393-次这是什么暴露的知识缺口">三、393 次”这是什么”暴露的知识缺口</h2>
-<p>我把所有含”是什么 / 什么意思 / 帮我理解 / 大白话说下”的 prompt 拉出来，按主题归了一下。有几类值得单独说。</p>
-<p><strong>每天在用的工具，基础词汇不认识。</strong> 用了几个月的代码评审平台，8 月底才问”PHID 是什么意思”，9 月初问”LGTM 是什么意思”。还有”e2e 是什么""orchestrator 是什么意思”。这些词一天在屏幕上出现几十次，我一直靠上下文猜着用。</p>
-<p><strong>业务核心的密码学，讲了三遍还没懂。</strong> 门限签名（MPC/TSS）是我所在行业的地基。4 月 Agent 给我解释过一遍私钥分片，9 月 7 日我又问”MPC 是什么，帮我理解”，9 月 9 日我说：</p>
+<p>8 月是分水岭：5821 条，是 7 月的 7 倍。那个月我开始在多个终端面板里同时跑多个 Agent。量涨了 7 倍，每条 prompt 的中位长度从 4 月的 91 字掉到 20 字，10 字以内的占比从 16% 涨到 29%。</p>
+<p>看到这张图的时候，我以为故事已经讲完了：并行导致注意力稀释，prompt 变短，返工变多。然后我去验证，发现后半句是错的。</p>
+<h2 id="二我的纠正率是常数">二、我的纠正率是常数</h2>
+<p>我把所有带纠正意味的 prompt 挑出来（“不对""你理解错了""我的意思是""还是不行""为什么没有”），算它们在不同条件下的占比：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>切法</th><th>纠正率</th></tr></thead><tbody><tr><td>一天只开 1–2 个会话</td><td>3.8%</td></tr><tr><td>一天开 10 个以上会话</td><td>3.5%</td></tr><tr><td>会话里短 prompt 少于 15%</td><td>4.4%</td></tr><tr><td>会话里短 prompt 超过 45%</td><td>3.3%</td></tr><tr><td>上午 9–12 点</td><td>5.1%</td></tr><tr><td>深夜 23 点到 4 点</td><td>3.3%</td></tr></tbody></table>
+<p>几乎是一条直线。prompt 写得再短、会话开得再多、熬得再晚，我发现错误的比例都不变，甚至深夜和高并发时还略低。</p>
+<p>只有一种解释说得通：我能发现的错误数量，受限于我愿意花在核对上的注意力。我每天分给”检查”的预算是固定的，Agent 产出多少，我就按这个预算抽查多少。产出翻 7 倍，抽查比例就降到七分之一。</p>
+<p>这也解释了为什么短 prompt 看起来”没有代价”。代价是沉默的接受。我用”实施”批准了一个方案，没有说做完该长什么样，那么它做出来的任何东西我都没有依据说”不对”。</p>
+<p>这个发现把我原来想写的”六个坏习惯”重新排了一遍。它们是三处错位的不同表现：我在规格、判断、学习这三件事上都用了旧的方式，而 Agent 恰恰把这三件事变成了人唯一还需要做的事。</p>
+<h2 id="三错位一执行免费了我却在规格上省字">三、错位一：执行免费了，我却在规格上省字</h2>
+<p>Agent 出现之前，一个任务的成本大头在执行。写清需求花 10 分钟，实现花两天，所以”需求写清楚”这件事有天然的压力：写不清楚，两天就白费。</p>
+<p>现在实现是几分钟到几小时，还不用我动手。执行变便宜了，规格和验收成了整个链条里唯一由我提供的输入。按理说我应该把省下来的时间全砸在这两件事上。数据说我做了相反的事：</p>
+<ul>
+<li>说清”做完的样子”（写到哪个文件、哪个测试变绿、最后一行输出什么）的 prompt 只占 1.8%。</li>
+<li>一字批准 301 次。其中 8% 在接下来三条 prompt 里出现了纠正，剩下 92% 我不知道对不对，因为没有标准。</li>
+<li>“做的咋样了""做完了吗”问了 96 次。我没有告诉 Agent 完成信号是什么，所以它不知道什么时候该主动汇报，我只能隔一会儿去戳一下。每一下都是一轮上下文，而且它为了回答”咋样了”还得先盘一遍状态。</li>
+<li>“最合适的方案是什么""最优方案是什么""根本的解决方案是什么”在不同日子里反复出现。我在让它替我做选择，然后用”实施”签字。</li>
+</ul>
+<p>还有一个我一直误判的案例。9 月 5 日晚上我说”这里面的中文输入有问题，帮我分析下”。这个会话跑了 1400 多轮、13 个小时，中途换了两次 UI 组件库，做了一次整体重设计，最后一条是我自己说的”还是按照终端的方式，不要分别处理了”。</p>
+<p>我原来把它归为”会话太长、话题漂移”。现在看，根子在第一句话。“帮我分析下”是一个开放任务，没有边界，没有验收。Agent 对开放任务的默认行为就是把它拆到不能再拆，能做就继续做。它每一步都在认真回应我上一句话，没有任何一步是”跑偏”，只是从头到尾没人说过”够了”长什么样。派任务要分封闭任务和开放任务，开放任务必须附带边界和停止条件。我给了一个开放任务，然后指望它自己知道边界。</p>
+<p>规格上省的每一个字，都会在验收上以”没法判断”的形式还回来。“没法判断”不报警，所以我一直觉得自己很高效。</p>
+<h2 id="四错位二我怀疑它的结论但不怀疑自己的前提">四、错位二：我怀疑它的结论，但不怀疑自己的前提</h2>
+<p>有两组句式我分别统计了逐月占比：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>月份</th><th>怀疑句（你确定吗 / 真的吗 / 对抗式审查 / 证伪）</th><th>引导句（对吧 / 对不对 / 是不是更好）</th></tr></thead><tbody><tr><td>3 月</td><td>0.0%</td><td>0.7%</td></tr><tr><td>5 月</td><td>2.0%</td><td>2.7%</td></tr><tr><td>8 月</td><td>1.6%</td><td>3.2%</td></tr><tr><td>9 月</td><td>2.0%</td><td>3.7%</td></tr></tbody></table>
+<p>两条曲线一起往上走。我越来越会要求”给我反驳理由""对抗式审查一下”，也越来越多地用”肯定是 1 啊对不对……是合理的啊对吧”这种句子收尾。总共 354 条 prompt 以引导句结束。</p>
+<p>这两件事同时增长，说明它们针对的对象不同。怀疑是冲着 Agent 的方案去的：你给的结论，我要你证明。引导是冲着我自己的想法去的：我已经有答案了，你来确认。我建了一套对 Agent 结论的质疑机制，却把自己的前提排除在外。</p>
+<p>模型面对引导句的默认行为是顺着说。它的目标函数是让对话方满意，而我递给它的满意信号是”同意我”。于是我得到的是回声，还以为得到了第二意见。</p>
+<p>更麻烦的是这两种句式的分工恰好反了。我对 Agent 的方案怀疑，但它的方案是读过代码之后给的；我对自己的前提不怀疑，但我的前提往往是没读代码就有的直觉。质疑应该落在证据更少的那一边。</p>
+<p>情绪化连问也是这条错位的一个变体。9 月 8 日我连着问了四遍”为什么没有发现”，最后一句是”所以到底发没发现？你给我说出最核心的一句话就行了，我也没有耐心看”。前三遍是同一个问题换语气重发，第四遍才第一次说出我要什么。第四遍之前我根本不知道自己要的是一句话结论。情绪是需求还没说出来的信号。</p>
+<h2 id="五错位三解释免费了理解反而更少发生">五、错位三：解释免费了，理解反而更少发生</h2>
+<p>393 条 prompt 在问”这是什么 / 什么意思 / 帮我理解 / 大白话说下”。把它们按主题归类之后，几类东西很刺眼。</p>
+<p><strong>每天在用的工具的基础词。</strong> 用了几个月的代码评审平台，8 月底问”PHID 是什么意思”，9 月初问”LGTM 是什么意思”，还有”e2e 是什么""orchestrator 是什么”。这些词一天出现几十次，我一直靠上下文猜着用，因为每次都能猜出个大概，从来没有卡到必须查的地步。</p>
+<p><strong>核心领域的密码学。</strong> 门限签名（MPC/TSS）是我这个方向的地基。4 月 Agent 解释过一遍私钥分片，9 月 7 日我又问”MPC 是什么，帮我理解”，9 月 9 日我写下这句话：</p>
 <blockquote>
 <p>我对于这个 mpc 的技术实现我还是不理解 为什么可以分成多个私钥以及在签名的时候为什么不会合成一个私钥</p>
 </blockquote>
-<p>三次解释，每次都听懂了，每次都没留下。因为我每次的动作都是”看一遍解释，觉得懂了，关掉”。没有笔记，没有复述，没有在一周后自己再讲一遍。<strong>让 Agent 解释一个概念，和学会这个概念，是两件事。</strong></p>
-<p><strong>基础设施和网络。</strong> “source IP 是什么，如何看""为什么局域网的两台机器不能直连""这个环境变量是什么意思""限制对源服务器的直接访问是什么意思”。这类问题都是运维基础，出现频率不高但每次都卡住整个任务。</p>
-<p><strong>前端安全的细节。</strong> “Next.js 缓存为什么会影响到别人""nonce 为什么之前是用户可以提交的""这里应该要有个 XSS 为什么没有执行”。做安全审计的人对前端框架的运行机制不熟，判断漏洞是否成立就只能靠 Agent 的说法。</p>
-<p><strong>本地模型的名词。</strong> GGUF、Q4_K、MLX、abliterated，8 月中一连串地问。这一类反而问题不大，用两次就记住了。</p>
-<p><strong>自己设计的系统，自己看不懂。</strong> “大白话说下”出现了 23 次，其中大部分是在读 Agent 对我自己项目的输出。“unauditable 这个命名是什么意思，别人一眼能看懂吗""这些是什么意思，我没有理解”。这不是知识缺口，是设计问题：抽象层太多，命名太晦涩，连作者都要翻译。</p>
-<p><strong>改法</strong>：建一个”问过的概念”清单。每个概念用自己的话写 3 行，一周后让 Agent 当面试官考我。9 月 9 日我其实这么干过一次：“你是面试官，关于这些内容问我一个问题，要能分辨出我到底懂不懂”。那一次效果很好，应该变成每周例行的事。</p>
-<h2 id="四做对的事别丢">四、做对的事，别丢</h2>
-<p>复盘不能只挑毛病，有几件事我做对了，而且数据上看是这几个月才养成的：</p>
+<p>三次解释，每次都听懂了，每次都没留下。</p>
+<p>认知心理学里的生成效应说，自己生成过的东西记得住，读到的东西记不住。Agent 把”读到”的成本压到了零，我每次的动作都是：问，看一遍解释，觉得懂了，关掉。没有一次是我先写下自己的理解再让它挑错。“查到”取代了”想通”，而两者在当时的感受是一样的。</p>
+<p>同类证据还有一条。“根本原因是什么”在 8 个不同的日子里被我问过。我一直以为这是个好习惯，追根因。但换个角度看：8 次我都没有先说”我猜根因是 X，你验证”。每一次都是空手去要答案。要来的答案当天有用，第二天遇到相似的问题我还是空手。</p>
+<p><strong>自己设计的系统，自己看不懂。</strong> “大白话说下”出现了 23 次，大多是在读 Agent 对我自己项目的输出。“这个命名是什么意思，别人一眼能看懂吗""这些是什么意思，我没有理解”。这一类是设计问题：抽象层太多、命名太晦涩，连作者都需要翻译。它和上一条共享同一个根：那些抽象是 Agent 生成、我”看懂”之后批准的，从来没有被我用自己的话复述过一遍。</p>
+<h2 id="六把三件事连起来同一个-bug">六、把三件事连起来：同一个 bug</h2>
+<p>现在回到开头那条”两天前的复盘”。</p>
+<p>9 月 10 日我做过一次小范围的同类分析，Agent 给出四条改进规则，写好了可以直接粘进 <code>~/.claude/CLAUDE.md</code> 的文本，并问我”要不要我直接写进去”。我没有回答。今天检查，那个文件的修改时间停在 9 月 6 日，Codex 的全局 <code>AGENTS.md</code> 是 0 字节。</p>
+<p>我读完那份复盘的感受和读完 MPC 解释的感受一模一样：懂了，有道理，关掉。</p>
+<p>于是三件事对上了：</p>
 <ul>
-<li><strong>“先不要动手，先和我聊清楚”</strong> 出现 234 次。5 月之前几乎没有，9 月占到全部 prompt 的 3.1%。它把讨论和执行分开，是我最有效的一句话。</li>
-<li><strong>“复述我的需求”</strong> 41 次。让 Agent 先说它理解的任务，错了立刻纠正，比做完再改便宜十倍。</li>
-<li><strong>“改动大吗”</strong> 26 次，加上各种问成本、问工作量的一共 149 次。这是在动手之前给自己一个决策点。</li>
-<li><strong>对抗式审查</strong> 129 次。把方案发给多个独立会话，分别从第一性原理、对抗、消融、奥卡姆剃刀、批判性思维几个视角评审，同一天群发同一段 prompt 到三个以上会话有 76 次。</li>
-<li><strong>派一个零上下文的 Agent 只读文档做推演</strong>，用来检验文档写得够不够清楚。它找出的缺口比我自己 review 狠。</li>
+<li>看懂一个方案 ≈ 验收了它（错位一）</li>
+<li>看懂一个解释 ≈ 学会了它（错位三）</li>
+<li>看懂一份复盘 ≈ 改掉了习惯（本节）</li>
 </ul>
-<p>这些不是技巧，是把”怀疑”变成了默认动作。要继续。</p>
-<h2 id="五接下来-30-天的规则">五、接下来 30 天的规则</h2>
-<p>写进配置，不靠记忆：</p>
+<p>它们是同一个动作：用”读”替代了”做”，并且在读完的那一刻感受不到区别。</p>
+<p>这个 bug 人一直都有。Agent 把它放大了：以前”看懂”需要先花力气找到解释，这个力气本身就是一层过滤，让我至少在少数问题上不得不自己想。现在解释无限供给，1.25 亿 token 的输出里每一段都写得清楚、顺滑、像已经被消化过。我每天读到的”懂了”是以前的几十倍，而真正生成过的东西没有增加。</p>
+<p>8 月那 5821 条 prompt 就是放大器开到最大的样子。产出感来自 token 数，而我在规格、判断、学习三件事上投入的字数在同步下降。</p>
+<h2 id="七做对的事以及它们为什么有效">七、做对的事，以及它们为什么有效</h2>
+<p>数据里也有好东西，而且都是这几个月新长出来的：</p>
+<ul>
+<li>“先不要动手，先和我聊清楚”出现 234 次，5 月前几乎没有，9 月占到 3.1%。</li>
+<li>“复述我的需求”41 次。</li>
+<li>“改动大吗”和各类问成本、问工作量的 149 次。</li>
+<li>对抗式审查 129 次。同一段方案同一天群发到三个以上独立会话、分别从第一性原理、消融、奥卡姆剃刀、批判性思维的视角评审，有 76 次。</li>
+<li>派一个零上下文的 Agent 只读文档做纯推演，用来检验文档写得够不够清楚。</li>
+</ul>
+<p>回头看，它们有效的原因是同一个：每一条都在”读”和”做”之间强行插了一个动作。“先聊清楚”是在执行前插入规格；“复述”是让 Agent 生成一次，我来核对；“对抗式审查”是在批准前插入一次证伪；“零上下文推演”是让文档接受一次不依赖我脑内上下文的测试。它们都在阻止我用”看懂了”直接跳到”做到了”。</p>
+<p>改法就是把同样的动作补到剩下的地方。</p>
+<h2 id="八接下来-30-天的规则">八、接下来 30 天的规则</h2>
+<p>写进配置，能测量的才算：</p>
 <ol>
-<li>每条 prompt 带对象、动作、验收方式。不允许单独发”实施""继续""现在呢”。</li>
-<li>派长任务时定义完成信号和汇报节奏。不再问”做的咋样了”。</li>
-<li>自己已有答案的问题，改成”给我两条反对理由”。</li>
-<li>一个问题一个会话。超过 100 轮或话题切换，先写 <code>HANDOFF.md</code> 再开新会话。</li>
+<li>每条 prompt 带对象、动作、验收。“实施”必须扩成”实施，做完的标志是 X”。</li>
+<li>派长任务时定义完成信号和汇报节奏，我不再问”做的咋样了”。</li>
+<li>自己已经有答案的问题，先写下我的答案，再让 Agent 找两条反对理由。这条同时治引导式提问和”空手要根因”。</li>
+<li>一个问题一个会话。开放式的”帮我分析下”必须附带边界：“只看输入法，不碰其他”。超过 100 轮先写 <code>HANDOFF.md</code>。</li>
 <li>同一问题第二遍，必须附带新证据或明确输出格式。</li>
-<li>任何”以后注意”的结论当天进 <code>CLAUDE.md</code> / <code>AGENTS.md</code>。</li>
-<li>概念清单：每周把新问过的”这是什么”写 3 行，周末让 Agent 出题。</li>
-<li>每周跑一次这套脚本，只看三个数：10 字以内 prompt 的占比、“做的咋样了”的次数、“我的意思是”的次数。这三个数不降，说明上面七条没执行。</li>
+<li>问过”这是什么”的概念，当天用自己的话写 3 行进概念清单，周末让 Agent 出题考我。9 月 9 日我试过一次”你是面试官，问一个能分辨出我到底懂不懂的问题”，那次很有效，只是没有第二次。</li>
+<li>任何”以后注意”的结论，当天进 <code>CLAUDE.md</code> / <code>AGENTS.md</code>。不写，复盘就不算结束。</li>
+<li>每周跑一次这套脚本，只看三个数：带验收标准的 prompt 占比（现在 1.8%）、一字批准次数（现在 301）、引导句占比（现在 3.7%）。纠正率不用看，上面已经证明它不动。</li>
 </ol>
-<h2 id="六怎么复现这个分析">六、怎么复现这个分析</h2>
-<p>方法比结论有用。整个过程不到一小时。</p>
+<h2 id="九怎么复现">九、怎么复现</h2>
 <ol>
-<li>安装 funes，让它索引 <code>~/.claude/projects</code> 和 <code>~/.codex/sessions</code>。它提供 <code>sessions</code>、<code>recall</code>、<code>scan</code>、<code>get</code> 几个接口，可以按语义找、按字面搜、按会话读。</li>
-<li>写一个脚本遍历原始 JSONL，只保留真人输入。Claude Code 的记录看 <code>type == "user"</code> 且 <code>origin.kind == "human"</code>；Codex 看 <code>response_item</code> 里 <code>role == "user"</code> 的 <code>input_text</code>，再按 <code>originator</code> 过滤掉自动化任务。</li>
-<li>统计几组数：长度分布、每月趋势、高频短句、以特定词结尾的比例、同一会话里连续出现的纠正句。</li>
-<li>把”是什么”类的 prompt 单独拉出来，按主题归类。这一步用 Agent 归比自己归快。</li>
-<li>挑几个最长的会话，用 <code>sketch</code> 看它开头和结尾在聊什么。漂移一眼就能看出来。</li>
+<li>安装 funes，索引 <code>~/.claude/projects</code> 和 <code>~/.codex/sessions</code>。它提供按语义找（<code>recall</code>）、按字面搜（<code>scan</code>）、按会话读（<code>get</code>、<code>sketch</code>）几个接口。</li>
+<li>写脚本遍历原始 JSONL，只留真人输入。Claude Code 看 <code>type == "user"</code> 且 <code>origin.kind == "human"</code>；Codex 看 <code>response_item</code> 里 <code>role == "user"</code> 的 <code>input_text</code>，再按 <code>originator</code> 过滤自动化任务。</li>
+<li>先算长度分布和逐月趋势，再算几组句式的占比：纠正句、引导句、怀疑句、一字批准、带验收的。关键一步是把纠正率按不同条件切开看，它不动，才有后面的所有推论。</li>
+<li>“是什么”类 prompt 单独拉出来按主题归类，让 Agent 归。</li>
+<li>挑最长的几个会话用 <code>sketch</code> 看头尾。</li>
 </ol>
-<p>最后一句给自己：这些记录本来就在硬盘上，占了 3.3 GB，我从来没打开过。最便宜的自我改进数据，一直躺在那里。</p> </article> <hr class="my-8 border-dashed">  <ul class="mt-4 mb-8 flex flex-wrap gap-4 sm:my-8"> <li> <a href="/tags/ai/" class="flex items-center gap-0.5 border-b-2 border-dashed border-foreground hover:-mt-0.5 hover:border-accent hover:text-accent focus-visible:border-none focus-visible:text-accent text-sm" data-astro-transition-scope="astro-36ssibgs-2"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-80 size-4"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M5 9l14 0" /><path d="M5 15l14 0" /><path d="M11 4l-4 16" /><path d="M17 4l-4 16" /></svg> AI </a> </li><li> <a href="/tags/agent/" class="flex items-center gap-0.5 border-b-2 border-dashed border-foreground hover:-mt-0.5 hover:border-accent hover:text-accent focus-visible:border-none focus-visible:text-accent text-sm" data-astro-transition-scope="astro-36ssibgs-3"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-80 size-4"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M5 9l14 0" /><path d="M5 15l14 0" /><path d="M11 4l-4 16" /><path d="M17 4l-4 16" /></svg> Agent </a> </li><li> <a href="/tags/productivity/" class="flex items-center gap-0.5 border-b-2 border-dashed border-foreground hover:-mt-0.5 hover:border-accent hover:text-accent focus-visible:border-none focus-visible:text-accent text-sm" data-astro-transition-scope="astro-36ssibgs-4"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-80 size-4"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M5 9l14 0" /><path d="M5 15l14 0" /><path d="M11 4l-4 16" /><path d="M17 4l-4 16" /></svg> Productivity </a> </li><li> <a href="/tags/thinking/" class="flex items-center gap-0.5 border-b-2 border-dashed border-foreground hover:-mt-0.5 hover:border-accent hover:text-accent focus-visible:border-none focus-visible:text-accent text-sm" data-astro-transition-scope="astro-36ssibgs-5"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-80 size-4"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M5 9l14 0" /><path d="M5 15l14 0" /><path d="M11 4l-4 16" /><path d="M17 4l-4 16" /></svg> Thinking </a> </li> </ul> <div id="btt-btn-container" class="fixed end-4 bottom-8 z-50 md:sticky md:end-auto md:float-end md:me-1 translate-y-14 opacity-0 transition duration-500"> <button data-button="back-to-top" class="group relative bg-background px-2 py-1 size-14 rounded-full shadow-xl md:h-8 md:w-fit md:rounded-md md:shadow-none md:focus-visible:rounded-none md:bg-background/35 md:bg-clip-padding md:backdrop-blur-lg"> <span id="progress-indicator" class="absolute inset-0 -z-10 block size-14 scale-110 rounded-full bg-transparent md:hidden md:h-8 md:rounded-md"></span> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block rotate-90 md:hidden"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M15 6l-6 6l6 6" /></svg> <span class="sr-only text-sm group-hover:text-accent md:not-sr-only"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-4"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M12 5l0 14" /><path d="M16 9l-4 -4" /><path d="M8 9l4 -4" /></svg>
+<p>这些记录本来就在硬盘上，免费。我以前没打开过，是因为我觉得自己知道自己是怎么用 Agent 的。下周同一时间再跑一次脚本，看第八节那三个数有没有动。</p> </article> <hr class="my-8 border-dashed">  <ul class="mt-4 mb-8 flex flex-wrap gap-4 sm:my-8"> <li> <a href="/tags/ai/" class="flex items-center gap-0.5 border-b-2 border-dashed border-foreground hover:-mt-0.5 hover:border-accent hover:text-accent focus-visible:border-none focus-visible:text-accent text-sm" data-astro-transition-scope="astro-36ssibgs-2"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-80 size-4"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M5 9l14 0" /><path d="M5 15l14 0" /><path d="M11 4l-4 16" /><path d="M17 4l-4 16" /></svg> AI </a> </li><li> <a href="/tags/agent/" class="flex items-center gap-0.5 border-b-2 border-dashed border-foreground hover:-mt-0.5 hover:border-accent hover:text-accent focus-visible:border-none focus-visible:text-accent text-sm" data-astro-transition-scope="astro-36ssibgs-3"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-80 size-4"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M5 9l14 0" /><path d="M5 15l14 0" /><path d="M11 4l-4 16" /><path d="M17 4l-4 16" /></svg> Agent </a> </li><li> <a href="/tags/productivity/" class="flex items-center gap-0.5 border-b-2 border-dashed border-foreground hover:-mt-0.5 hover:border-accent hover:text-accent focus-visible:border-none focus-visible:text-accent text-sm" data-astro-transition-scope="astro-36ssibgs-4"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-80 size-4"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M5 9l14 0" /><path d="M5 15l14 0" /><path d="M11 4l-4 16" /><path d="M17 4l-4 16" /></svg> Productivity </a> </li><li> <a href="/tags/thinking/" class="flex items-center gap-0.5 border-b-2 border-dashed border-foreground hover:-mt-0.5 hover:border-accent hover:text-accent focus-visible:border-none focus-visible:text-accent text-sm" data-astro-transition-scope="astro-36ssibgs-5"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-80 size-4"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M5 9l14 0" /><path d="M5 15l14 0" /><path d="M11 4l-4 16" /><path d="M17 4l-4 16" /></svg> Thinking </a> </li> </ul> <div id="btt-btn-container" class="fixed end-4 bottom-8 z-50 md:sticky md:end-auto md:float-end md:me-1 translate-y-14 opacity-0 transition duration-500"> <button data-button="back-to-top" class="group relative bg-background px-2 py-1 size-14 rounded-full shadow-xl md:h-8 md:w-fit md:rounded-md md:shadow-none md:focus-visible:rounded-none md:bg-background/35 md:bg-clip-padding md:backdrop-blur-lg"> <span id="progress-indicator" class="absolute inset-0 -z-10 block size-14 scale-110 rounded-full bg-transparent md:hidden md:h-8 md:rounded-md"></span> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block rotate-90 md:hidden"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M15 6l-6 6l6 6" /></svg> <span class="sr-only text-sm group-hover:text-accent md:not-sr-only"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block size-4"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M12 5l0 14" /><path d="M16 9l-4 -4" /><path d="M8 9l4 -4" /></svg>
 Back To Top
 </span> </button> </div> <script data-astro-rerun>
   /** Scrolls the document to the top when
